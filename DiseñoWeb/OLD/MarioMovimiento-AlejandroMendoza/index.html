@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Documento sin título</title>
+		<style>
+			.cielo {
+				background: url("img/f03.png") repeat-x skyblue;
+				border: solid 5px #D84F08;
+				width: 50%;
+				height: 500px;
+				margin: auto;
+			}
+			.mario {
+				background: url("img/f02.png") no-repeat;
+				position: relative;
+				top: 391px;
+				height: 490px;
+			}
+			.suelo {
+				background: url("img/f01.png") repeat-x;
+				height: 10px;
+			}
+
+			.mario1 {
+				position: relative;
+				top: -40px;
+			}
+
+			.gomma {
+				position: relative;
+				top: -40px;
+				left: 300px;
+				animation: gomma 3s linear infinite alternate;
+			}
+
+			.gomma2 {
+				position: relative;
+				top: -40px;
+				left: 320px;
+				animation: gomma 3s linear infinite alternate;
+			}
+
+			img[src="./img/fire.png"] {
+				position: relative;
+				top: -40px;
+				width: 5%;
+				height: 5%;
+			}
+
+			@keyframes gomma {
+				from {
+					transform: translateX(-100px)
+				}
+
+				to {
+					transform: translateX(310px)
+				}
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+			$(window).on('load',function() {
+				var cnt=0
+				var x=false
+				$('body').keydown(function() {
+					//console.log(event.which)
+					if (event.which == 38) { // Tecla FLECHAS Movimiento
+						$('.mario1').animate({top:'-=50px'},'fast')
+						$('.mario1').animate({top:'+=50px'},'fast')
+					} else if (event.which == 37) {
+						$('.mario1').animate({left:'-=20px'},'fast')
+						$('.mario1').css('transform','scaleX(-1)')
+						x=true
+					} else if (event.which == 39) {
+						$('.mario1').animate({left:'+=20px'},'fast')
+						$('.mario1').css('transform','scaleX(1)')
+						x=false
+					} else if (event.which == 90) {// Tecla: Z Disparar Bola de fuego
+						cnt++
+						let fuego = document.createElement('img')
+						$('.mario1').after(fuego)
+						$('div.cielo img:nth-child(4)').attr('id', 'fire'+cnt)
+						fuego = $('#fire'+cnt)
+						fuego.css('opacity','0')
+						fuego.attr('src', './img/fire.png')
+						fuego.css('left', $('.mario1').css('left'))
+						fuego.css('opacity','1')
+						if (x) {
+							fuego.animate({left:'-=100px'}, 'linear')
+							fuego.css('transform','scaleX(1)')
+						} else {
+							fuego.animate({left:'+=100px'}, 'linear')
+							fuego.css('transform','scaleX(-1)')
+						}
+						setTimeout(function() {
+							$('#fire'+cnt).remove()
+  						}, 500);
+					}
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="cielo">
+			<div class="mario"></div>
+			<div class="suelo"></div>
+			<img class="mario1" src="./img/mario.png">
+			<img class="gomma"  src="./img/gomma.png">
+			<img class="gomma2" src="./img/gomma.png">
+		</div>
+	</body>
+</html>

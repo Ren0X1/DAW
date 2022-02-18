@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="iso-8859-1">
+<title>Documento sin título</title>
+<style type="text/css">
+        #alta {width: 275px;}
+        #tpedido {width: 350px;}
+        #tc { position:absolute; top:2em; left:30em;
+                      with:40%; height:auto; 
+                      border:solid 1px red}
+        #dp	{ position:absolute; top:10em; left:30em;
+                      with:40%; height:auto; 
+                      border:solid 1px olive}	
+					  
+		#fcli,#divmiForm	{ position:absolute; top:8em; left:18em;
+                      with:40%; height:auto; 
+                      border:solid 2px brown;
+					  background-color:#9FF}
+		 div > p > p {color:red;	 }			  			  	  
+        .rojo {color: crimson;background-color:  yellow;text-align:  center;
+                position: static; left:30px; bottom: 3px}
+         .ui-effects-transfer { border: 1px dotted  deeppink;}
+        
+    </style>
+    <link href="css/login.css" rel="stylesheet"/>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.validate.min.js"/></script>
+    <script src="js/localization/messages_es.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
+    <script src="js/jquery-ui.min.js" > </script>
+       
+ <script>  
+ function validaNif(nif){
+	var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 
+	'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 
+	'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+ 
+	if( !(/^\d{8}[A-Z]$/.test(nif)) ) {
+			//alert ("formato de  Nif erroneo"); // (2)
+	// return 1;
+	 return false;
+	}
+	 
+	if(nif.charAt(8) != letras[(nif.substring(0, 8))%23]) {
+		//si =confirm ("Letra de Nif Incorrecta; Correcta= "+ letras[(nif.substring(0, 8))%23]);
+		if (confirm ("Letra de Nif Incorrecta; Correcta= "+ letras[(nif.substring(0, 8))%23])){
+			$("#nifcli").val(nif.substring(0, 8)+letras[(nif.substring(0, 8))%23]);
+		return true;
+		}
+		else
+                  return false;
+	
+	}
+        else return true;
+ }    
+     
+ $(function(){ 
+			
+//--------------------Form alta cliente.................................
+
+$.validator.addMethod("nifCorrecto", validaNif, "Formato de nif Incorrecto");
+
+$('#miForm1').validate({
+                 rules: {       },	
+
+              messages: {
+               
+		
+			}/*,
+			  
+	 submitHandler: function(form) {
+                        $.ajax({
+                              });//ajax
+	              }//..submitHandler:**/
+                     	
+                    }); //..VAlidate
+ 	
+//-------------------------------------------------------		 
+	$("#alta").click(function(){
+           
+	});
+   
+ //-- Script login....................--------------------
+ var abre=true;
+ $('#open').click(function(){
+            if(abre){
+                	$(this).animate({"width":"270px"},"300");
+			$('#login form').slideDown(400);
+                        $(this).addClass('close');
+			$(this).parent().css("border","#930 double 3px");
+                        abre=false;
+		}
+	    else{
+		$('#login form').slideUp(600,function(){
+                                    $('#open').removeClass('close')
+                                              .parent().css("border","none").children().eq(0)
+                                              .animate({"width":"50px"},"300");});
+                                          
+		abre=true;
+                }
+	})// fin de toggle 
+ //-----------------------------------------
+ $("#entrar").on("submit",function(evento){
+        evento.preventDefault();
+        
+        var datos ={}; 
+       // $.getJSON();
+        
+        var loginJson = JSON.stringify(datos);						   
+   	
+       // enviarPeticion();
+    });
+  
+ }); // REady...........................
+//-- Script login....................--------------------	
+
+ function escuchaControlAcceso(data,status,xhr){
+            if( data.Acceso=="Concedido"){
+                    
+                                   
+              }
+              else{
+              
+            }
+         }     
+ 
+ //------------------------------------------------------------------
+    
+</script>
+
+</head>
+
+<body>
+
+    <button id="alta" disabled="disabled"> Alta Cliente...</button> 
+    
+   <div id="divmiForm"  style="display : none">
+   
+     <form id="miForm1" action="#" ><!-- onSubmit="guardaCli()"-->
+    	<fieldset><legend>Formulario Alta de Clientes...</legend><br />
+        <div>
+            <p>Nombre..:<input type="text" id="nomcli" placeholder="Nombre?" name="Nombre"/></p>
+
+            <p>Apellidos:<input type="text"  id="apecli" placeholder="Apellidos?" name="Apellidos"/></p>
+            <p>Edad......:<input type="text" id="edcli"  placeholder="Edad?" name="Edad"/></p>
+            <p>Nif.........:<input type="text" id="nifcli" placeholder="Nif?" name ="Nif"/></p>
+            <p>Email.......:<input type="text" id="mail" placeholder="Email?" name ="Email"/></p>
+
+            <input type="button" value="Guardar" id="gcli"  />
+            <input type="submit" value="Enviar"  id="ecli">
+            <input type="reset" value="Cancelar" id="ccli" />
+
+            <br/>
+        </div>   
+        </fieldset>  
+     </form> 
+   </div>
+<!-- ................... Form Login .................... -->
+
+<div id="login">
+  <p id="open">Login</p>
+    <form id="entrar">
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+        </p>
+        <p>
+            <label for="password">Password: </label>
+            <input type="text" name="password" id="password" required="required">
+        </p>
+        <p>
+            <input type="submit" name="button" id="button" value="Acceder" >
+        </p>
+    </form>
+</div>    
+          
+          
+</body>
+</html>

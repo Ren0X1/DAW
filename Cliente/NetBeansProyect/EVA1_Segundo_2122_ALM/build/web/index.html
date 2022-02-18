@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Municipios de España</title>
+		
+<link href="css/estilo_tablas.css" rel="stylesheet"/>
+<style>
+    .rojo{border: 2px double red}
+    .verde{border: 2px double green}
+    .sinBorde{border: 0}
+    
+    .fijo{ overflow: scroll;
+           height : 380px}/* Si el contenido del fieldset crece, se romper�a*/
+   
+    fieldset{		padding-bottom:30px;
+			margin-bottom:20px;			
+			width: 50%;}
+	
+    #divprov, #divmuni{width: auto}
+	
+    label,#muni,#buscam{ font:   medium fantasy }
+    tr[id]:hover{background-color:  aquamarine}
+    .rojo{border: 2px double red;}
+    .arrastra{}
+    .suelta{}
+    tr:nth-child(even) { background-color: #dddddd;}
+    
+    .nuevoForm label{display:block; padding:5px;}
+    .nuevoForm fieldset{ width: 93%}
+    .nuevoForm input{width:100%}
+	#divmiForm	{ 
+				box-sizing:border-box;
+				top:4em;
+				float:right;
+                                width:40%; 
+				min-width:260px;
+				Margin-top:50px;
+				border:solid 2px brown;
+                                background-color:#9FF
+                         }
+			  
+	.nuevoForm{ 
+                width:80%;
+                padding:20px;
+                margin:30px auto;
+                backgroundColor:white;
+                border:1px solid black
+            }
+	#Contenedor{min-width:700px}
+	.nuevoForm input[type="reset"]{ background-color:red; color:white}
+	.nuevoForm input[type="submit"]{Margin-top:20px; background-color:green; color:white}
+</style>
+
+<script src="js/Lib.js"></script> 
+<script src="js/index.js"></script>
+
+</head>
+
+<body>
+<div id="Contenedor">
+  <div id="divmiForm"  style="display : none">
+
+  </div>
+</div>
+
+ <fieldset class="fijo">
+     <legend>Provincias de España</legend>
+<button id="prov"> Carga Provincias...</button>
+
+<div id="divprov">
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Provincia</th>
+      <th>Cp</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+    <tr>
+      <td>1</td>
+      <td>M�laga</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jaen</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Murcia</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Burgos</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+ </fieldset>
+   <fieldset  class="fijo">
+    
+    <div id="divmuni">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Municipio</th>
+          <th>Habitantes</th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr>
+          <td>1</td>
+          <td>Arriate</td>
+          <td>3300</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ronda</td>
+          <td>4056</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Benaoj�n</td>
+          <td>2300</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Marbella</td>
+          <td>45000</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>  
+  </fieldset>  
+  
+ 
+
+</div>          
+</body>
+</html>

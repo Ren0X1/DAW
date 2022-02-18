@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById("audio1")
+            var boton = document.getElementById("button1")
+            var boton2 = document.getElementById("button2")
+            var tiempo = document.getElementById("tiempo")
+            var vol = document.getElementById("volumen")
+            var vol2 = document.getElementById("volumen2")
+            var duration = document.getElementById("durationBar")
+            duration.max = audio.duration
+            duration.min = 0
+
+            audio.volume = 0.2
+
+            boton.onclick = function() {
+                if (!audio.paused) {
+                    audio.pause()
+                } else {
+                    audio.play()
+                }
+            }
+
+            boton2.onclick = function() {
+                audio.pause()
+                audio.currentTime = 0
+            }
+
+            vol.onchange = function() {
+                audio.volume = this.value/100
+                vol2.innerHTML = this.value+'%'
+            }
+
+            function tiempoCancion() {
+                tiempo.innerHTML = convertTime(audio.currentTime)+'/'+convertTime(audio.duration)
+                duration.value = audio.currentTime
+            }    
+            setInterval(tiempoCancion, 1000);
+
+            function convertTime(time) {    
+                let mins = Math.floor(time/60)
+                if (mins<10) {
+                    mins = '0'+String(mins)
+                }
+
+                let secs = Math.floor(time%60)
+                if (secs<10) {
+                    secs = '0'+String(secs)
+                }
+
+                return mins+':'+secs
+            }
+        }
+    </script>
+    <body>
+        <h1>Audio Controles</h1>
+        <audio controls>
+            <source src="./audio/01 - Mr. Scruff - Kalimba.mp3" type="audio/mpeg">
+        </audio>
+
+        <h1>Audio Sin Controles</h1>
+        <audio id="audio1">
+            <source src="./audio/01 - Mr. Scruff - Kalimba.mp3" type="audio/mpeg">
+        </audio>
+        <p id="tiempo"></p><input style="width: 272px;" id="durationBar" type="range"><hr>
+        <button id="button1" type="button">Play/Pause</button>
+        <button id="button2" type="button">Stop</button>
+        <input id="volumen" type="range" min="0" max="100" value="20">
+        <p style="display: inline;" id="volumen2">20%</p>
+
+        <h1>Video Controles</h1>
+        <video width="320" height="240" controls>
+            <source src="./audio/movie.mp4" type="video/mp4">
+        </video>
+    </body>
+</html>

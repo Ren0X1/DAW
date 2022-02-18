@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+	<head>
+		<!-- FONT AWESOME -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- BOOTSTRAP -->
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	   <!-- CUSTOM STYLES -->
+        <link rel="stylesheet" href="css/audio.css">
+	</head>
+	<body>
+		<!-- PLAYER -->
+		<div class="navbar navbar-fixed-bottom navbar-inverse navbar-bottom">
+            <div class="container-fluid">
+                <div class="audio-controls col-sm-2 text-center">
+                    <span id="previous" class="previous fa fa-step-backward"></span>
+                    <span id="play" class="play"><span id="play-toggle" class="fa fa-play"></span></span>
+                    <span id="next" class="next fa fa-step-forward"></span>
+                </div>
+            </div>
+        </div>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="js/soundmanager2.js"></script>
+		<script src="js/Track.js"></script>
+		<script src="js/Player.js"></script>
+        <script src="js/UI.js"></script>
+        <script type="text/javascript">
+        	var track1 = new AUDIO.Track('33aLDZDFrusGfNspT0KKV8');	//celebration
+        	var track2 = new AUDIO.Track('75JabW464PwkX199TMXzpu');	//long nights
+        	var track3 = new AUDIO.Track('49SBnvcOElDmOdjOa6OQ6T');	//no care
+        	var track4 = new AUDIO.Track('3vWacNioW8NvENyObBZ6Vn');	//ballet
+        	var p = AUDIO.Player;
+            p.addTrack(track1);
+            p.addTrack(track2);
+            p.addTrack(track3);
+            p.addTrack(track4);
+            p.init();
+            AUDIO.UI.init();
+        </script>
+	</body>
+</html>

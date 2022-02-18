@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>comprobarUsu</servlet-name>
+        <servlet-class>com.daw.tiendaonlinebdjpa.logica.comprobarUsu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>consulta</servlet-name>
+        <servlet-class>com.daw.tiendaonlinebdjpa.logica.consulta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>gestionCarrito</servlet-name>
+        <servlet-class>com.daw.tiendaonlinebdjpa.logica.gestionCarrito</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>altaArticulos</servlet-name>
+        <servlet-class>com.daw.tiendaonlinebdjpa.logica.altaArticulos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>comprobarUsu</servlet-name>
+        <url-pattern>/comprobarUsu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>consulta</servlet-name>
+        <url-pattern>/consulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>gestionCarrito</servlet-name>
+        <url-pattern>/gestionCarrito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>altaArticulos</servlet-name>
+        <url-pattern>/altaArticulos</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

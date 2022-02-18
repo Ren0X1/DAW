@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    
+    <context-param>
+        <param-name>DriverM</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+            <param-name>URLBDM</param-name>
+            <param-value>jdbc:mysql://localhost:3306/login</param-value>
+    </context-param>
+    <context-param>
+        <param-name>Usuario</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+            <param-name>password</param-name>
+            <param-value>root</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>controlAcceso</servlet-name>
+        <servlet-class>controlAcceso</servlet-class>
+       
+    </servlet>
+    <servlet>
+        <servlet-name>compruebaEmailRemote</servlet-name>
+        <servlet-class>compruebaEmailRemote</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>controlAcceso</servlet-name>
+        <url-pattern>/controlAcceso</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>compruebaEmail</servlet-name>
+        <servlet-class>compruebaEmail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>compruebaEmail</servlet-name>
+        <url-pattern>/compruebaEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>compruebaEmailRemote</servlet-name>
+        <url-pattern>/compruebaEmailRemote</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>
+          login-alm.html
+        </welcome-file>
+    </welcome-file-list>
+</web-app>

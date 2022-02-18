@@ -1,0 +1,266 @@
+/*FIX MARGENES POR DEFECTO*/
+body, html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/*-------------------------*/
+
+/*HEADER CSS*/
+header {
+    margin: auto;
+    width: auto;
+    background-image: url(../img/header.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 350px;
+    min-width: 900px;
+    max-width: 1800px;
+}
+
+header nav {
+    background: url(../img/page.png) repeat;
+    height: 50px;
+}
+
+header nav ul li button {
+    color: rgb(170, 145, 2);
+    font-weight: bold;
+    background-color: transparent;
+    border-color: transparent;
+    padding: 10px 20px;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+    padding-top: 11px;
+    list-style: none;
+}
+
+header ul li{
+    display: inline;
+}
+
+header nav ul li button:hover {
+    color: rgb(248, 235, 158);
+    background-color: #E15F41;
+    background-image: url(../img/menuhovereditem.png);
+}
+
+header nav ul li button.active {
+    color: rgb(248, 235, 158);
+    background-color: #801C0C;
+    background-image: url(../img/menuhovereditem.png);
+}
+
+.fotoheader {
+    position: absolute;
+    right: 1px;
+    width: 494px;
+    height: 300px;
+}
+
+header div#head {
+    line-height: 50px;
+}
+
+header div#head h1, header div#head h2{
+    margin: 0;
+    padding-left: 20px;
+    color: white;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 5px;
+}
+
+header div#head h1 {
+    margin-top: 110px;
+    font-size: 5em;
+}
+
+header div#head h2 {
+    color: rgb(248, 235, 158);
+    font-size: 3em;
+}
+/*-------------------------*/
+
+/*MAIN CSS*/
+main {
+    margin: auto;
+    margin-top: 50px;
+    width: auto;
+    min-width: 900px;
+    max-width: 1800px;
+}
+main div#displaytable {
+    width: 60%;
+    margin: auto;
+    display: table;
+    position: relative;
+}
+
+main div#displaytable div.uno, main div#displaytable div.dos, main div#displaytable div.tres {
+    padding-left: 40px;
+    padding-right: 40px;
+    display: table-cell;
+}
+
+main div#displaytable div.uno::before {
+    position: absolute;
+    font-size: 4em;
+    color: #bb2c16;
+    font-weight: bold;
+    top: 20px;
+    right: 98%;
+    content: "1";
+    display: block;
+    float: left;
+}
+
+main div#displaytable div.dos::before {
+    position: absolute;
+    font-size: 4em;
+    color: #bb2c16;
+    font-weight: bold;
+    top: 20px;
+    right: 63%;
+    content: "2";
+    display: block;
+    float: left;
+}
+
+main div#displaytable div.tres::before {
+    position: absolute;
+    font-size: 4em;
+    color: #bb2c16;
+    font-weight: bold;
+    top: 20px;
+    right: 29%;
+    content: "3";
+    display: block;
+    float: left;
+}
+
+main div#displaytable .titulo {
+    color: #bb2c16;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+main div#contenido {
+    width: 60%;
+    margin: auto;
+    margin-top: 80px;
+    position: relative;
+}
+
+main div#contenido .titulo {
+    color: #bb2c16;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+main div#contenido div.side {
+    width: 30%;
+    float: left;
+}
+
+main div#contenido div.side .imgC {
+    float: left;
+    margin-right: 5px;
+}
+
+main div#contenido div.main {
+    margin-left: 10px;
+    width: 40%;
+    float: left;
+}
+
+main div#contenido div.main img {
+    width: auto;
+    height: auto;
+}
+
+main div#contenido div.main p {
+    text-align: justify;
+    width: 170%;
+}
+
+.botones {
+    color: #bb2c16;
+    font-weight: bold;
+    background-color: linear-gradient(white,gray);
+    border-color: lightgray;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.botones:hover {
+    color: white;
+    font-weight: bold;
+    background-color: #bb2c16;
+    border-color: lightgray;
+    padding: 10px 20px;
+}
+
+/*-------------------------*/
+
+/*FOOTER CSS*/
+footer {
+    margin: auto;
+    margin-top: 50px;
+    clear: both;
+    width: auto;
+    height: 100px;
+    min-width: 900px;
+    max-width: 1800px;
+    background-color: lightgrey;
+}
+
+footer div#texto {
+    width: 90%;
+    margin: auto;
+}
+
+footer div#texto div.uno {
+    width: 33%;
+    margin: auto;
+    float: left;
+}
+
+footer div#texto div.dos {
+    width: 33%;
+    margin: auto;
+    float: left;
+    text-align: center;
+    margin-top: 45px;
+}
+
+footer div#texto div.tres {
+    width: 33%;
+    margin: auto;
+    float: left;
+    text-align: right;
+}
+
+footer ul {
+    margin: 0;
+    padding: 0;
+    padding-top: 11px;
+    list-style: none;
+}
+
+footer ul li{
+    display: inline;
+}
+
+footer a {
+    color: #bb2c16;
+}
+
+footer a:visited {
+    color: #bb2c16;
+}
+/*-------------------------*/

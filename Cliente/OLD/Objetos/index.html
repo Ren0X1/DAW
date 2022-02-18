@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script>
+            //usando el New
+            var libro1 = new Object()
+            libro1.titulo = "Java"
+            libro1.editorial = "Anaya"
+            libro1.imprimir = function() {
+                return this.titulo+" - "+this.editorial
+            }
+
+            //mejor manera
+            var libro2 = {}
+            libro2.titulo = "Java 2"
+            libro2.editorial = "Anaya 2"
+            libro2.imprimir = function() {
+                return this.titulo+" - "+this.editorial
+            }
+
+            var libro3 = {}
+            libro3.titulo = "Java 2"
+            libro3.editorial = "Anaya 2"
+            libro3.imprimir = function() {
+                return this.titulo+" - "+this.editorial
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

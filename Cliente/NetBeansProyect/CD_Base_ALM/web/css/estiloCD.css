@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15-ene-2017, 18:17:47
+    Author     : Usuario
+*/
+ #mapa{position:relative;
+                left:0px; bottom:0px;
+                width:420px;height:300px;
+                background-color: bisque
+              }    
+        #alta {width: 275px;}
+        #tpedido {width: 400px;}
+		#tc,#dp,#fcli{ position:absolute;                       /* Selector de grupo con todas las propiedades comunes */
+						with:40%;
+						border: solid 1px
+		               }                       
+        #tc {  top:2em; left:30em;
+                      with:40%;border:solid 1px red}
+		#panelCentro
+					  {left:20em;position:absolute;border:solid 1px green;top:1em;}
+					  
+					  
+        #dp	{ top:7em; left:31em;
+                      with:40%; height:auto; 
+                      border:solid 1px olive;float:right; background-color: #FFC }
+		#fcli{  top:2em; left:12em;/* left:27em;*/
+                      with:40%; height:auto; 
+                      border:solid 2px brown;
+		              background-color:#9FF}
+		strong{display:none;color:#F00}  
+		#catalogo { position:absolute;left:30em;float:right;
+					 background-color: #CFF;border:solid 1px blue}
+		#ccd{ position: absolute;  visibility: visible; top: 10em; left: 10em;} 
+        

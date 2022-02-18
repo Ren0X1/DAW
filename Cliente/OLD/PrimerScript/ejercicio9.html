@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Ejercicio 9 - Crear, eliminar y modidicar nodos DOM</title>
+<script type="text/javascript">
+function genera() {
+	// Generar números aleatorios entre 0 y 10
+	var numero1 = (Math.random()*10).toFixed();
+	var numero2 = (Math.random()*10).toFixed();
+
+	// Obtener los nodos padre de los párrafos
+	var primero = document.getElementById("primero");
+	var segundo = document.getElementById("segundo");
+	
+	// Obtener el cada uno de los párrafos
+	var parrafoAnterior1 = primero.firstChild;
+	var parrafoAnterior2 = segundo.firstChild;
+	
+	// Crear el nuevo párrafo
+	var parrafo1 = document.createElement("p");
+	var texto1 = document.createTextNode(numero1);
+	parrafo1.appendChild(texto1);
+	// Si ya existía un párrafo, sustituirlo. Si no, añadirlo
+	if(parrafoAnterior1 != null) {
+		primero.replaceChild(parrafo1, parrafoAnterior1);
+	}
+	else {
+		primero.appendChild(parrafo1);
+	}
+	
+	// Crear el otro nuevo párrafo
+	var parrafo2 = document.createElement("p");
+	var texto2 = document.createTextNode(numero2);
+	parrafo2.appendChild(texto2);
+	// Si ya existía un párrafo, sustituirlo. Si no, añadirlo
+	if(parrafoAnterior2 != null) {
+		segundo.replaceChild(parrafo2, parrafoAnterior2);
+	}
+	else {
+		segundo.appendChild(parrafo2);
+	}
+}
+
+function compara() {
+	// Obtener los nodos padre de los párrafos
+	var primero = document.getElementById("primero");
+	var segundo = document.getElementById("segundo");
+	
+	// Obtener los párrafos (existen varios métodos...)
+	var parrafo1 = primero.getElementsByTagName("p")[0];
+	var parrafo2 = segundo.firstChild;
+	
+	// Obtener los números a través del nodo Text de cada
+	//  nodo de tipo Element de los parrafos
+	var numero1 = parseInt(parrafo1.firstChild.nodeValue);
+	var numero2 = parseInt(parrafo2.firstChild.nodeValue);
+
+	// Determinar el nodo del párrafo cuyo nodo es mayor
+	var parrafoMayor = (numero1 > numero2)? parrafo1 : parrafo2;
+
+	// Obtener el nodo padre del párrafo resultado
+	var resultado = document.getElementById("resultado");	
+	
+	var parrafoAnterior = resultado.firstChild;
+	// Si ya existía un párrafo de resultado anterior, sustituirlo. Si no, añadirlo
+	if(parrafoAnterior != null) {
+		resultado.replaceChild(parrafoMayor, parrafoAnterior);
+	}
+	else {
+		resultado.appendChild(parrafoMayor);
+	}
+}
+
+</script>
+
+<style type="text/css">
+#primero, #segundo, #resultado {width: 150px; height: 150px; border: thin solid silver; background: #F5F5F5; float: left; margin:20px; font-size: 6em; color: #333; text-align: center; padding: 5px; font-family:Arial, Helvetica, sans-serif;}
+#primero p, #segundo p, #resultado p {margin:.2em 0;}
+#resultado {margin-left:1.3em; border-color: black;}
+.clear {clear:both;}
+#compara {margin-left:11em;}
+#genera {font-size:1.2em; margin-left:8em;}
+</style>
+</head>
+
+<body>
+
+<input id="genera" type="button" value="¡¡ Genera !!" onclick="genera()" />
+
+<div id="primero"></div>
+
+<div id="segundo"></div>
+
+<div class="clear"></div>
+
+<input id="compara" type="button" value="<< Comparar >>" onclick="compara()" />
+
+<div id="resultado"></div>
+
+</body>
+</html>

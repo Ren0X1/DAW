@@ -1,0 +1,65 @@
+div {
+    position: relative;
+    border: solid 1px black;
+    margin: auto;
+}
+
+#main {
+    border: solid 5px #000;
+    width: 50%;
+    padding: 50px;
+}
+
+#grisCasa {
+    background-color: grey;
+    width: 63%;
+    height: 600px;
+    top: 10%;
+}
+
+#tejado {
+    background-color: darkred;
+    width: 120%;
+    height: 100px;
+    top: -5%;
+    left: -10%;
+}
+
+#puerta {
+    background-color: burlywood;
+    width: 30%;
+    height: 160px;
+    top: 10%;
+    left: 0%;
+}
+
+#balcon {
+    background-color: whitesmoke;
+    width: 80%;
+    height: 70px;
+    top: 6%;
+}
+
+#ventana1 {
+    border: solid 1px black;
+    background-color: purple;
+    width: 20%;
+    height: 100px;
+    left: -25%;
+    top: -15%;
+}
+
+#ventana2 {
+    border: solid 1px black;
+    background-color: purple;
+    width: 20%;
+    height: 100px;
+    left: 25%;
+    top: -32%;
+}
+
+.reja {
+    top: 54%;
+    border: none;
+    border-top: solid 1px black;
+}

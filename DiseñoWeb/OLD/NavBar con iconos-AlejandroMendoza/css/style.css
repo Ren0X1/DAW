@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'recursivesans';
+    src: url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.eot');
+    src: url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.woff2') format('woff2'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.woff') format('woff'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.ttf') format('truetype'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.otf') format('otf'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.svg#recursivesans_linear_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*FIX MARGENES POR DEFECTO*/
+body, html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/*-------------------------*/
+
+/*HEADER CSS*/
+header {
+    margin: auto;
+    width: auto;
+    background-image: url(../img/header.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 350px;
+    min-width: 900px;
+    max-width: 1800px;
+}
+
+header nav {
+    background: url(../img/page.png) repeat;
+    height: 50px;
+}
+
+header nav ul li button {
+    color: rgb(170, 145, 2);
+    font-weight: bold;
+    background-color: transparent;
+    border-color: transparent;
+    padding: 10px 20px;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+    padding-top: 11px;
+    list-style: none;
+}
+
+header ul li{
+    display: inline;
+}
+
+header nav ul li button:hover {
+    color: rgb(248, 235, 158);
+    background-color: #E15F41;
+    background-image: url(../img/menuhovereditem.png);
+}
+
+header nav ul li button.active {
+    color: rgb(248, 235, 158);
+    background-color: #801C0C;
+    background-image: url(../img/menuhovereditem.png);
+}

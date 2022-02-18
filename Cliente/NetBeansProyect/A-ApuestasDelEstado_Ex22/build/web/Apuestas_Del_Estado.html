@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        #cabecera img {
+            height: 100px;
+            width: 200px;
+            float: left
+        }
+
+        #salida img,
+        #salidaResguardo img {
+            height: 25px;
+            width: 25px
+        }
+
+        #salida,
+        #salidaResguardo {
+            border: 6px double red;
+            width: max-content
+        }
+
+        #cabecera {
+            background-color: #E1E1E1;
+            width: 70%;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            background-color: rgba(0, 0, 0, .03);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, .08);
+            height: 110px;
+            min-height: 60px;
+            text-align: center;
+            position: absolute;
+            left: 15%;
+        }
+
+        #jugar,
+        #editar,
+        #comprobar,
+        #listar {
+            /*position:absolute; top:2em; left:24em;*/
+            position: absolute;
+            top: 120px;
+            right: 250px;
+            font-size: 1em;
+            width: 80%;
+            height: auto;
+            border: solid 1px red;
+            display: none
+        }
+
+        .inputstyle {
+            font-family: Arial;
+            font-size: 10pt;
+            background-color: #CFC
+        }
+
+        td {
+            width: 25px;
+            height: 25px;
+            border: solid 1px black;
+        }
+    </style>
+    <link href="css/edita.css" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/localization/messages_es.js"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="js/creaTabla_21.js"></script>
+    <script src="./js/utils_AlejandroMendoza.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <div id="cabecera">
+        <img src="iconos\general.png">
+        <h3>Apuestas del estado - Pedro -</h3>
+        <input type="button" value="Jugar..." id="jg" name="jugar" />
+
+        <input type="button" value="Comprobar  Boleto" id="cp" name="listar" style="color:red" />
+        <input type="button" value="editar Apuesta" id="ed" name="editar" />
+
+        <input type="button" value="Ver Resguardos" id="li" name="listar" />
+
+        <!-- SELECT........ -->
+        <br>Selecciona el juego
+        S<select id="listaApu">
+
+            <option value="Apuesta('Números','A',6,1,54,'Número Clave','B',1,0,9)">
+                Gordo de la Primitiva</option>
+            <option value="Apuesta('Numeros','A',6,1,49,'Reintegro','B',1,0,9,'Joker','B',1,0,9999999)">Primitiva
+            </option>
+            <option value="Apuesta('Numeros:','A',6,1,49)">BonoLoto</option>
+
+            <option value="Apuesta('Números','A',5,1,50,'Estrellas','A',2,1,12)">Euromillones</option>
+
+        </select>
+
+
+    </div>
+
+    <!-- Seccion JUGAR ------------------------------------------------------------>
+    <!-- Seccion JUGAR ------------------------------------------------------------>
+
+    <div id="jugar" style="width:60%;display:none">
+
+        Cantidad de Apuestas : <input type="number" value="1" id="numApuestas" min="1" max="99" />
+
+
+        <p id="salida"></p>
+        <button id="comprar"> JUGAR...</button>
+
+    </div>
+
+    <!-- Seccion EDITAR ------------------------------------------------------------>
+    <!-- Seccion EDITAR ------------------------------------------------------------>
+
+    <div id="editar" style="width:60%;display:none">
+        <input type="button" value="añadir Tipo de Apuesta" id="btp" />
+        <input type="button" value="Editar Tipo de Apuesta" id="betp" />
+        <input type="button" value="Listar los tipos de Apuestas" id="bltp" />
+
+        <p id="resultado"></p>
+
+        <div id="divmiForm" style="display : none">
+
+            <form id="formEdita" action="#">
+                <fieldset>
+                    <legend> Crear un nuevo Tipo de Apuesta...</legend>
+                    <div>
+                        <p>Nombre de la Apuesta..:<input type="text" id="nomApu" placeholder="Nombre?" name="Nombre" />
+
+                        </p>
+                        <div id="insertar">
+                        <fieldset id="c1">
+                            <legend> Combinación << 1>></legend>
+                            <p><button class="borrar"> X </button>
+                                Etiqueta1 -> <input type="text" placeholder="Etiqueta?" name="et1" />
+                                <input type="radio" required id="A" name="ab0" value="A">
+                                <label for="A">Por Apuesta</label>
+                                <input type="radio" required id="B" name="ab0" value="B">
+                                <label for="B">Por Boleto</label><br>
+                            </p>
+                            Cuantos numeros?<input required type="number" placeholder="ctd?" name="ctd1" />
+                            Valor mímino? <input required type="number" placeholder="minimo?" name="min1" />
+                            Valor máximo? <input required type="number" placeholder="maximo?" name="max1" />
+
+                        </fieldset>
+                        </div>
+
+                        <input type="button" value="Nueva combinación" id="nueva" /></br>
+                        <input type="submit" value="Guardar" id="guarda">
+                        <input type="reset" value="Limpiar" id="borra" />
+                        <input type="button" value="Cancelar" id="cancela" />
+
+                        <br />
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div id="divTabla" style="display : none"></div>
+
+
+
+    </div>
+
+    <!-- Seccion COMPROBAR ------------------------------------------------------------>
+    <!-- Seccion COMPROBAR ------------------------------------------------------------>
+
+    <div id="comprobar" style="width:80%;display:none;left: 10%;">
+
+
+        <div>
+            <div id="meteSol" style="float:right"></div>
+            <div id="meteApu"></div>
+
+        </div>
+
+    </div>
+
+    <!-- Seccion LISTAR ------------------------------------------------------------>
+    <!-- Seccion LISTAR ------------------------------------------------------------>
+
+    <div id="listar" style="width:60%;display:none">
+        <br>Tipo de Apuesta? <br>
+        <select id="listaTipoApu">
+            <option value="">
+                Selecione tipo de Apuesta? </option>
+        </select>
+
+        <select id="listaApuTipo">
+            <option value="">
+                Selecione Apuesta(fecha)</option>
+        </select>
+
+        <div id="salidaResguardo">
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

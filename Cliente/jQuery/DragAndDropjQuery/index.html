@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css"/>
+        <script src="js/index.js"></script>
+        <style>
+            .day {
+                border: 5px dashed transparent;
+                background: #ddd;
+                margin: 1em;
+                min-height: 8em;
+                padding: 1em;
+                width: 20em;
+            }
+
+            .rojo {
+                border: 5px dashed transparent;
+                background: rgb(116, 37, 37);
+                margin: 1em;
+                min-height: 8em;
+                padding: 1em;
+                width: 20em;
+            }
+
+            .day.hovering {
+                background: #b6d6fb;
+                border-color: #276cbc;
+            }
+
+            .item {
+                background: white;
+                cursor: pointer;
+                display: inline-block;
+                padding: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="day">
+            <div class="item">Element</div>
+        </div>
+          
+        <div class="day"></div>
+
+        <div class="rojo"></div>
+    </body>
+</html>

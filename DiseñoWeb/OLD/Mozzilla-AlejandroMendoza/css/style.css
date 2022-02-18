@@ -1,0 +1,45 @@
+body {
+    background-image: url("../img/fondo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    margin: auto;
+}
+
+.relative {
+    position: relative;
+    margin: auto;
+}
+
+div.cajaBlanca {
+    background-image: url("../img/rectangulo\ blanco.png");
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 150px;
+    margin-left: 60%;
+}
+
+div.cajaBlanca spam {
+    font-size: 2em;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+img.logoFirefox {
+    left: 30%;
+}
+
+.texto {
+    width: 50%;
+    text-align: center;
+    color: white;
+}
+
+.texto h1 {
+    padding-bottom: 70px;
+}
+
+.texto p {
+    padding-bottom: 10px;
+}

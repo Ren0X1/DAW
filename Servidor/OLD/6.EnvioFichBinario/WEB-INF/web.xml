@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>Metodo1</servlet-name>
+		<servlet-class>imagen.respuesta.metodo1.Respuesta</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Metodo1</servlet-name>
+		<url-pattern>/Metodo1</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Metodo2</servlet-name>
+		<servlet-class>imagen.respuesta.metodo2.Respuesta2</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Metodo2</servlet-name>
+		<url-pattern>/Metodo2</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Metodo3</servlet-name>
+		<servlet-class>imagen.respuesta.metodo3.Respuesta3</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Metodo3</servlet-name>
+		<url-pattern>/Metodo3</url-pattern>
+	</servlet-mapping>
+
+</web-app>

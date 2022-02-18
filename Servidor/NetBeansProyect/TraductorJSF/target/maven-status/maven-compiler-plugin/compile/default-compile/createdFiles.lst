@@ -1,0 +1,16 @@
+com\daw\traductorjsf\DAO\exceptions\IllegalOrphanException.class
+com\daw\traductorjsf\DTO\Spanish_.class
+com\daw\traductorjsf\DAO\DiccionarioJpaController.class
+com\daw\traductorjsf\DAO\exceptions\NonexistentEntityException.class
+com\daw\traductorjsf\DAO\SpanishJpaController.class
+com\daw\traductorjsf\DAO\exceptions\PreexistingEntityException.class
+com\daw\traductorjsf\DTO\DiccionarioPK.class
+com\daw\traductorjsf\DAO\EnglishJpaController.class
+com\daw\traductorjsf\DTO\Diccionario.class
+com\daw\traductorjsf\DTO\DiccionarioPK_.class
+com\daw\traductorjsf\DTO\English.class
+com\daw\traductorjsf\DTO\Spanish.class
+com\daw\traductorjsf\DTO\English_.class
+com\daw\traductorjsf\DTO\Diccionario_.class
+com\daw\traductorjsf\utils\utilsJPA.class
+com\daw\traductorjsf\beans\index\beanTraduccion.class

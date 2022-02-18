@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <script>
+            window.onload = function() {
+                var botonA = document.getElementById('botonA')
+                var botonB = document.getElementById('botonB')
+                var pA = document.getElementById('pA')
+                var pB = document.getElementById('pB')
+
+                var arrayA = ["A1","A2","A3","A4","A5"]
+                var arrayB = ["B1","B2","B3","B4","B5"]
+                actualizarA()
+                actualizarB()
+
+                botonA.onclick = function() {
+                    if (arrayA.length!=0) {
+                        let elemento = arrayA.pop()
+                        arrayB.push(elemento)
+                        actualizarA()
+                        actualizarB()
+                    } else {
+                        alert("No hay mas elementos para mover")
+                    }
+                }
+
+                botonB.onclick = function() {
+                    if (arrayB.length!=0) {
+                        let elemento = arrayB.shift()
+                        arrayA.push(elemento)
+                        actualizarA()
+                        actualizarB()
+                    } else {
+                        alert("No hay mas elementos para mover")
+                    }
+                }
+
+                function actualizarA() {
+                    pA.innerHTML=""
+                    arrayA.forEach(function(x) {
+                        pA.innerHTML+=x+" "
+                    })
+                }
+
+                function actualizarB() {
+                    pB.innerHTML=""
+                    arrayB.forEach(function(x) {
+                        pB.innerHTML+=x+"<br>"
+                    })
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" id="botonA">A - B</button>
+        <button style="margin-left: 7px;" type="button" id="botonB">B - A</button><br><br>
+        <p id="pA"></p><br>
+        <p id="pB"></p>
+    </body>
+</html>

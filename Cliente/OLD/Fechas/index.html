@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <script>
+            window.onload = function() {
+                var botonEncender = document.getElementById('botonEncender')
+                var botonParar = document.getElementById('botonParar')
+                var p = document.getElementById('mostrar')
+                var reloj
+                actulizarReloj()
+
+                botonEncender.onclick = function() {
+                    reloj = setInterval(actulizarReloj,1000)
+                }
+
+                botonParar.onclick = function() {
+                    clearInterval(reloj)
+                }
+
+                function actulizarReloj() {
+                    let k = new Date()
+                    p.innerHTML=k.toLocaleTimeString()
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" id="botonEncender">Encender reloj</button>
+        <button type="button" id="botonParar">Parar reloj</button><br>
+        <p id="mostrar"></p>
+    </body>
+</html>

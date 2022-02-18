@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="iso-8859-1">
+        <title>3 en Raya</title>
+        <style>
+            #fcli {
+                position: absolute;
+                top: 2em;
+                left: 12em;
+                /* left:27em;*/
+                width: 40%;
+                height: auto;
+                border: solid 2px brown;
+                background-color: #9FF
+            }
+            
+            table {
+                border: #606 double 3px;
+                position: absolute;
+                left: 35%;
+                top: 25%
+            }
+            
+            #botones {
+                border: #333 solid 2px;
+                position: absolute;
+                left: 32%;
+                bottom: 5%;
+                padding: 15px;
+                margin-right: 5px
+            }
+            
+            td {
+                width: 80px;
+                height: 100px;
+                border: #C03 solid 2px
+            }
+            
+            img {
+                width: 75px;
+                height: 75px
+            }
+            
+            div#rojos {
+                border: #060 double 2px;
+                position: absolute;
+                left: 70px;
+                top: 40%
+            }
+            
+            div#azules {
+                border: #060 double 2px;
+                position: absolute;
+                right: 75px;
+                top: 40%
+            }
+            
+            .azul {
+                opacity: 0.4;
+            }
+            
+            #mov {
+                border: #060 solid 2px;
+                position: absolute;
+                left: 42%;
+                top: 12%;
+                padding: 6px
+            }
+            
+            span {
+                font-size: 24px;
+                color: #00F
+            }
+            
+            #local,
+            #visitante {
+                width: 275px;
+            }
+            
+            #visitante {
+                position: absolute;
+                right: 50px;
+                top: 17px
+            }
+            
+            ;
+        </style>
+        <script src="js/lib.js"></script>
+        <script src="js/index.js"></script>
+    </head>
+    <body>
+        <div id="jugadores">
+            <div id="local">
+                <fieldset>
+                    <legend>Jugador Local...</legend>
+                    <button name="altalocal">+</button>
+                    <select id="loc" name="locales">
+                    <option value="0">Seleccione un Jugador</option>
+                </select><br />
+                    <div id="partidasloc" style="display:none">
+                        <fieldset>
+                            <legend>Partidas...</legend>
+                            Jugadas:<input type="text" disabled id="jugloc" style="width:15px" /> Ganadas:
+                            <input type="text" disabled id="ganloc" style="width:15px" />
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div id="visitante">
+                <fieldset>
+                    <legend>Jugador Visitante...</legend>
+                    <button name="altavisita">+</button>
+                    <select id="vis" name="visitantes">
+                    <option value="0">Seleccione un Jugador</option>
+                </select><br />
+                    <div id="partidasvis" style="display:none">
+                        <fieldset>
+                            <legend>Partidas...</legend>
+                            Jugadas:<input type="text" disabled id="jugvis" style="width:15px" /> Ganadas:
+                            <input type="text" disabled id="ganvis" style="width:15px" />
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+
+        <div id="rojos">
+            <h2> Local </h2>
+            <img src="img/roj.jpg" class="rojo" id="r1" />
+            <img src="img/roj.jpg" class="rojo" id="r2" />
+            <img src="img/roj.jpg" class="rojo" id="r3" />
+        </div>
+        <div id="azules">
+            <h2> Visitante </h2>
+            <img src="img/azul.jpg" class="azul" id="a1" />
+            <img src="img/azul.jpg" class="azul" id="a2" />
+            <img src="img/azul.jpg" class="azul" id="a3" />
+        </div>
+        <div id="mov">N� de Movimientos:<span> 0 </span></div>
+        <table id="tablero">
+            <tr>
+                <td id="1"></td>
+                <td id="2"></td>
+                <td id="3"></td>
+            </tr>
+            <tr>
+                <td id="4"></td>
+                <td id="5"></td>
+                <td id="6"></td>
+            </tr>
+            <tr>
+                <td id="7"></td>
+                <td id="8"></td>
+                <td id="9"></td>
+            </tr>
+        </table>
+        <div id="botones">
+            <input type="button" value="Nueva Partida" id="np" />
+            <input type="button" value="Guardar Partida" id="gp" />
+            <input type="button" value="Ranudar Partida" id="rp" />
+        </div>
+        <!-- formulario de alta -->
+
+        <hr>
+        <!-- formulario de alta -------------------------------------------------------->
+        <div id="fcli" style="display:none">
+            <form id="frmcli" action="/GuardaC" method="GET">
+                <fieldset>
+                    <legend>Formulario Alta de Clientes...</legend>
+                    <div>
+                        <p>Nombre.....:<input type="text" id="nomcli" placeholder="Nombre?" name="nombre" pattern="^[A-Z].{3,}" required title="Mayuscula + 3 car" /></p>
+                        <!--em id="emN">El campo Nombre es obligatorio...</em-->
+                        <p>Apellidos:<input type="text" id="apecli" placeholder="Apellidos?" name="apellidos" pattern="^[A-Z].{3,}\s[A-Z].{3,}$" required title="2 Apellidos distintos, enpiezan May, min 3 car" /></p>
+                        <p>
+                            Nif:<input type="text" id="nifcli" placeholder="Nif" name="nif" pattern="^[0-9]{8}[-]?[A-Z]$" required title="8 numeros y una letra" /></p>
+                        <p>Edad.........:<input type="text" id="edcli" placeholder="Edad?" name="edad" pattern="^[0-9]{1,2}" title="Uno o dos difgitos" required/></p>
+                        <p>Sexo......:<input type="radio" value="H" placeholder="Sexo?" name="sexo" />Hombre
+                            <input type="radio" value="M" placeholder="Curso?" name="sexo" />Mujer
+                        </p>
+                        <!--p>Tel�fono.........:<input type="text" id="tlfcli" placeholder="Nif?" name ="Tlf"/></p-->
+                        <p>Email.......:<input type="text" id="mail" placeholder="Email?" name="email" title="empieza letra, minimo 3 car y @ 3car . y 2 o 3 car ext; empieza letra May" pattern="^[A-Z]\w{2,}@\w{3,}\.[a-z]{2,3}$" /></p>
+
+                        <select name="provincia" id="listaProvincias">
+                    <option value=0>ELIJA UNA PROVINCIA</option>      
+                </select>
+                        <br>
+                        <select name="localidad" id="listaPueblos" disabled multiple>
+                <option value=0>TODAS LAS POBLACIONES</option>     
+                </select>
+                        <br>
+                        <input type="submit" value="Guardar (Ctrl+G)" id="gcli" />
+                        <input type="reset" value="Cancelar (Ctrl+C)" id="ccli" />
+                        <br>
+                    </div>
+                </fieldset>
+            </form>
+    </body>
+</html>

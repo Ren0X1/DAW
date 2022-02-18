@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Web invierno paso a paso</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div id="contenedor">
+	<div id="cabecera">
+    </div>
+    
+    
+	<div id="cuerpo">
+		<h1>Título de la página</h1>
+		<p>		
+		En este artículo vamos a conocer la maquetación de paginas utilizando Hojas de estilos en cascada (CSS). Veremos cómo realizar este tipo de maquetación, junto con algunas ventajas e inconvenientes. Para muchos será todavía un campo por explorar. Aunque no vamos a entrar en grandes detalles, vamos a intentar dar a conocer la maquetación con CSS para que cubrir la posible laguna por parte del lector. En capítulos sucesivos ampliaremos la información y ofreceremos tutoriales más prácticos. 
+		</p>
+		<p>		
+		Como se ha podido aprender en el Manual de CSS, las hojas de estilo en cascada ayudan a separar el contenido de la forma, es decir, los elementos que componen una página de la forma con la que se muestran. Además, CSS ayuda en gran medida a la definición de estilos en la página, ya que permite ajustar de una manera mucho más precisa cualquier aspecto de cualquier elemento de la página. 
+		</p>
+		<p>		
+		La maquetación con CSS lleva la utilización de las hojas de estilo a su grado máximo, de manera que cualquier definición del aspecto de la página se realiza en la declaración CSS que enlazamos con el documento HTML. Para definir la situación de los elementos en la página se utilizan las capas, a las que se aplica un posicionamiento a través también de las hojas de estilo. 
+		</p>
+
+		<p>		
+		Para crear las capas se utilizan etiquetas &lt;DIV&gt;, en las que se introducen los elementos que queramos que aparezcan en la página. Los elementos dentro de los &lt;DIV&gt; también se pueden anidar, para heredar las propiedades y posicionamiento de las capas padre. 
+		</p>
+		<p>		
+		En la maquetación por capas se definen únicamente etiquetas &lt;DIV&gt; y las tablas sólo se utilizan para mostrar información tabulada, es decir, mostrada en filas y columnas. Cabe señalar que en la maquetación tradicional se utilizan las tablas para ajustar la posición.
+		</p>
+
+	</div>
+    
+	<div id="lateral">
+		<h2>Buscar</h2>
+        
+		<h2>Registro</h2>
+        
+		<h2>Otras informaciones</h2>
+	</div>
+
+
+	<!-- El pie hará que el contenedor (padre) crezca verticalmente, ya que las otras
+         capas flotan. -->
+	<div id="pie">
+		Pruebas de maquetación 
+    </div>
+</div><!-- Fin contenedor -->
+</body>
+</html>

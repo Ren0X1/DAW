@@ -1,0 +1,18 @@
+/**
+* Estilo para dispositivos iPhone
+*/
+body {
+-webkit-text-size-adjust: none;
+background: rgb(102, 102, 102) url(../media/fondo_iphone.jpg) no-repeat center 0;
+padding: 20px 5px 5px 5px;
+}
+ 
+h1 {
+color: rgb(140, 120, 120);
+text-shadow: 0 0 5px rgb(0, 0, 0);
+}
+ 
+p {
+font: normal 1em/1.25em "helvetia neue", Helvetia, Arial, Sans-serif;
+color: rgb(255, 255, 255);
+} 

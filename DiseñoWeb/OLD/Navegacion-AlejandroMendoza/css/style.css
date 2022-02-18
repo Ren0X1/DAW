@@ -1,0 +1,50 @@
+body {
+    background-color: lightgrey;
+}
+
+nav {
+    float: left;
+    max-width: 900px;
+    width: 200px;
+}
+
+ul {
+    list-style: none;
+}
+
+.enlaces1 {
+    position: absolute;
+    left: 208px;
+    top: 24px;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+li:hover a, li:hover a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.enlaces1 li {
+    padding: 20px;
+    background-color: rgb(82, 134, 212);
+}
+
+li {
+    padding: 20px;
+    background-color: lightcyan;
+}
+
+li:hover {
+    background-color: black;
+}
+
+.uno:hover .enlaces1 {
+    display: block;
+}

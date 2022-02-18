@@ -1,0 +1,38 @@
+div#container {
+    width: 40%;
+    margin: 20px auto;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 1%;
+    background: rgb(117, 255, 237);
+    min-width: 620px;
+}
+
+div:not(#container) {
+    border: 1px solid black;
+}
+
+div p, div h2 {
+    margin: 1em;
+}
+
+form {
+    display: block;
+    clear: both;
+}
+
+input[type='submit'] {
+    margin-top: 1em;
+	line-height: 20px;
+    margin: .5em auto;
+}
+
+button a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+input[type='submit'], button, button {
+    display: inline-block;
+}

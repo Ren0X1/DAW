@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script>
+            /*window.onload = function() {
+                var barra = document.getElementById('bar')
+                barra.onclick = async function() {
+                    for (let i=0;i!=barra.max+1;i++) {
+                        barra.value++
+                        await sleep(50)
+                    } 
+                }
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                }
+            }*/
+
+            window.onload = function() {
+                var barra = document.getElementById('meter1')
+
+                barra.min      = 0
+                barra.low      = 25
+                barra.high     = 75
+                barra.optimum  = 76
+                barra.max      = 100
+
+                barra.onclick = async function() {
+                    for (let i=0;i!=barra.max+1;i++) {
+                        let style = window.getComputedStyle(barra, '::before')
+                        style.left = i+"%"
+                        barra.value=i
+                        await sleep(50)
+                    } 
+                }
+                function sleep(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!--<div>TEXTO</div>
+        <button type="submit">Boton1</button>
+        <button type="submit">Boton2</button>
+        Indeterminado <progress max="100"></progress><br>
+        Progreso 0% <progress max="100" value="0"></progress><br>
+        Progreso 100% <progress max="100" value="100"></progress><br>
+        Progreso 57% <progress max="100" value="57"></progress><br>
+        <div>Procediendo a la eliminacion de todos sus ficheros</div>
+        <progress id="bar" max="100" value="0"></progress>
+        Meter Vacio <meter value="0"></meter><br>
+        Meter Lleno <meter value="100"></meter><br>
+        Meter con low <meter value="4" low="5" max="10"></meter><br>
+        Meter min y max <meter value="4562" min="2048" max="8192"></meter><br>
+        Meter low y high <meter value="2" low="4" high="8" min="0" max="20"></meter><br>
+        Meter low y high <meter value="700" low="200" optimum="1000" min="0" max="1000"></meter><br>-->
+
+        <h1>Incrementando fondos de su cuenta bancaria: </h1>
+        <label for="meter1">Fondos transferidos:</label>
+        <meter id="meter1"></meter>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>procesoArchivo</servlet-name>
+        <servlet-class>com.daw.proyectosubidaarchivos.procesoArchivo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>creaCarpeta</servlet-name>
+        <servlet-class>com.daw.proyectosubidaarchivos.creaCarpeta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>datosCarpeta</servlet-name>
+        <servlet-class>com.daw.proyectosubidaarchivos.datosCarpeta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>abreArchivo</servlet-name>
+        <servlet-class>com.daw.proyectosubidaarchivos.abreArchivo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>procesoArchivo</servlet-name>
+        <url-pattern>/procesoArchivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creaCarpeta</servlet-name>
+        <url-pattern>/creaCarpeta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>datosCarpeta</servlet-name>
+        <url-pattern>/datosCarpeta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>abreArchivo</servlet-name>
+        <url-pattern>/abreArchivo</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

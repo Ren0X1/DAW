@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">  	
+
+	<context-param>
+		<param-name>MapaCodigos</param-name>
+		<param-value>null</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>index</servlet-name>
+		<servlet-class>index</servlet-class>
+		<init-param>
+			<param-name>codigos</param-name>
+			<param-value>aa1/aa2/aa3</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>jugar</servlet-name>
+		<servlet-class>jugar</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jugar</servlet-name>
+		<url-pattern>/jugar</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>crearCodigo</servlet-name>
+		<servlet-class>crearCodigo</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>crearCodigo</servlet-name>
+		<url-pattern>/crearCodigo</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

@@ -1,0 +1,166 @@
+nodeName	String	El nombre del nodo (no está definido para algunos tipos de nodo)
+nodeValue	String	El valor del nodo (no está definido para algunos tipos de nodo)
+nodeType	Number	Una de las 12 constantes definidas anteriormente
+ownerDocument	Document	Referencia del documento al que pertenece el nodo
+firstChild	Node	Referencia del primer nodo de la lista childNodes
+lastChild	Node	Referencia del último nodo de la lista childNodes
+childNodes	NodeList	Lista de todos los nodos hijo del nodo actual
+previousSibling	Node	Referencia del nodo hermano anterior o null si este nodo es el primer hermano
+nextSibling	Node	Referencia del nodo hermano siguiente o null si este nodo es el último hermano
+hasChildNodes()	Bolean	Devuelve true si el nodo actual tiene uno o más nodos hijo
+attributes	NamedNodeMap	Se emplea con nodos de tipo Element. Contiene objetos de tipo Attr que definen todos los atributos del elemento
+appendChild(nodo)	Node	Añade un nuevo nodo al final de la lista childNodes
+removeChild(nodo)	Node	Elimina un nodo de la lista childNodes
+replaceChild(nuevoNodo, anteriorNodo)	Node	Reemplaza el nodo anteriorNodo por el nodo nuevoNodo
+insertBefore(nuevoNodo, anteriorNodo)	Node	Inserta el nodo nuevoNodo antes que la posición del nodo anteriorNodo dentro de la lista childNodes
+
+alert(document.nodeType == Node.DOCUMENT_NODE); // true
+alert(document.documentElement.nodeType == Node.ELEMENT_NODE); // true
+
+Método	Descripción
+createAttribute(nombre)	Crea un nodo de tipo atributo con el nombre indicado
+createCDataSection(texto)	Crea una sección CDATA con un nodo hijo de tipo texto que contiene el valor indicado
+createComment(texto)	Crea un nodo de tipo comentario que contiene el valor indicado
+createDocumentFragment()	Crea un nodo de tipo DocumentFragment
+createElement(nombre_etiqueta)	Crea un elemento del tipo indicado en el parámetro nombre_etiqueta
+createEntityReference(nombre)	Crea un nodo de tipo EntityReference
+createProcessingInstruction(objetivo, datos)	Crea un nodo de tipo ProcessingInstruction
+createTextNode(texto)	Crea un nodo de tipo texto con el valor indicado como parámetro
+
+document.body.appendChild(p);
+
+Array	Descripción
+anchors	Contiene todas las "anclas" de la página (los enlaces de tipo <a name="nombre_ancla"></a>)
+applets	Contiene todos los applets de la página
+embeds	Contiene todos los objetos embebidos en la página mediante la etiqueta <embed>
+forms	Contiene todos los formularios de la página
+images	Contiene todas las imágenes de la página
+links	Contiene todos los enlaces de la página (los elementos de tipo <a href="enlace.html"></a>)
+
+
+
+Propiedad	Descripción
+lastModified	La fecha de la última modificación de la página
+referrer	La URL desde la que se accedió a la página (es decir, la página anterior en el array history)
+title	El texto de la etiqueta <title>
+URL	La URL de la página actual del navegador
+
+Propiedad	Descripción
+hash	El contenido de la URL que se encuentra después del signo # (para los enlaces de las anclas) http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion hash = #seccion
+host	El nombre del servidor http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion host = www.ejemplo.com
+hostname	La mayoría de las veces coincide con host, aunque en ocasiones, se eliminan las www del principio http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion hostname = www.ejemplo.com
+href	La URL completa de la página actual http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion URL = http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion
+pathname	Todo el contenido que se encuentra después del host http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion pathname = /ruta1/ruta2/pagina.html
+port	Si se especifica en la URL, el puerto accedido http://www.ejemplo.com:8080/ruta1/ruta2/pagina.html#seccion port = 8080 La mayoría de URL no proporcionan un puerto, por lo que su contenido es vacío http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion port = (vacío)
+protocol	El protocolo empleado por la URL, es decir, todo lo que se encuentra antes de las dos barras inclinadas // http://www.ejemplo.com/ruta1/ruta2/pagina.html#seccion protocol = http:
+search	Todo el contenido que se encuentra tras el símbolo ?, es decir, la consulta o "query string" http://www.ejemplo.com/pagina.php?variable1=valor1&variable2=valor2 search = ?variable1=valor1&variable2=valor2
+
+const log = document.getElementById('log');
+
+document.addEventListener('keypress', logKey);
+
+function logKey(e) {
+  log.textContent += ` ${e.code}`;
+}
+
+backspace	8
+tab	9
+enter	13
+shift	16
+ctrl	17
+alt	18
+pause/break	19
+caps lock	20
+escape	27
+page up	33
+Space	32
+page down	34
+end	35
+home	36
+arrow left	37
+arrow up	38
+arrow right	39
+arrow down	40
+print screen	44
+insert	45
+delete	46
+0	48
+1	49
+2	50
+3	51
+4	52
+5	53
+6	54
+7	55
+8	56
+9	57
+a	65
+b	66
+c	67
+d	68
+e	69
+f	70
+g	71
+h	72
+i	73
+j	74
+k	75
+l	76
+m	77
+n	78
+o	79
+p	80
+q	81
+r	82
+s	83
+t	84
+u	85
+v	86
+w	87
+x	88
+y	89
+z	90
+left window key	91
+right window key	92
+select key	93
+numpad 0	96
+numpad 1	97
+numpad 2	98
+numpad 3	99
+numpad 4	100
+numpad 5	101
+numpad 6	102
+numpad 7	103
+numpad 8	104
+numpad 9	105
+multiply	106
+add	107
+subtract	109
+decimal point	110
+divide	111
+f1	112
+f2	113
+f3	114
+f4	115
+f5	116
+f6	117
+f7	118
+f8	119
+f9	120
+f10	121
+f11	122
+f12	123
+num lock	144
+scroll lock	145
+My Computer (multimedia keyboard)	182
+My Calculator (multimedia keyboard)	183
+semi-colon	186
+equal sign	187
+comma	188
+dash	189
+period	190
+forward slash	191
+open bracket	219
+back slash	220
+close braket	221
+single quote	222

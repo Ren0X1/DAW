@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>INDEX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <script src="js/index.js"></script>
+    <style>
+        body {
+            text-align: justify;
+        }
+
+        .derecha {
+            float: right;
+            clear: right;
+            width: 200px;
+            border: 1px solid black;
+            padding: 10px;
+            font-size: 20px;
+            background-color: rgb(195, 151, 51);
+            margin: 20px 0px 5px 10px;
+            font-style: italic;
+            color: rgb(255, 255, 255);
+        }
+
+        .izquierda {
+            float: left;
+            clear: right;
+            width: 200px;
+            border: 2px solid black;
+            padding: 10px;
+            font-size: 20px;
+            background-color: rgb(195, 100, 60);
+            margin: 10px 10px 10px 0px;
+            font-style: italic;
+            color: rgb(255, 255, 255);
+        }
+
+        #contextMenu {
+            position: absolute;
+            background-color: #0d0d0d;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin: 10px;
+        }
+        li {
+            color:white;
+            width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        li:hover {
+            color:black;
+            background-color: white;
+        }
+
+        .tachado {
+            text-decoration:line-through;
+        }
+
+        .resaltar {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="logo">JavaScript <i>&</i> jQuery <i class="mm">The<br>Missing<br>Manual</i></p>
+        </div>
+        <div class="content">
+            <div class="main">
+                <h1>Citas Automaticas</h1>
+                <h2>Capítulo Primero</h2>
+                <h3>Que trata de la condición y ejercicio del famoso hidalgo D. Quijote de la Mancha</h3>
+                <p>En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un <span
+                        class="pq">hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo
+                        corredor.</span> Una olla de algo más vaca que carnero, salpicón las más noches, duelos y
+                    quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían
+                    las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las
+                    fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más
+                    fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los
+                    veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la
+                    edad de nuestro hidalgo con los cincuenta años, era de complexión recia, seco de carnes, enjuto de
+                    rostro; gran madrugador y amigo de la caza.<span class="pq"> Quieren decir que tenía el sobrenombre
+                        de Quijada o Quesada</span> (que en esto hay alguna diferencia en los autores que deste caso
+                    escriben), aunque por conjeturas verosímiles se deja entender que se llama Quijana; pero esto
+                    importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad. </p>
+                <br />
+                <h2>Capítulo cuarto</h2>
+                <h3>De lo que le sucedió a nuestro caballero cuando salió de la venta</h3>
+                <p>La del alba sería cuando Don Quijote salió de la venta, <span class="pq"> tan contento, tan gallardo,
+                        tan alborozado por verse ya armado caballero, queel gozo le reventaba por las cinchas del
+                        caballo.</span> Mas viniéndole a la memoria los consejos de su huésped acerca de las
+                    prevenciones tan necesarias que había de llevar consigo, en especial la de los dineros y camisas,
+                    determinó volver a su casa y acomodarse de todo, y de un escudero, haciendo cuenta de recibir a un
+                    labrador vecino suyo, que era pobre y con hijos, pero muy a propósito para el oficio escuderil de la
+                    caballería.<span class="pq"> Con este pensamiento guió a Rocinante hacia su aldea, el cual casi
+                        conociendo la querencia, con tanta gana comenzó a caminar, que parecía que no ponía los pies en
+                        el suelo</span>. No había andado mucho, cuando le pareció que a su diestra mano, de la espesura
+                    de un bosque que allí estaba, salían unas voces delicadas, como de persona que se quejaba; y apenas
+                    las hubo oído, cuando dijo: gracias doy al cielo por la merced que me hace, pues tan presto me pone
+                    ocasiones delante, donde yo pueda cumplir con lo que debo a mi profesión, y donde pueda coger el
+                    fruto de mis buenos deseos: estas voces sin duda son de algún menesteroso o menesterosa, que ha
+                    menester mi favor y ayuda: y volviendo las riendas encaminó a Rocinante hacia donde le pareció que
+                    las voces salían; y a pocos pasos que entró por el bosque, vió atada una yegua a una encina, y atado
+                    en otra un muchacho desnudo de medio cuerpo arriba, de edad de quince años, que era el que las voces
+                    daba y no sin causa, porque le estaba dando con una pretina muchos azotes un labrador de buen talle,
+                    y cada azote le acompañaba con una reprensión y consejo, porque decía: la lengua queda y los ojos
+                    listos. Y el muchacho respondía: no lo haré otra vez, señor mío; por la pasión de Dios, que no lo
+                    haré otra vez, y yo prometo de tener de aquí adelante más cuidado con el hato. Y viendo Don Quijote
+                    lo que pasaba, con voz airada dijo: descortés caballero, mal parece tomaros con quien defender no se
+                    puede; subid sobre vuestro caballo y tomad vuestra lanza, (que también tenía una lanza arrimada a la
+                    encina, adonde estaba arrendada la yegua) que yo os haré conocer ser de cobardes lo que estáis
+                    haciendo.
+                </p>
+                <h2>Capítulo ....</h2>
+                <p></p>
+
+            </div>
+            <div class="footer">
+                <p>JavaScript &amp; jQuery: The Missing Manual, by <a href="http://sawmac.com/">David McFarland</a>.
+                    Published by <a href="http://oreilly.com/">O'Reilly Media, Inc</a>.</p>
+            </div>
+            <div id="contextMenu" class="context-menu" style="display: none"> 
+                <ul class="menu"> 
+                    <li class="Izquierda"><a href="#"><i class="fa fa-angle-left"></i> Izquierda</a></li> 
+                    <li class="Derecha"><a href="#"><i class="fa fa-angle-right"></i> Derecha</a></li>
+                    <li class="Resaltar"><a href="#"><i class="fa fa-pencil-alt"></i> Resaltar</a></li>  
+                    <li class="Borrar"><a href="#"><i class="fa fa-trash"></i> Borrar</a></li> 
+                </ul> 
+            </div>
+        </div>
+</body>
+
+</html>

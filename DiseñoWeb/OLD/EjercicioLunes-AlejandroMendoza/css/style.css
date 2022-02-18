@@ -1,0 +1,64 @@
+body header {
+    background-color: transparent;
+}
+
+header h1{
+    padding: 20px;
+    margin: 0;
+}
+
+div#uno,div#dos,div#tres {
+    margin: 5px;
+    width: 32.5%;
+    float: left;
+    top: 0;
+    bottom: 0;
+    height: 800px;
+}
+
+div#uno,div#dos {
+    background-color: transparent;
+}
+
+div#dos {
+    width: 50.5%;
+}
+
+form {
+    float: right;
+}
+
+div#tres {
+    width: 14.2%;
+    float: right;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+}
+
+article#caja {
+    background-color: tomato;
+    margin: 5px;
+    height: 190px;
+    width: 190px;
+    display: block;
+    float: left;
+    clear: right;
+}
+
+div#caja2 {
+    background-color: greenyellow;
+    margin: 5px;
+    height: 260px;
+    width: 260px;
+    float: right;
+    clear: left;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-top: 30px;
+}

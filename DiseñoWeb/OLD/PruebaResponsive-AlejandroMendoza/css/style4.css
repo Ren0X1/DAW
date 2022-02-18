@@ -1,0 +1,42 @@
+body {
+    margin: auto;
+    background-color: rgb(230, 173, 230);
+    text-align: justify;
+    width: 100%;
+}
+
+h1 {
+    display: block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans;
+    text-align: center;
+    font-size: 4em;
+    font-style: italic;
+}
+
+h2 {
+    color: black;
+    text-align: right;
+    font-size: 3em;
+}
+
+footer {
+    text-align: center;
+    font-size: 2em;
+}
+
+img {
+    width: 100%;
+    height:100%;
+    display:none;
+}
+
+footer img {
+    width: 70%;
+    height:70%;
+}
+
+#anilloImpresion {
+    display: block;
+    width: 30%;
+    height:30%;
+}

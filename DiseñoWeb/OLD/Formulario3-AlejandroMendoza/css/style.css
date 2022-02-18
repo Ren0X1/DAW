@@ -1,0 +1,114 @@
+body {
+  font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #404040;
+}
+
+.titulo {
+  width: 270px;
+  line-height: 43px;
+  margin: 50px auto 20px;
+  font-size: 19px;
+  font-weight: 500;
+  color: black;
+  text-align: center;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.formulario {
+  margin: 0 auto;
+  width: 530px;
+  padding: 20px;
+  background: #f4f4f4;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.inputnormal {
+  display: block;
+  width: 100%;
+  height: 38px;
+  margin-top: 2px;
+  font-weight: 500;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.inputnormal:focus {
+  border-color: #1ecfe6;
+  outline: 0;
+}
+
+.selector {
+  height: 32px;
+  margin-bottom: 15px;
+  padding: 4px;
+  background: #4467b2;
+  background-image: linear-gradient(to bottom, #3a73a8, #52a5be);
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.05), inset 1px 0 rgba(0, 0, 0, 0.02), inset -1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.selector-input {
+  display: none;
+}
+
+.selector-label {
+  float: left;
+  width: 50%;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.selector-input:checked + .selector-label {
+  font-weight: 500;
+  color: #434248;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  background: white;
+  background-image: linear-gradient(to bottom, #fefefe, #eeeeee);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+#botones input {
+  display: inline-block;
+  width: 49%;
+  height: 42px;
+  margin-top: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #494d59;
+  text-align: center;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  background: #fcfcfc;
+  border: 1px solid;
+  border-color: #d8d8d8 #d1d1d1 #c3c3c3;
+  cursor: pointer;
+  background-image: linear-gradient(to bottom, #fefefe, #eeeeee);
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.03), 0 1px rgba(0, 0, 0, 0.04);
+}
+#botones input:active {
+  background: #eee;
+  border-color: #c3c3c3 #d1d1d1 #d8d8d8;
+  background-image: linear-gradient(to bottom, #eeeeee, #fcfcfc);
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.03);
+}
+#botones input:focus {
+  outline: 0;
+}
+
+.valido {
+  border-color: #44c259;
+  outline: 0;
+}
+
+.invalido {
+  border-color: #b93b3b;
+  outline: 0;
+}

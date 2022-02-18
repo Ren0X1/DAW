@@ -1,0 +1,38 @@
+body header {
+    background-color: gray;
+    color: white;
+    text-align: right;
+}
+
+header h1{
+    padding: 20px;
+    margin: 0;
+}
+
+#header1 {
+    background-color: gray;
+    color: white;
+    height: 77px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    clear: left;
+}
+
+div#main {
+    margin: 30px;
+    column-count: 3;
+    column-gap: 40px;
+    column-rule: 1px dotted purple;
+}
+
+div#main img {
+    width: 100%;
+}
+
+div#texto2 {
+    margin: 30px;
+    column-count: 3;
+    column-gap: 40px;
+    column-rule: 1px dotted purple;
+}

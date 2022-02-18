@@ -1,0 +1,70 @@
+/*FIX MARGENES POR DEFECTO*/
+body, html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/*-------------------------*/
+
+body {
+    background-color: paleturquoise;
+}
+
+div {
+    overflow: hidden;
+}
+
+div#escenario {
+    border: 1px black inset;
+    background-color: white;
+    height: 200px;
+    width: 500px;
+}
+
+div#bici {
+    font-size: 30px;
+    width: 260px;
+    height: 324px;
+    line-height: 338px;
+    text-decoration:underline;
+    background-image: url(../img/BG-BIKE.PNG);
+    background-repeat: no-repeat;
+    background-position: right;
+    animation-name: movimiento;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: cubic-bezier(.43,.5,.77,.72);
+}
+
+@keyframes movimiento {
+    0% {
+        margin-left: -50%;
+    }
+
+    80% {
+        margin-left: 150%;
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        -o-transform: translateX(100%);
+}
+
+    90% {
+        transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+    }
+
+    100% {
+        margin-left: -50%;
+        transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+    }
+}

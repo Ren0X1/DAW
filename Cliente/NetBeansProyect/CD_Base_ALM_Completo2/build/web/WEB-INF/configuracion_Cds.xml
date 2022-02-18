@@ -1,0 +1,156 @@
+// Contex de la app
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/ComprasCD_Ex2017">
+  <ResourceLink global="pedidoscd" name="pedidoscd" type="javax.sql.DataSource"/>
+  <!--Realm CalssName="org.apache.catalina.realm.MemoryRealm"/-->
+  <Realm className="org.apache.catalina.realm.JDBCRealm" 
+         connectionURL="jdbc:mysql://localhost:3306/realmbd?user=realmbd&amp;password=realmbd" 
+         driverName="com.mysql.jdbc.Driver" 
+         roleNameCol="role_name" userCredCol="user_pass" 
+         userNameCol="user_name" userRoleTable="users_roles" userTable="users"/>
+  <!--Realm className="org.apache.catalina.realm.JDBCRealm"
+               driverName="com.mysql.jdbc.Driver"
+               connectionURL="jdbc:mysql://localhost:3306/realmbd"
+               password="realmbd"
+               user="realmbd"
+			   
+              
+               userTable="users"
+               userNameCol="user_name" userCredCol="user_pass"
+               userRoleTable="users_roles"
+			   roleNameCol="role_name"/-->
+  <!--Valve className="org.apache.catalina.valves.RemoteAddrValve" deny="198.168.0.*"/>
+  <Valve className="org.apache.catalina.valves.RemoteHostValve" deny="local*"/-->
+  <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="ComprasCD_access_log" suffix=".txt"/>
+</Context>
+
+// Descriptor de la app
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!--context-param>
+        <param-name>Driver</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param-->
+    <!--filter>
+        <filter-name>filtroGuardados</filter-name>
+        <filter-class>filtroGuardados</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filtroGuardados</filter-name>
+        <servlet-name>GuardaPedidosCD</servlet-name>
+    </filter-mapping-->
+    <servlet> 
+        <servlet-name>GuardaPedidosCD</servlet-name>
+        <servlet-class>GuardaPedidosCD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RecuperaPedidosCD</servlet-name>
+        <servlet-class>RecuperaPedidosCD</servlet-class>
+        <init-param>
+            <description>url de la bd de MySql para acceder a los pedidos cd CD's</description>
+            <param-name>URL_BD</param-name>
+            <param-value>jdbc:mysql://localhost:3306/pedidoscd</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GuardaPedidosCD</servlet-name>
+        <url-pattern>/Gpedido</url-pattern>
+    </servlet-mapping>
+    <!--servlet-mapping>
+        <servlet-name>RecuperaPedidosCD</servlet-name>
+        <url-pattern>/RecuperaP</url-pattern>
+    </servlet-mapping-->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>PedidosCDs_67.html</welcome-file>
+    </welcome-file-list>
+    
+    <!--resource-ref>
+        <res-ref-name>pedidoscd</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref-->
+    <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Acceso a la Aplicacion " compra de Cd's "</web-resource-name>
+      <url-pattern>/ComprasCD_Ex2017/PedidosCDs_67.html</url-pattern>
+       <url-pattern>/*</url-pattern>
+      <!--url-pattern>/*</url-pattern-->
+    </web-resource-collection>
+    <auth-constraint>
+       <role-name>pedidoscd</role-name>
+    </auth-constraint>
+    
+        <user-data-constraint>
+		<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    
+    </security-constraint>
+   
+    
+    <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Guardar " compra de Cd's "</web-resource-name>
+      
+       <url-pattern>/Gpedido</url-pattern>
+     
+    </web-resource-collection>
+    <auth-constraint>
+       <role-name>Gpedidoscd</role-name>
+    </auth-constraint>
+        <!--user-data-constraint>
+		<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint-->
+               
+    </security-constraint>
+    
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>PedidosCD Application</realm-name>
+    </login-config>
+    
+     <!--login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Acceso a Peliculas</realm-name>
+        <form-login-config>
+            <form-login-page>/WEB-INF/jsp/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/jsp/login-error.jsp</form-error-page>
+        </form-login-config>
+    </login-config-->
+    
+  
+  <security-role>
+    <description>
+      role necesario para consultar pedidos
+    </description>
+    <role-name>pedidoscd</role-name>
+  </security-role>
+  <security-role>
+    <description>
+      role necesario para guardar pedidos
+    </description>
+    <role-name>Gpedidoscd</role-name>
+  </security-role>
+   
+  <!-- filtro: numero de compras....-->
+  
+  <filter> 
+  <filter-name>FiltroContador</filter-name>
+  <filter-class>FiltroContador</filter-class> 
+  			<init-param> 
+  			   <param-name>parametro1</param-name> 
+  			   <param-value>valor1</param-value> 
+  			</init-param> 
+    </filter> 
+    <filter-mapping> 
+       <filter-name>FiltroContador</filter-name> 
+       <url-pattern>/Gpedido</url-pattern> 
+    </filter-mapping>  
+</web-app>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">  	
+	
+	<welcome-file-list>
+		<welcome-file>Index</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>Codigos</param-name>
+		<param-value>lola,aaa2;usado,aaa1;libre,aaa3;libre,aaa4</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>Index</servlet-name>
+		<servlet-class>Index</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Index</servlet-name>
+		<url-pattern>/Index</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ComprobarCodigo</servlet-name>
+		<servlet-class>ComprobarCodigo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ComprobarCodigo</servlet-name>
+		<url-pattern>/ComprobarCodigo</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Jugar</servlet-name>
+		<servlet-class>Jugar</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Jugar</servlet-name>
+		<url-pattern>/Jugar</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ComprobarCombinacion</servlet-name>
+		<servlet-class>ComprobarCombinacion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ComprobarCombinacion</servlet-name>
+		<url-pattern>/ComprobarCombinacion</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

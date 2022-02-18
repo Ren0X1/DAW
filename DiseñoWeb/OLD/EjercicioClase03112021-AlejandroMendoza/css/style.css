@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'recursivesans';
+    src: url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.eot');
+    src: url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.woff2') format('woff2'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.woff') format('woff'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.ttf') format('truetype'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.otf') format('otf'),
+         url('../fonts/recursive-variablefont_caslcrsvmonoslntwght-webfont.svg#recursivesans_linear_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'recursivesans', sans-serif;
+}
+
+/*HEADER CSS*/
+header {
+    margin: auto;
+    width: auto;
+    background-color: #D9D0C1;
+    height: 150px;
+    min-width: 360px;
+    max-width: 950px;
+    border-bottom: 4px solid black;
+}
+
+header h1, header p {
+    text-align: center;
+}
+
+header h1 {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/*----------------------*/
+
+/*MAIN CSS*/
+
+main {
+    margin: auto;
+    width: auto;
+    background-color: #F2F2F2;
+    min-width: 360px;
+    max-width: 950px;
+    line-height: 33px;
+}
+
+main img {
+    padding-top: 10px;
+    float: left;
+    width: 30%;
+    height: 15%;
+    padding-right: 5px;
+}
+
+main p#primerTexto::first-letter, main p#segundoTexto::first-letter{
+    display: block;
+    float: left;
+    padding: 5px;
+    color: #730E20;
+    font-size: 4em;
+    padding-top: 20px;
+}
+
+main div#tabla {
+    margin-top: 1em;
+    float: right;
+    width: 40%;
+    display: table;
+    text-align: center;
+    text-align: justify;
+    border-collapse: collapse;
+    border: 1px dotted black;
+    margin-left: 170px;
+}
+
+main div#tabla :nth-child(1) {
+    display: table-row;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px dotted black;
+}
+
+main div#tabla p {
+    display: table-row;
+    border: 1px dotted black;
+}
+
+main p#tercerTexto {
+    text-align: justify;
+}
+
+/*----------------------*/
+
+/*FOOTER CSS*/
+
+footer {
+    margin: auto;
+    width: auto;
+    background-color: #D9D0C1;
+    height: 80px;
+    min-width: 360px;
+    max-width: 950px;
+}
+
+footer p {
+    text-align: center;
+    line-height: 80px;
+}
+
+/*----------------------*/

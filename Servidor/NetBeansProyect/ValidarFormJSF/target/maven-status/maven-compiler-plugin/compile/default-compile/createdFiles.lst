@@ -1,0 +1,5 @@
+com\daw\validarformjsf\Validators\validatorEmail.class
+com\daw\validarformjsf\Converters\converterNif.class
+com\daw\validarformjsf\bean\index\beanValidar.class
+com\daw\validarformjsf\POJOS\Nif.class
+com\daw\validarformjsf\Validators\validatorNif.class

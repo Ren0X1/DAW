@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <script src="js/index.js"></script>
+        <script>
+            var jsver=1.0
+        </script>
+        <script language="Javascript1.1">
+            jsver=1.1
+        </script>
+        <script language="Javascript1.2">
+            jsver=1.2
+        </script>
+        <script language="Javascript1.3">
+            jsver=1.3
+        </script>
+        <script language="Javascript1.4">
+            jsver=1.4
+        </script>
+        <script language="Javascript1.5">
+            jsver=1.5
+        </script>
+        <script language="Javascript1.6">
+            jsver=1.6
+        </script>
+        <script language="Javascript1.7">
+            jsver=1.7
+        </script>
+        <script language="Javascript1.8">
+            jsver=1.8
+        </script>
+        <script language="Javascript1.9">
+            jsver=1.9
+        </script>
+        <script language="Javascript2.0">
+            jsver=2.0
+        </script>
+        <script language="Javascript2.1">
+            jsver=2.1
+        </script>
+        <script>
+            window.onload = function() {
+                var parrafo = document.getElementById('par')
+                parrafo.innerHTML+="<br> Mi JS es: "+jsver
+            }
+        </script>
+        <noscript>Su navegador no soporta JS</noscript>
+    </head>
+    <body>
+        <p onclick="document.write('mi version de JS es: '+jsver)">
+            Ver la version de JS
+        </p>
+
+        <p onclick="mensaje('mi version de JS es: '+jsver)">
+            Boton 2
+        </p>
+
+        <a href="javascript:alert('prueba')">Boton 3</a>
+
+        <p id="par">
+            prueba
+        </p>
+    </body>
+</html>

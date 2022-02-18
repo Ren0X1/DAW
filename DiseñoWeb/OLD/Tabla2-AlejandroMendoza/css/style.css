@@ -1,0 +1,41 @@
+table,td,tr {
+    width: 800px;
+    height: 20px;
+}
+
+tbody td,tbody th {
+    border: 1px solid rgb(109, 211, 109);
+}
+
+thead {
+    background-color: rgb(88, 53, 19);
+    color: white;
+}
+
+tbody {
+    background-color: rgb(190, 255, 190);
+    color: black;
+}
+
+tfoot {
+    text-align: right;
+    background-color: rgb(88, 53, 19);
+    color: white;
+}
+
+.vacio {
+    background-color: white;
+    border: none;
+}
+
+.oscuro {
+    background-color: rgb(109, 211, 109);
+}
+
+.textoiz {
+    text-align: left;
+}
+
+.textode {
+    text-align: right;
+}

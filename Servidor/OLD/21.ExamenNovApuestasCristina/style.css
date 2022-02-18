@@ -1,0 +1,24 @@
+table, form{
+	display: inline-block;
+	margin-right: 20px;
+}
+
+table tr:first-child td{
+	width: 100px;
+}
+
+form[action="Jugar"]{
+	width : 20%;
+}
+
+#msjPerso{
+	font-size: 20px;
+	padding: 10px;
+	color: #1d2459;
+}
+
+.estado{
+	color: red;
+	font-size: 20px;
+	font-weight: bold;
+}

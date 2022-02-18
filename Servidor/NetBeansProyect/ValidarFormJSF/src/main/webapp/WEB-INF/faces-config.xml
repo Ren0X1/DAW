@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>beanValidar</managed-bean-name>
+        <managed-bean-class>com.daw.validarformjsf.bean.index.beanValidar</managed-bean-class>
+    
+        <managed-bean-scope>request</managed-bean-scope></managed-bean>
+    <converter>
+        <converter-id>convertirNif</converter-id>
+        <converter-class>com.daw.validarformjsf.Converters.converterNif</converter-class>
+    </converter>
+    <validator>
+        <validator-id>validatorEmail</validator-id>
+        <validator-class>com.daw.validarformjsf.Validators.validatorEmail</validator-class>
+    </validator>
+    <validator>
+        <validator-id>validatorNif</validator-id>
+        <validator-class>com.daw.validarformjsf.Validators.validatorNif</validator-class>
+    </validator>
+    <navigation-rule>
+        <from-view-id>/index.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>comprobar</from-outcome>
+            <to-view-id>/verDatos.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

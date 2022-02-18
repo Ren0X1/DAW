@@ -1,0 +1,63 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/*-------------------------
+
+div div div {
+    border: 1px solid black;
+}*/
+
+.contenedor {
+	width: 500px;
+	margin: 100px auto;
+}
+
+.reloj {
+	position: relative;
+	background-image: url('../img/clockFace.png');
+    background-repeat: no-repeat;
+	width: 500px;
+	height: 500px;
+	background-size: contain;
+}
+
+.horas {
+	position: absolute;
+	left: 240px;
+	top: 155px;
+	background-image: url('../img/hourHand.png');
+    background-repeat: no-repeat;
+	background-position: top center;
+	height: 100px;
+	width: 20px;
+	background-size: 171px 175px;
+	transform-origin: 50% 95%;
+}
+
+.minutos {
+	position: absolute;
+	left: 240px;
+	top: 80px;
+	background-image: url('../img/minuteHand.png');
+    background-repeat: no-repeat;
+	background-position: top center;
+	height: 180px;
+	width: 20px;
+	background-size: 360px 348px;
+	transform-origin: 50% 95%;
+}
+
+.segundos {
+	position: absolute;
+	left: 237px;
+	top: 80px;
+	background-image: url('../img/secondHand.png');
+    background-repeat: no-repeat;
+	background-position: top center;
+	height: 180px;
+	width: 30px;
+	background-size: 281px 277px;
+	transform-origin: 45% 95%;
+}

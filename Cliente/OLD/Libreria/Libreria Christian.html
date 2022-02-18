@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+	
+	<script>
+		var libreria = {
+            libros:{},
+            clientes:{},
+            pedidos:{}
+        }
+		
+		function libro(titulo,editorial,precio,unidades) {
+			this.titulo = titulo
+			this.editorial = editorial
+			this.precio = precio
+			this.unidades = unidades
+			this.imprimir = function() {
+                return "Titulo: " + this.titulo + " - Editorial: " + this.editorial
+			}
+		}
+		
+		function cliente(nombre,localidad,email) {
+			this.nombre = nombre
+			this.localidad = localidad
+			this.email = email
+			this.imprimir = function() {
+				return "Nombre: " + this.nombre + " - Localidad: " + this.localidad
+			}
+		}
+		
+		function pedido(libro,cliente,unidadess) {
+			this.libro = libro
+			this.cliente = cliente
+			this.unidadess = unidadess
+			this.imprimir = function() {
+				return this.cliente + " ha comprado " + this.unidadess + " unidades de " + this.libro
+			}
+		}
+        //--------------------------------------------
+        function serializaForm(fml){
+            var datosF={}
+            for(let i=0;i< fml.elements.length;i++){
+                var nodo=fml.elements[i]
+                if( nodo.type=="text" ||nodo.type=="number"||nodo.type=="email" ||nodo.tagName=="SELECT")
+                    
+                    datosF[nodo.name]=nodo.value
+            }
+            return datosF
+        }
+        
+		//--------------------------------------------
+		function guarda(evento) {
+			evento.preventDefault()
+            var datos={}
+            var f= evento.target
+            var sobreescribir=true
+            
+            datos= serializaForm(evento.target)
+            
+            var clave=datos.isbn|| datos.nif || datos.idPedido
+            
+            if(libreria[evento.target.name][clave]!==undefined)
+              sobreescribir=  confirm("El "+ evento.target.name +" ya existe, quieres cobreescribirlo?")
+            
+            if(sobreescribir){
+            libreria[evento.target.name][clave]=datos
+           
+            //añadir al select
+            var lista=document.getElementById("select"+f.name)
+                
+            if(lista!=null)
+                cargarLista(lista)
+            
+            evento.target.reset()
+            }
+            else alert("Alta cancelada por el usuario")
+		}
+        //---------------------------------------------------------
+        
+        function cargarLista(lista){
+            lista.length=0
+                             
+             for(let datos in libreria[lista.name])
+                lista.options.add(
+                    new Option(
+                libreria[lista.name][datos][lista.getAttribute("texto")],
+                libreria[lista.name][datos][lista.getAttribute("valor")]
+                                )
+                )
+        }
+        
+		//---------------------------------------------------------
+		function listap() {
+			listaPedidos.forEach(function (ped) {
+				document.getElementById("lt").innerHTML += "<br>" + ped.imprimir()
+			})
+		}
+        
+        window.onload=function(){
+            idPedido.value=Object.keys(libreria.pedidos).length+1
+        }
+	
+	</script>
+	
+</head>
+
+<body>
+
+ <div id="libros" style="width:300; height:250">
+ 	<form name="libros" id="flibros" action="#" onSubmit="guarda(event)">
+    	<fieldset><legend>Libros...</legend>
+        <label for="titulo">Titulo</label>           
+    	<input type="text" id="titulo" name="titulo"/>
+        <label for="editorial">Editorial</label>
+        <input type="text" id="editorial" name="editorial"/><br /><br />
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" name="precio"/>
+            
+        <label for="isbn">Isbn</label>           
+    	<input type="text" name="isbn" value="84-"/>
+            
+        <label for="unidades">Unidades</label>
+        <input type="number" id="unidades" 
+               name="unidades" min="0" max="100" value="0"/><br />
+      
+                 
+        <input type="submit" id="guardal" value="guardar"   align="right"/>
+        </fieldset>
+    </form>
+ 
+ </div>
+																							
+ <div id="clientes" style="width:300; height:250">
+ 	<form id="fclientes" name="clientes" onSubmit="guarda(event)">
+    	<fieldset><legend>Clientes...</legend>
+            
+            <label for="nif">Nif</label>           
+    	<input type="text" id="nif" name="nif"/>
+            
+        <label for="nombre">Nombre</label>           
+    	<input type="text" id="nombre" name="nombre" pattern="^[A-Z]{1}[a-z]"/>
+        <label for="localidad">Localidad</label>
+        <input type="text" id="localidad" name="localidad"/><br /><br />
+        <label for="correo">E-mail</label>
+        <input type="email" id="correo" name="email"/>
+        <input type="submit" id="guardac" value="guardar" align="right" 
+        />
+        </fieldset>
+    </form>
+ 
+ </div>
+	
+ <div id="pedidos" style="position:absolute; width:300; height:250">
+ 	<form id="fpedidos" name="pedidos" onSubmit="guarda(event)">
+    	<fieldset><legend>Pedidos...</legend>
+       <label for="lClientes">Cliente</label> 
+       <select id="selectclientes"  name="clientes"
+               valor="nif" texto="nombre"></select>
+                
+       <label for="lLibros">Libro</label>
+       <select id="selectlibros"  name="libros" 
+               valor="isbn" texto="titulo"></select>
+        
+        
+        <br/><label for="unidadess">Unidades</label>
+        <input type="number"  size="6" id="unidadess" name="uds" value="0"/><br/><br/>
+            <label for="idPedido">idPedido</label>
+        <input type="text" id="idPedido" name="idPedido" disabled/>
+    <input type="submit" value="Pedir" id="guardap" align="right"/>
+        <input type="button" value="Listar Pedidos" id="listado" align="left"
+        onclick="listap(this)"/>
+        </fieldset>
+    </form>
+    </div>
+	
+    <div id="lt" align="center">Listado de pedidos de Clientes...</div>
+ 
+</body>
+</html>

@@ -1,0 +1,77 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu {
+    position: relative;
+    height: 70px;
+    width: 120px;
+    color: white;
+    background-color: black;
+}
+
+.menu > span {
+    position: absolute;
+    overflow: hidden;
+    height: 0%;
+    transition: height 1s ease-in-out;
+    -webkit-transition: height 1s ease-in-out;
+    -moz-transition: height 1s ease-in-out;
+    -ms-transition: height 1s ease-in-out;
+    -o-transition: height 1s ease-in-out;
+    text-align: center;
+    width: 100%;
+    line-height: 70px;
+    color: white;
+}
+
+.menu:hover > span{
+    height: 100%;
+}
+
+.menu:before {
+    position: absolute;
+    content: attr(title);
+    text-align: center;
+    width: 100%;
+    line-height: 70px;
+}
+
+#uno {
+    border-top: 3px rgb(182, 26, 26) solid;
+}
+
+#uno > span {
+    background-color: rgb(182, 26, 26);
+}
+
+#dos {
+    border-top: 3px rgb(26, 133, 182) solid;
+}
+
+#dos > span {
+    background-color: rgb(26, 133, 182);
+}
+
+#tres {
+    border-top: 3px rgb(73, 26, 182) solid;
+}
+
+#tres > span {
+    background-color: rgb(73, 26, 182);
+}
+
+#cuatro {
+    border-top: 3px rgb(182, 101, 26) solid;
+}
+
+#cuatro > span {
+    background-color: rgb(182, 101, 26);
+}

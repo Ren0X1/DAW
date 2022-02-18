@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+  
+	<context-param>
+		<param-name>horaArranque</param-name>
+		<param-value>horaArranque</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>horaEntrada</param-name>
+		<param-value>horaEntrada</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>fondoVerano</param-name>
+		<param-value>img/Verano.jpg</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>fondoInvierno</param-name>
+		<param-value>img/Invierno.jpg</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>fondoOtoño</param-name>
+		<param-value>img/Otoño.jpg</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>fondoPrimavera</param-name>
+		<param-value>img/Primavera.jpg</param-value>
+	</context-param>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>Respuesta</servlet-name>
+		<servlet-class>Respuesta</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Respuesta</servlet-name>
+		<url-pattern>/Respuesta</url-pattern>
+	</servlet-mapping>
+</web-app>

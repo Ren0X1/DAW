@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <script>
+            window.onload = function() {
+                var select = document.getElementById('select')
+                var numeroApuestas = document.getElementById('input')
+                var p = document.getElementById('texto')
+                
+                select.onchange = function() {
+                    p.innerHTML=""
+                    for (let i=0;i!=numeroApuestas.value;i++) {
+                        eval(this.value)
+                    }
+                }
+
+                numeroApuestas.onchange = function() {
+                    select.onchange()
+                }
+
+                function apuestaEstado() {
+                    for (let i=5;i<arguments.length+1;i+=5) {
+                        let k = generarApuesta(arguments[i-5],arguments[i-4],arguments[i-3],arguments[i-2],arguments[i-1])
+                        k.forEach(function(v) {
+                            p.innerHTML+=v+" "
+                        })
+                    }
+                    p.innerHTML+="<br>"
+                }
+                
+                function generarApuesta(string,numeros,min,max,ordena) {
+                    var x = []
+                    var num
+                    x.push(string)
+                    for(let i=0;i!=numeros;i++) {
+                        do {
+                            num = aleatorio(min,max)
+                        } while(x.includes(num))
+                        x.push(num)
+                    }
+                    if (ordena) { x.sort(function(a, b){return a-b}) }
+                    return x
+                }
+
+                function aleatorio(min,max) {
+                    return min+Math.floor(Math.random()*(max-min)+1)
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <select id="select">
+            <option value='apuestaEstado("Numeros",6,1,50,true,"Estrellas",2,1,12,true)'>Euromillón</option>
+            <option value='apuestaEstado("Ejemplo",10,1,90,false,"Ejemplo2",3,1,7,true,"Ejemplo3",2,1,5,false)'>Primitiva</option>
+        </select>
+        <input style="width: 30px;" type="number" value="1" id="input">
+        <br><br>
+        <p id="texto"></p>
+    </body>
+</html>

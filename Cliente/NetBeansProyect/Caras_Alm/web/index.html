@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+<link href="css/estiloParejas.css" rel="stylesheet" type="text/css">
+
+<style>
+ img{display:none}
+ .pareja{border-color:#F00}
+ #tableros{position: absolute; top:150px; right: 20px;font-size: 1em;}
+ #tableros td {font-size: 1em;}
+ #tableros th,  #tableros td {
+   border: 1px solid black;
+}
+</style>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"> </script>
+    
+    <script>
+        //---Definicion de variables.....
+        var imagenes = ["IMAGENES/abed.png", "IMAGENES/annie.png", "IMAGENES/barney.png", "IMAGENES/collar.png", "IMAGENES/penny.png", "IMAGENES/sheldon.png", "IMAGENES/stark.png","IMAGENES/ted.png", "IMAGENES/zoey.png"];
+	var posiciones=[];
+	// desordenar el array de posiciones....
+	posiciones=posiciones.sort(function(){return Math.random()-Math.random()});
+	
+	    
+	 $(document).ready(function(){
+		 
+		 //1.- Crear la tabla de (X*Y) celdas , con las imagenes ocultas --- aleatoriamente...
+		
+                
+		 //2.- Escuchar radios...
+					 
+		 $("#combina :radio").change(function(){
+			
+			 });	 
+			 
+		 //3.- click en  td's
+		  $("#tablero").on("click","td",function(){
+			  
+		  });//--------------------click--------------------
+		  
+		  //--------Drag && Drop.................................
+		 
+		  
+		  //-----------Guardar Partida----------------------
+                  $("#gp").click(function(){
+                                         
+                      
+                      
+                  })// Guardar Partida....
+                 
+                  //-----------Recuperar Partidas----------------------
+                  $("#rp").click(function(){
+                      
+                       })
+               
+               //-- Cargar la partida Seleccionada...............
+                $("#tableros").on("click","#cargaP",function(){
+                    
+                    
+                });
+		 
+	 });//----READY----
+	 
+	  //--------Drag && Drop.................................
+	  function DD(){
+		  
+		 
+		  
+	     }
+	 
+   //-------Metodo que crea la tabla aleatoriamente ( Baraja ).....
+    function creaPanel(){
+			 
+		 }
+    //-------Metodo que crea las combinaciones posibles según el numero de imágenes....
+     function creaCombinaciones(numImg){
+		 
+	 }
+	  //-------Metodo que crea la tabla....
+     function creaTabla(fil,col,panel){
+			
+		}
+    // tabla Paneles.....................................
+    function tablaPaneles(datos,donde){
+        
+    } 
+		
+    
+    </script>
+</head>
+
+<body>
+
+	 <div id="titulo">
+        
+	    <div class = "cabecera" id="fallo">Fallos: <span id="fallos">0</span></div> 
+    	    <div class = "cabecera" id="acierto">Aciertos: <span id="aciertos">0</span></div>
+            <div class = "cabecera" id="tiempo">Tiempo espera: <input type="number" value="500"/></div>
+            <div class = "cabecera" id="combina">Combinadiones: </div>  
+            <div class="cabecera">
+            	<input type="button" value="Guardar Partida" id="gp">
+              	<input type="button" value="Recuperar Partidas" id="rp">
+            </div>  
+            
+        
+         </div>
+    
+         <div id="tablero"> </div>
+       
+         <div id="tableros" ></div>
+
+</body>
+</html>

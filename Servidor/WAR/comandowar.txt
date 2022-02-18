@@ -1,0 +1,1 @@
+jar cfv programa.war -C carpeta/ .

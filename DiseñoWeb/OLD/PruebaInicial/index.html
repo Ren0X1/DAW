@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formulario</title>
+		<style>
+			fieldset {
+				margin-top: 20px;
+			}
+				
+			#datoscontactos #label {
+				float: left;
+			}
+			
+			#datoscontactos #input {
+				float: left;
+				padding-left: 30px;
+			}
+			
+			#informacionpersonal #label {
+				float: left;
+			}
+			
+			#informacionpersonal #input {
+				float: left;
+				padding-left: 30px;
+			}
+			
+			#informacionpersonal #input .dia {
+				max-width: 30px;
+			}
+			
+			#informacionpersonal #input .año {
+				max-width: 50px;
+			}
+			
+			#colores label {
+				float: left;
+			}
+			
+			#colores div {
+				float: left;
+			}
+			
+			#colores ul {
+				list-style-type: none;
+			}
+			
+			#colores li {
+				padding-top: 5px;
+			}
+			
+			.coreccto {
+				content: "Email Correcto";
+			}
+			
+			.incorrecto {
+				content: "Direccion Email Incorrecta";
+			}
+		</style>
+		<script>
+			function comprarbarEmai() {
+				var x = document.getElementById('mail')
+				if (x.validity.valid) {
+					x.addClass('coreccto')
+				} else {
+					x.addClass('incorrecto')
+				}	
+			}
+			document.addEventListener('keypress', comprarbarEmai);
+		</script>
+	</head>
+	<body>
+		<form method="POST">
+			<fieldset id="datoscontactos">
+				<legend>Datos de contacto</legend>
+					<div id="label">
+						<label>Nombre (Requerido): </label><br><br>
+						<label>Dirección e-mail: </label><br><br>
+						<label>Direccion web: </label><br><br>
+					</div>
+					<div id="input">
+						<input type="text" name="nombre" required><br><br>
+						<input type="email" name="email" id="mail"><br><br>
+						<input type="url" name="web"><br><br>			
+					</div>
+			</fieldset>
+			<fieldset id="informacionpersonal">
+				<legend>Información Personal</legend>
+					<div id="label">
+						<label>Lugar de nacimiento: </label><br><br>
+						<label>Fecha Nacimiento: </label><br><br>
+					</div>
+					<div id="input">
+						<select name="pais">
+							<option value="df" selected disabled>Seleccionar</option>
+							<option value="españa">España</option>
+						</select><br><br>
+						<input type="number" name="dia" class="dia">
+						<select name="mes">
+							<option value="enero" selected>Enero</option>
+							<option value="febrero">Febrero</option>
+						</select>
+						<input type="number" name="año" class="año">
+					</div>
+			</fieldset>
+			<fieldset id="colores">
+				<label>Color favorito:</label>
+				<div id="coloresfila1">
+					<ul>
+						<li><input type="checkbox" name="rojo"> Rojo</li>
+						<li><input type="checkbox" name="amarillo"> Amarillo</li>
+						<li><input type="checkbox" name="rosa"> Rosa</li>
+						<li><input type="checkbox" name="verde"> Verde</li>
+					</ul>
+				</div>
+				<div id="coloresfila2">
+					<ul>
+						<li><input type="checkbox" name="naranja"> Naranja</li>
+						<li><input type="checkbox" name="violeta"> Violeta</li>
+						<li><input type="checkbox" name="azul"> Azul</li>
+						<li><input type="checkbox" name="otros"> Otros</li>
+					</ul>
+				</div>
+			</fieldset>
+		</form>
+	</body>
+</html>

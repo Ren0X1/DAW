@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+       
+        <title>Gestion De Clientes...</title>
+        <!--meta charset="UTF-8"-->
+        <meta charset='utf-8' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .center {
+            margin: auto;
+            width: 40%;
+            border: 3px solid #73AD21;
+            padding: 5px;
+            font-size: 25px
+          }
+          .formulario{
+            margin: auto;
+            width: 35%;
+            border: 3px solid #73AD21;
+            padding: 10px;
+            font-size: 15px
+              
+          }
+          .fotoPos{
+              position: relative;
+              top:5px;
+              height: auto;
+              border-radius: 4px;
+              width: 150px !important;
+              float:right;
+              padding: 5px;
+              }
+              
+        </style>
+        <!-- calendar....-->
+        <link href='css/fullcalendar.min.css' rel='stylesheet' />
+      
+        
+        <link href="manya.css" rel="css/stylesheet" />
+        <link rel="stylesheet" href="css/custom.css">
+        
+        <link rel="stylesheet" type="text/css" media="all" href="css/stellarnav.css">
+        
+        <link href="css/jquery.easy_slides.css" rel="stylesheet" type="text/css" />
+        
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!--script type="text/javascript" src="js/jquery-3.3.1.min.js"></script-->
+	
+        <script src="js/peticionesAJAX.js"></script>
+        
+        <!-- Tablas...-->
+        <link rel="stylesheet" type="text/css" href="css/datatables.min.css"/>
+        <!--script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/datatables.js"></script-->
+        <script type="text/javascript" src="js/datatables.min.js"></script>
+        
+        <script type="text/javascript" src="js/stellarnav.min.js"></script>
+                
+        <script src="js/Chart.min.js"></script>
+        
+        <script src="js/jquery.easy_slides.js"></script>
+        
+        
+        <!--script src='js/gcal.min.js'></script-->
+       <script src='js/jquery-ui.min.js'></script>
+        <script src='js/moment.min.js'></script>
+        <!--script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script-->
+        <script src='js/fullcalendar.min.js'></script>
+        <script src='js/locale-all.js'></script>
+        
+	<script>
+	$(function() {
+            
+        //6.- Eventos................
+        //------------------------------------------------------   
+         $.ajaxSetup({cache:false, async:true});
+         
+           $("#cumple").on("click",function(ev){
+              var eventos=[]; 
+               $.getJSON("RecuperaC",function(clientes){
+                   
+                   for (var x = 0; x < clientes.length; x++) {
+                    var e = new evento(clientes[x].nombre,
+                                       clientes[x].apellidos,
+                                       clientes[x].fechaN,
+                                       "Cumpleaños");
+                    eventos.push(e);
+                }
+                //$('#calendar').empty();
+                 agenda(eventos);
+                // $("#calendar").css("display","block");
+                $("#calendar").fadeIn();
+               });
+           
+           });
+        // Añadir fotos a la galeria......... 
+        //------------------------------------------------------     
+           
+            $("#cargaFotos").change(function(){
+                            cargaFichero(this);
+                    });
+            
+            $("#filefoto").change(function(ev){
+                var fichf=this.files[0].name;
+                $("#textoFoto").val(fichf);
+                $("#imgFoto").attr("src","fotos/"+fichf);
+            });
+            // Guardamos la cabecera de la tabla..................
+            var $CabTabla = $("#tabla");
+            //var TablaClientes;
+            //
+            // Menu.....................
+            var opciones=document.querySelectorAll("li a[id]");
+            opciones.forEach(function(item,index){
+                 item.addEventListener("click",
+                                  function(){
+                                      
+                                       if(typeof TablaClientes !== "undefined" ){
+                                                TablaClientes.destroy();
+                                                $("#ContenedorTabla").empty();
+                                             }
+                                         $(".capa").css("display","none");
+                                        },
+                                        true);
+                   });
+            $("li").on("click",function(ev){
+                                ev.preventDefault();
+                    });
+            $("li a:not([id])").css("color","red"); 
+            //("li a").has("ul").css("color","green");
+            
+            $('.stellarnav').stellarNav({
+				theme: 'blue',//light, por defecto plain si no le ponemos nada
+				breakpoint: 900,//indica cuando el menú tiene que pasar de móvil a pc
+				//position: 'left',// nos lo pone o a la derecha o a la izquierda, sino por defecto sale debajo
+				phoneBtn: '18009997788',
+				locationBtn: 'https://www.google.com/maps'
+				//mobileMode:true, //si se lo cambiamos a true siempre estará el menú en modo para móvil
+				//sticky: true, //cuando bajemos si está en true nos deja el menú fijo arriba, no desaparece
+				//showArrows: false,//nos quita las pestañas de los que tienen submenú
+			});
+            // Funcionalidades del Menú.......................            
+            //1.- Alta Cliente...
+            $("#nc").click(function(){
+                              //$("#fcli").slideIn("display","block");
+                              $("#fcli").slideDown();
+                            });  
+              $("#ccli").click(function(){$("#fcli").slideUp()});               
+            //2.- Listar Clientes...                
+            $("#lc").click(function(){
+                            $("#ContenedorTabla").css("display","block");
+                            $("#ContenedorTabla").append($CabTabla);
+                               listaClientes()
+                            $("#tabla").css("display","block");
+                           });     
+            //3.- Grafico Lineal de Compras pro Cliente...                 
+            $("#gl").click(function(){
+                    $("#linecon").css("display","block");
+                   // graficoLineal();
+                    graficoLineal2();
+                });  
+            //4.- Carrusel con las fotos de los Clientes...                     
+            $("#fc").click(function(){ 
+               //$("#circ").css("display","block");
+                $("#galeria").css("display","block");
+                iniciaSlides();
+                
+            
+            });
+	 //---------------------------------------------------------------------------------
+         // Carga inicial de Provincias....
+	 enviarPeticion("GET","BuscaPoblaciones",true,cargaProvincias,"provincia=provincia");     
+                        
+         //----- cargar pueblos de la provincia seleccionada... 
+            provincia.onchange=function(){
+                 enviarPeticion("GET","BuscaPoblaciones",true,cargaPueblos,"provincia="+provincia.value);       
+                     $("#lat").val("");
+                     $("#long").val("");
+              }; 
+              
+            provinciaT.onchange=function(){
+                 enviarPeticion("GET","BuscaPoblaciones",true,cargaPueblosT,"provincia="+provinciaT.value);       
+                   
+              };   
+           //------------------------------------------
+            localidad.onchange=function(){
+                 
+                 $.getJSON("BuscaCoordenadas","municipio="+$("#localidad :selected").text(),
+                 function(coord){
+                     $("#lat").val(coord.latitud);
+                     $("#long").val(coord.longitud);
+                 })
+                 frmcli.pos.style.display = "block";  
+            }
+        //-----------------OnSubmit-------------------------------
+            frmcli.onsubmit=function(evento){
+                evento.preventDefault();
+                if(validaAlta()){
+                    var datos =form_params(evento.target,"");
+
+                    enviarPeticion("POST","GuardaC",true,guardaCliente,datos); 
+
+                    fcli.reset();
+                    document.getElementById("fcli").style.display='none';
+                } 
+              }
+             //---------------------------------------------------
+            function guardaCliente(evento){
+                var xhr=evento.target; 	
+                 if ((xhr.readyState==4 )&& (xhr.status==200) ){
+                     alert("Cliente Guardado->"+xhr.responseText);
+                 }
+                  $("#fcli").slideUp();
+                
+              }
+        //--------------------------------------------------------------- 
+            // devuelve un objeto con los datos del formulario....  
+            function form_params( form, como )
+            {
+            var params = {};
+            var qs="";
+            var length = form.elements.length;
+            for( var i = 0; i < length; i++ )
+            {
+            element = form.elements[i];
+
+            if( element.tagName == 'INPUT' )
+                {
+                  if( element.type == 'text' || ( element.type == 'radio' && element.checked==true) || 
+                      element.type == 'password' || element.type == 'select' || element.type == 'date'){
+                                params[element.name] = element.value;
+                                qs+=element.name+"="+element.value+"&";
+                            }
+                }
+            else if(element.tagName == 'SELECT' && element.name!="provinciaT"){    
+                    qs+=element.name+"="+element[element.selectedIndex].text+"&";
+                    params[element.name] = element[element.selectedIndex].text;
+                }
+               
+            } 
+            if(como=='?')
+             return qs.substring(0,qs.length-1);
+            else return "cliente="+JSON.stringify(params);
+        } 
+        //----------------------------------------------------------------------
+           // Afina la validación del formulario...
+             function validaAlta(){
+                if(frmcli.provincia.value==0 || frmcli.localidad.value==0){
+                    alert("Es obligatorio seleccionar una provincia y una localidad!!");
+                    return false;
+                }
+                if(frmcli.localidadT.value==0){
+                    alert("Es obligatorio seleccionar una localidad de trabajo!!");
+                    return false;
+                }
+                if (document.querySelectorAll("input[name='sexo']:checked").length<1){
+                    alert("Es obligatorio seleccionar uns sexo!!");
+                    return false;
+                }
+                var apes=frmcli.apellidos.value.split(" ");
+                if(apes[0]==apes[1]){
+                    alert("Los apellidos deben ser distintos!!");
+                    return false;
+                }
+                return true;
+               }
+         //--------------------------------------TAblas------------------
+         //--------------------------------------Graficos------------------
+        //------------------------------------------------------------       
+	});//Ready
+        //------------------------------------------------------------
+        //  Funciones que realizan alas funcionalidades.............
+        //------------------------------------------------------------
+         function listaClientes(){    
+    TablaClientes=$('#tabla').DataTable({
+      //data: data2,
+      //paging: false,
+       columns:[
+	//	title:'name'
+           {data : 'nombre'},
+           {data : 'apellidos'},
+           {data : 'nif'},
+           {data: 'edad'},
+           {data: 'sexo'},
+           {data : 'email'},
+           {data: 'provincia'},
+           {data: 'localidad'},
+           {data : 'latitud'},
+           {data : 'longitud'},
+           {data : 'localidadT'},
+           {data : 'foto'},
+           {data : 'fechaN'}
+           
+         
+       ],
+     //data : data,
+    //  paging:false,
+    //   scrollY:true,
+    //  ordering:false,
+    //order:[2,'desc'],
+    //stateSave:true,
+    //  searching:false,
+    //  info:false,
+      ajax: {
+          url:"RecuperaC",
+          dataType: "json",
+          dataSrc: ''
+     },
+    // "ajax": "ajax.json",
+     language: {
+         processing:     "Cargando...",
+         search:         "&nbsp;:",
+         lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+         info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+         infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+         infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+         infoPostFix:    "",
+         loadingRecords: "Chargement en cours...",
+         zeroRecords:    "No Existen clientes...",
+         emptyTable:     "Aucune donnée disponible dans le tableau",
+         paginate: {
+             first:      "Premier",
+             previous:   " << ",
+             next:       " >> ",
+             last:       " Último"
+         }
+    //     aria: {
+    //         sortAscending:  ": activer pour trier la colonne par ordre croissant",
+    //         sortDescending: ": activer pour trier la colonne par ordre décroissant"
+    //     }
+     }
+} ); 
+    }//listaClientes....
+         //---------------------------------------------------
+	 /*function altacli(){
+			 $("#fcli").css("display",($("#fcli").css("display")=="none")?"block":"none");
+				
+		 }   */
+         //------------------------------------------        
+	 function cargaProvincias(evento){
+			var xhr=evento.target; 	
+			 if ((xhr.readyState==4 )&& (xhr.status==200) ){
+				var provV =frmcli.provincia;
+                                var provT =frmcli.provinciaT;
+				var provincias = JSON.parse(xhr.responseText);
+				for (prov in provincias){
+                                        provV.add(new Option(provincias[prov],prov));
+                                        provT.add(new Option(provincias[prov],prov));
+                                    }
+			  }
+						
+            }
+        //---------------------------------------------------
+        
+        function cargaPueblos(evento){
+            var xhr=evento.target; 	
+                        
+                frmcli.localidad.disabled = false;
+               
+		 if ((xhr.readyState==4 )&& (xhr.status==200) ){
+			var locV =frmcli.localidad;
+                        
+			var pueblos = JSON.parse(xhr.responseText);
+                            locV.length=1;
+                          
+			for (pueblo in pueblos){
+                                   locV.add(new Option(pueblos[pueblo],pueblo));
+                                  
+                               }
+		  }
+                
+	 }
+        //---------------------------------------------------
+        
+        function cargaPueblosT(evento){
+            var xhr=evento.target; 	
+                 frmcli.localidadT.disabled = false;
+		 if ((xhr.readyState==4 )&& (xhr.status==200) ){
+			
+                        var locT =frmcli.localidadT;
+			var pueblos = JSON.parse(xhr.responseText);
+                          
+                            locT.length=1;
+			for (pueblo in pueblos){
+                                  
+                                   locT.add(new Option(pueblos[pueblo],pueblo));
+                               }
+		  }
+                
+	 } 
+   //------------------------------------------------------------      
+   //---------------------------Graficos-----------------------------
+   //------------------------------------------------------------
+      function graficoLineal(){
+          var datosNuevos=[];
+          var cliente={};
+          var i=0;
+          $.getJSON("Compras",
+               function(datos){
+                     // convertir array de objetos en ...
+                cliente.Nombre=datos[0].nombre;
+                cliente.compras={};
+                for( dato in datos){
+                    if(datos[dato].nombre==cliente.Nombre)
+                        cliente.compras[datos[dato].mes]=datos[dato].cantidad;
+                    else{
+                       datosNuevos[i]=cliente;
+                       i++;
+                       cliente={};
+                       cliente.Nombre=datos[dato].nombre;
+                       cliente.compras={};
+                       cliente.compras[datos[dato].mes]=datos[dato].cantidad;
+                    }
+                    
+                }
+                     
+                     datosNuevos[i]=cliente;
+                     lineaNotas(datosNuevos);
+                 })
+          
+      }
+    //-----------------------------------------------
+    //------------------------------------------------------------
+      function graficoLineal2(){
+        
+          var datosCategoria=[];
+          var etiquetas=[];
+          var categoria={};
+          var color;  
+          var et=0;
+          $.getJSON("Compras",
+               function(datos){
+                categoria.label=datos[0].nombre;
+                categoria.data=[];
+                for( dato in datos){
+                    if(datos[dato].nombre==categoria.label){
+        
+                        etiquetas[et]=datos[dato].mes;
+                        categoria.data.push(datos[dato].cantidad);
+                        color = getRandomColor();
+                        categoria.borderColor = color;
+                        et++;
+                    }
+                    else{
+                       datosCategoria.push(categoria);
+                       
+                        categoria={}
+                        categoria.label=datos[dato].nombre;
+                        //etiquetas[et]=datos[dato].mes;
+                       categoria.data=[];
+                       categoria.data.push(datos[dato].cantidad);
+                       color = getRandomColor();
+                       categoria.borderColor = color;
+                       et=0;
+                       
+                    }
+                    
+                }
+                     datosCategoria.push(categoria);
+                     
+                     lineaNotas(etiquetas,datosCategoria);
+                 })
+          
+      }
+    //-----------------------------------------------
+    
+      function getRandomColor() {
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }//getRandomColor
+    //----------------------------------------------
+            function lineaNotas(etiquetas,datos) {
+                // peticion ajax que trae los datos....
+                var config = {
+                    type: 'line',
+                    data: {
+                       /* labels: Object.keys(datos[0].compras),
+                        datasets: [],*/
+                        labels: etiquetas,
+                        datasets:datos
+                
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Grafico lineal << Compras de Clientes por Mes >>'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: false,
+                                        labelString: 'titulo'
+                                    }
+                                }],
+                            yAxes: [{
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Value'
+                                    },
+                                    ticks: {
+                                        suggestedMin: 0,
+                                        suggestedMax: 10
+                                    }
+
+                                }]
+                        }
+                    }
+                };
+             /***  
+                function dato(label, compras) {
+                    var color = getRandomColor();
+                    this.label = label;
+                    this.backgroundColor = color;
+                    this.borderColor = color;
+                    this.data = [];
+                    for (var compra in compras) {
+                        this.data.push(compras[compra]);
+                    }
+                    this.fill = false;
+                }
+
+                for (var x = 0; x < datos.length; x++) {
+                    var d = new dato(datos[x].Nombre, datos[x].compras);
+                    config.data.datasets.push(d);
+                }
+                   *** ***/
+
+                /*
+                 var color = getRandomColor();
+                 var dato = {
+                 
+                 label: 'My First dataset',
+                 //backgroundColor: window.chartColors.red,
+                 //borderColor: window.chartColors.red,
+                 backgroundColor: color,
+                 borderColor: color,
+                 data: [
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor(),
+                 randomScalingFactor()
+                 ],
+                 fill: false,
+                 }*/
+
+                //alert(config.data.datasets[0].data);
+                //var ctx = $('#canvas2').getContext('2d');
+                var ctx = document.getElementById('canvas2').getContext('2d');
+                window.myLine = new Chart(ctx, config);
+            }//lineaNotas
+          
+	//----------------------------------------------------------
+        // Cargar imagenes del directorio
+        //-----------------------------------------------------------
+        
+        function iniciaSlides(){
+                $('.slider_circle_10').EasySlides({
+                'autoplay': false,
+                'show': $("#circ div").length-2,
+                'beforeshow': function () {
+                
+                },
+                'aftershow': function () {
+                  var src=  $(".active img").attr("src");
+                  var nombre= src.substring(src.indexOf("/")+1,src.indexOf("."));
+                  
+                  if( $(".active img").siblings("p").length==0 ){
+                     /* $(".active img").siblings("p").first().remove();
+                  else*/
+                
+                  if($(".active img")[0].hasAttribute("name"))
+                         nombre=$(".active img").attr("name");
+                     
+                    $(".active img").after($("<p>")
+                                            .text(nombre)
+                                            .addClass("center"));
+                    }
+                } 
+                });//EasySlides...
+            }
+        
+	function cargaFichero(input) {
+		
+	  if (input.files) {
+             // $('#circ').empty();
+		var files= input.files;
+		var reader;/* = new FileReader();
+		reader.onload = cargaF;*/
+		//añadir a la galeria	
+		for(i=0; i< files.length;i++){
+			reader = new FileReader();
+			//reader.onload=cargaF;
+                        $(reader).on("load",{"file":files[i].name},cargaF);
+			reader.readAsDataURL(files[i]);
+		};//for
+             
+            /* $('#circ').append("<div class='next_button'></div>");
+             $('#circ').append("<div class='prev_button'></div>");*/
+             
+             //iniciaSlides();
+             //$("#fc").trigger("click");
+		
+  }//if
+}	
+    
+        function cargaF(e) {
+			  //añadir foto
+                 //var elDiv = $("<div></div>").append($("img").attr("src",e.target.result));         
+                 var elDiv =$("<div><img src='"+e.target.result+"' name='"+e.data.file+"'></div>");
+        	 $('#circ').prepend(elDiv);
+                // alert(e.data.file);
+                 iniciaSlides();
+            
+        }
+        //----------------------------------------------------------
+        // Eventos -> Agenda...................
+        //-----------------------------------------------------------
+        function evento(nombre,apellidos,fechaN,titulo) {
+                    this.title= titulo+" de "+ nombre+", "+apellidos, 
+                    this.start= fechaN+'T09:00', 
+                    this.end=   fechaN+'T15:00', 
+                    this.editable= true, 
+                    this.color= getRandomColor(); 
+                }
+
+    //----------------------------------------------------------------
+        function agenda(eventos){
+        
+         $('#calendar').fullCalendar('destroy');
+         $('#calendar').fullCalendar({
+            eventColor: '#378006',
+          header: {
+            left: 'prev,next today',
+            right: 'month,agendaWeek,agendaDay'
+          },
+              nowIndicator :true,
+              events: eventos
+           , 
+          aspectRatio: 2,
+          editable: true,
+          locale: 'es',
+          droppable: true, 
+          drop: function() {
+
+              $(this).remove();
+
+          }
+    });
+        
+    }//Agenda.....................
+    
+    </script>
+        
+    </head>
+    <body>
+    <!-- Menu ------------------------------------------------------->
+    <div class="header">
+		<h1>Gestión De Clientes</h1>
+    </div>
+    <div class="stellarnav">
+		<ul>
+			<li><a href="">Clientes</a>
+                        <ul>
+                            <li><a href="#" id="nc">Nuevo Cliente</a></li>
+                            <li><a href="#">Modificar Cliente</a></li>
+                            <li><a href="#" id="lc">Listar Clientes</a></li>
+                            <li><a href="#" id="fc">Fotos Clientes</a></li>
+                        </ul>
+                        </li>
+			<li><a href="">Compras</a>
+                            <ul>
+                            <li><a href="#" id="gl">Lineal</a></li>
+                            <li><a href="#">Barras</a></li>
+                            <li><a href="#" >Radio</a></li>
+                            </ul>
+                        </li>    
+                        <li><a href="">Agenda</a>
+                        <ul>
+                            <li><a href="#" id="cumple">Cumpleaños</a></li>
+                            <li><a href="#">Viajes</a></li>
+                        </ul>
+                        </li>
+                </ul>
+
+        </div>
+        
+    <footer>
+    <hr>
+<!-- formulario de alta -------------------------------------------------------->
+    <div id="fcli" style="display:none" class="capa formulario">
+        <form id="frmcli">
+            <fieldset><legend>Formulario Alta de Clientes...</legend>
+            <div>
+                 <!-- foto y fechan -->
+        <fieldset  id="fotoFs" class="fotoPos" >
+                <legend>Foto</legend>
+                <img src="fotos/sinfoto.png" id="imgFoto" style="width:125px;height: 150px "><br>
+                <input type="file" id="filefoto" style="width:100px" name="filefoto" />
+                <br><input type="text" id="textoFoto" style="width:100px" name="foto"/>
+                <br>
+                Nació:<input type="date" id="fechaN" style="width:100px" name="fechaN"/>
+        </fieldset>  
+                
+                
+            <p>Nombre.....:<input type="text" id="nomcli" placeholder="Nombre?" name="nombre"
+            pattern="^[A-Z].{3,}" required title="Mayuscula + 3 car" /></p>
+            <!--em id="emN">El campo Nombre es obligatorio...</em-->
+            <p>Apellidos...:<input type="text" id="apecli" placeholder="Apellidos?" name="apellidos" 
+                            pattern="^[A-Z].{3,}\s[A-Z].{3,}$" required title="2 Apellidos distintos, enpiezan May, min 3 car"/></p>
+            <p> <br />
+            Nif:<input type="text" id="nifcli" placeholder="Nif" name ="nif" 
+                            pattern="^[0-9]{8}[-]?[A-Z]$" required title="8 numeros y una letra"/></p>
+            <p>Edad.........:<input type="text" id="edcli" placeholder="Edad?" name="edad" 
+                            pattern="^[0-9]{1,2}"  title="Uno o dos difgitos" required/></p>
+            <p>Sexo......:<input type="radio" value="H"  placeholder="Sexo?" name="sexo"/>Hombre
+                        <input type="radio" value="M"  placeholder="Curso?" name="sexo"/>Mujer
+        </p>
+        <!--p>Teléfono.........:<input type="text" id="tlfcli" placeholder="Nif?" name ="Tlf"/></p-->
+        <p>Email.......:<input type="text" id="mail" placeholder="Email?" name ="email" 
+                               title="empieza letra, minimo 3 car y @ 3car . y 2 o 3 car ext; empieza letra May" 
+                               pattern="^[A-Z]\w{2,}@\w{3,}\.[a-z]{2,3}$"/></p> 
+       
+          
+        <br>Trabaja en:<br>
+            <select  name="provinciaT" id="provinciaT">
+            <option value=0>ELIJA UNA PROVINCIA</option>      </select>
+            <select name="localidadT" disabled  id="localidadT">
+            <option value=0>TODAS LAS POBLACIONES</option>     </select>
+         <br> Vive en:<br>
+        <select  name="provincia" id="provincia">
+            <option value=0>ELIJA UNA PROVINCIA</option>      </select>
+    
+            <select name="localidad" disabled  id="localidad">
+             <option value=0>TODAS LAS POBLACIONES</option>     </select>
+            <fieldset style="display:none;width:300px" id="pos" >
+                <legend>Posicion</legend>
+                Lat:<input type="text" id="lat" style="width:100px" name="latitud"/>
+                Long:<input type="text" id="long" style="width:100px" name="longitud"/>
+             </fieldset>        
+                        
+                <input type="submit" value="Guardar (Ctrl+G)" id="gcli"  />
+                <input type="text" value="Cancelar (Ctrl+C)" id="ccli" />
+            <br />
+            </div>   
+           </fieldset>  
+         </form> 
+        
+<!-- formulario de alta -------------------------------------------------------->  
+	
+    </div>
+<!-- Tabla--------------------------->
+    <div id="ContenedorTabla" class="capa">
+        
+       <table id="tabla" class="display" style="width:80%;display:none">
+        <thead>
+            <tr>
+                <th>nombre</th>
+                <th>apellidos</th>
+                <th>nif</th>
+                <th>edad</th>
+                <th>sexo</th>
+                <th>email</th>
+                <th>provincia</th>
+                <th>localidad</th>
+                <th>latitud</th>
+                <th>longitud</th>
+                <th>localidadT</th>
+                <th>foto</th>
+                <th>fechaN</th>
+            </tr>
+        </thead>
+       </table>
+    </div>
+<!-- Graficos--------------------------->
+    <div id="linecon" class="muestra capa" style="width:75%;">
+        <canvas id="canvas2"></canvas>
+ </div>
+<!-- Imagenes ----------------------------------------->
+    <div id="galeria" style="display: none" class="capa">
+    Añadir Fotos:<input type="file" id="cargaFotos" multiple="multiple" />
+    <div id="circ" class="slider slider_circle_10 ">
+			<div><img src="fotos/Alejandro.jpg"/></div>
+			<div><img src="fotos/Eloy.png"/></div>
+			<div><img src="fotos/Ezequiel.png"/></div>
+			<div><img src="fotos/Gamero.png"/></div>
+			<div><img src="fotos/Lucia.png"/></div>
+			<div><img src="fotos/LuisMiFT.png"/></div>
+			<div><img src="fotos/LuisMiGG.png"/></div>
+			<div><img src="fotos/Natalia.png"/></div>
+			<div><img src="fotos/Pablo.png"/></div>
+                        <div><img src="fotos/Rafa.png"/></div>
+			<div><img src="fotos/Salvador.png"/></div>
+			<div><img src="fotos/Sara.png"/></div>
+                        <div><img src="fotos/Sefora.png"/></div>
+			<div><img src="fotos/Victor.png"/></div>
+			<div class="next_button"></div>
+			<div class="prev_button"></div>
+                      
+    </div>
+ </div>   
+<!-- Agenda----------------------------------->
+    <div id="calendar" class="capa"  style="display: none">
+    
+</div>
+
+
+
+
+
+   
+   	</footer>  
+    </body>
+</html>

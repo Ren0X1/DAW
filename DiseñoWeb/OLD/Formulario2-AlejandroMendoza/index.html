@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body>
+        <div class="contenedor">
+        <h1>Registro</h1>
+        <form action="#">
+            <div class="trabajo">
+                <input type="radio" value="Persona" id="uno" name="account" checked/>
+                <label for="uno" class="radio" chec>Personal</label>
+                <input type="radio" value="Empresa" id="dos" name="account" />
+                <label for="dos" class="radio">Empresa</label>
+            </div>
+            <label id="googleicon" for="name"><i class="material-icons">mail</i></label>
+            <input type="text" name="name" id="name" placeholder="Email" required/>
+            <label id="googleicon" for="name"><i class="material-icons">person</i></label>
+            <input type="text" name="name" id="name" placeholder="Nombre" required/>
+            <label id="googleicon" for="name"><i class="material-icons">key</i></label>
+            <input type="password" name="name" id="name" placeholder="Contraseña" required/>
+            <div class="sexo">
+                <input type="radio" value="None" id="male" name="sexo" checked/>
+                <label for="male" class="radio">Hombre</label>
+                <input type="radio" value="None" id="female" name="sexo" />
+                <label for="female" class="radio">Mujer</label>
+            </div> 
+            <p>Pulsando en registrar aceptas los <a href="#">terminos y condiciones</a>.</p>
+            <a href="#" class="button">Registro</a>
+        </form>
+        </div>
+    </body>
+</html>

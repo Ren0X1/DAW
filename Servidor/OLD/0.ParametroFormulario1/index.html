@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TITULO</title>
+    </head>
+    <body>
+        <form action="Formulario">
+            <label for="nom">Nombre: </label><input id="nom" style="margin-left: 10px;" type="text" name="nombre" required placeholder="Nombre"><br><br>
+            <label for="ape">Apellidos: </label><input id="ape" style="margin-left: 10px;" type="text" name="apellido" required placeholder="Apellidos"><br><br>
+            <label>Sistema Operativo: </label>
+			<select style="margin-left: 10px;" name="so">
+				<option value="windows">Windows 10</option>
+				<option value="linux">Linux</option>
+				<option value="mac">Mac OS X</option>
+			</select><br><br>
+            <label>Lengua favorita: </label>
+			<select style="margin-left: 10px;" name="lengua">
+				<option value="esp">Español</option>
+				<option value="ing">Ingles</option>
+				<option value="ale">Aleman</option>
+			</select><br><br>
+			<input type="radio" name="check" value="tennis" checked>
+			<label>tennis</label>
+			<input type="radio" name="check" value="futbol" checked>
+			<label>futbol</label>
+            <input type="submit" value="Enviar!">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Aplicación compra de CD's</title>
+    <link href="css/estiloCD.css" rel="stylesheet"   type="text/css"/>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script>
+        if (typeof jQuery === 'undefined') {
+            document.write(unescape("%3Cscript src='js/jquery-3.6.0.min.js' %3E%3C/script%3E"))
+        }
+    </script>
+    <script src="js/creaTabla.js" type="text/javascript"></script>
+    <script src="js/Ajax.js"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAxzeAgRx3i06pWOJX26eh7lOcq1Ua8BGU"></script> 
+    <script>
+        var detallePedido={}	
+        function tecla(elEvento) {
+            var evento = elEvento || window.event
+            var caracter = evento.key
+        }
+
+        function mueveCd(evento){
+            document.getElementById("ccd").style.display="block"
+            document.getElementById("ccd").style.zIndex=10
+            cdd.style.left=evento.clientX+"px"
+            cdd.style.top= evento.clientY+"px"
+        }
+
+        function verCatalogo(){
+            displayResult("catalogo",xmlDoc,xslDoc,this)
+            catalogo.style.display="block"
+            let filas =document.querySelectorAll("#catalogo tbody tr")
+            let ObjetoFila={}
+            filas.forEach(function(fila) {
+                fila.ondragstart=function(ev) {
+                    for(indice in fila.cells) {
+                        ObjetoFila[filas[0].cells[indice].textContent]=fila.cells[indice].textContent
+                    }
+                    ev.dataTransfer.setData("fila",JSON.stringify(ObjetoFila))
+                }
+                fila.draggable=true
+            })
+        }
+        
+        function cargarXsl(doc){
+            xslDoc=doc;
+        }
+
+        window.onload=function(){
+            loadDocXML("xml/cdcatalog.xml",true,Cargar,"cd",)
+            loadDocXML("xml/cdcatalog.xsl",true,cargarXsl)
+            cata.onclick=verCatalogo
+            var datos = "pedido="+JSON.stringify({cpedido:"0",cliente:"todos"})
+            enviarPeticionFetch("POST","RecuperaP",true,cargaCliPedidos,errorCargaCli,datos)     
+
+            tpedido.ondragover= function(ev){
+                ev.preventDefault()
+            }
+
+            tpedido.ondrop=function(ev){
+                let fila = JSON.parse(ev.dataTransfer.getData("fila"))
+                detallePedido[Object.keys(detallePedido).length]=fila
+                creaTabla({
+                    id:"carrito",
+                    titulo:"Pedido Actual",
+                    donde:"tpedido",
+                    borrar:true
+                }, detallePedido)
+            }
+        }
+
+        function errorCargaCli(error){
+            alert("se produjo un error recuperando los clientes \n\ con pedidos: "+error)
+        }
+
+        function cargaCliPedidos(clientes){
+            alert("clientes recibidos: "+clientes)
+            var cli=JSON.parse(clientes)
+            for (var nif in cli.clientes) {
+                cli2.options.add(
+                    new Option(
+                        cli.clientes[nif],
+                        cli.clientes[nif]
+                    )
+                )
+            }
+        }
+
+        (function($) {
+            $.fn.resalta = function(obj) {
+                var options = $.extend({}, $.fn.resalta.defaults,obj)
+                return this.css({
+                    color: options.color,
+                    backgroundColor: options.backgroundColor
+                })
+            }
+
+            $.fn.resalta.defaults = {
+                color: 'red',
+                backgroundColor: 'yellow'
+            }
+        })(jQuery)
+
+        $('legend').resalta({
+            color: 'blue'
+        })
+
+    </script>
+ 
+</head>
+
+<body>
+<div id="alta">
+<fieldset><legend>Resalizar un pedido...</legend>
+	<button id="altacli">+</button>
+    <select id="cli" >
+    	<option value="0">Seleccione un Cliente</option>
+    </select><br />
+    
+    <select id="scd">
+    	<option value="0">Seleccione un CD</option>
+    </select> <br />
+    <select id="cd"></select>
+    <br /><br />
+    
+    Cantidad.: <input type="text" placeholder="Catidad" id="ctd"/>
+    <br />
+    <input type="button" value="Comprar..."  style="margin-left:65px" id="comprar"/><!--onClick="comprar2()"/-->
+     <strong id="mensaje">Selecione un Cliente y cantidad > 0"</strong> 
+  <input type="color"  id="color"/><br /><br />
+    
+ <!--input type="button" value="Ver Catalogo" id="cata" style="margin-left:65px" /-->
+ <input type="button" value="Ver Catalogo (Ctrl+c)" id="cata" style="margin-left:65px"/>
+  <!--onclick="verCatalogo(this);"/>
+  <!--onclick="displayResult('catalogo',xmlDoc,xslDoc,this)" -->
+   
+ 
+</fieldset>
+
+</div>
+<div id="tc">
+    <!--Geolocalización... -->    
+    <button id="bmapa">Donde Estoy? </button>
+                <div id="mapa" style='display: none'></div>
+    
+<fieldset><legend>Detalle de los pedidos por Cliente...</legend>
+<select id="cli2" >
+    <!--select id="cli2" onChange="cargaListaPedidos()"-->
+    	<option value="0">Seleccione un Cliente</option>
+    </select>
+<input type="button" value="Lista Pedido" id="bp"  onclick="listap()"/>
+        Nº:  <select  id="lp" >
+        		<option value="0"> Seleccione Pedido</option>
+        	</select>
+    <br />
+ </fieldset>   
+</div>
+<div id="panelCentro">
+    <input type="button" value="Restaurar compra" id="retaurar" onclick='restaurar()' />
+    <br />
+    <button id="aviso" name="aviso" onclick="oferta()">Ver Ofertas cada:</button>
+    <br />
+    <input type="number" id="tiempo" name="tiempo" value="5" style="width:4em"/>
+    segundos
+    <br />
+    <div id="ofrta" style="display:none;border: solid 2px red">Oferta </div>
+
+</div>
+<br />
+
+<div id="dp"></div>
+<div id="catalogo" style="display:none"></div>
+
+<div id="tpedido">
+<fieldset><legend>Estado del pedido Actual...</legend>
+    <table border="1" id="carrito">
+    	
+    </table>
+</fieldset>
+<input type="button" value="Salvar Pedido (Ctrl+s)" id="pedir" style="width:60; text-align:right; position:relative; float:right " onclick='salvar()' />
+<div id="listaCompras">
+</div>
+
+
+ <!-- formulario de alta -->
+    <div id="fcli" style="display:none">
+	<form id="frmcli">
+    	<fieldset><legend>Formulario Alta de Clientes...</legend>
+        <div>
+        <p>Nombre.....:<input type="text" id="nomcli" placeholder="Nombre?" name="Nombre"
+		pattern="^[A-Z].{3,}" required title="Mayuscula + 3 car" /></p>
+        <!--em id="emN">El campo Nombre es obligatorio...</em-->
+        <p>Apellidos:<input type="text" id="apecli" placeholder="Apellidos?" name="Apellidos" pattern="^[A-Z].{3,}" required title="Mayuscula + 3 car"/></p>
+        <p> <br />
+        Nif:<input type="password" id="nifcli" placeholder="Nif" name ="Nif" pattern="^[0-9]{8}[-]?[A-Za-z]$" required title="8 numeros y una letra"/></p>
+        <p>Edad.........:<input type="text" id="edcli" placeholder="Edad?" name="Edad" pattern="^[0-9]{1,2}"  title="Uno o dos difgitos"/></p>
+        
+        
+        <input type="submit" value="Guardar" id="gcli"  />
+        <input type="reset" value="Cancelar" id="ccli" />
+               
+            <br />
+         </div>   
+         </fieldset>  
+     </form> 
+	</div>
+ <img src="img/cd.jpg" style="display:none; left:5em; top:15em" id="ccd"/>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="peliculasonlinealtasPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.daw.DTO.Opinion</class>
+    <class>com.daw.DTO.Peliculasdetalle</class>
+    <class>com.daw.DTO.Actor</class>
+    <class>com.daw.DTO.Pelicula</class>
+    <class>com.daw.DTO.Reparto</class>
+    <class>com.daw.DTO.Genero</class>
+    <class>com.daw.DTO.Usuario</class>
+    <class>com.daw.DTO.Director</class>
+    <class>com.daw.peliculas.DTO.Actor</class>
+    <class>com.daw.peliculas.DTO.Director</class>
+    <class>com.daw.peliculas.DTO.Genero</class>
+    <class>com.daw.peliculas.DTO.Reparto</class>
+    <class>com.daw.peliculas.DTO.Peliculasdetalle</class>
+    <class>com.daw.peliculas.DTO.Usuario</class>
+    <class>com.daw.peliculas.DTO.Opinion</class>
+    <class>com.daw.peliculas.DTO.Pelicula</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/peliculasonlinealta?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>

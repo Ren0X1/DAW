@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+body {
+    background-image: url("../img/fondo.jpg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#fotoPersona {
+    float: left;
+    width: 80px;
+    height: 105px;
+    padding-right: 10px;
+    border-radius: 60px;
+}
+
+div#main {
+	width: 55%;
+	float: right;
+	margin: auto;
+	margin-top: 100px;
+    padding-right: 70px;
+}
+
+p {
+    padding-top: 12px;
+    text-align: justify;
+}
+
+h2 {
+    color: red;
+    font-family: 'Dancing Script', cursive;
+}
+
+h1 {
+    color: red;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+}
+
+.footer {
+    float: right;
+    clear: right;
+}
+
+.boton {
+    border: none;
+    background-image: url("../img/correo.png");
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }

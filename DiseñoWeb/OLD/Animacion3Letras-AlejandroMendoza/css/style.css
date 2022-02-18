@@ -1,0 +1,95 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+/*-------------------------*/
+
+.General .letras:nth-child(1) .front { background: #ff4136; transition-delay: 200ms; }
+.General .letras:nth-child(2) .front { background: #ff851b; transition-delay: 400ms; }
+.General .letras:nth-child(3) .front { background: #2ecc40; transition-delay: 600ms; }
+.General .letras:nth-child(4) .front { background: #0074d9; transition-delay: 800ms; }
+.General .letras:nth-child(5) .front { background: #b10dc9; transition-delay: 1000ms; }
+.General .letras:nth-child(6) .front { background: #F60; transition-delay: 1200ms; }
+.General .letras:nth-child(1) .back { border-color: #ff4136; transition-delay: 200ms; }
+.General .letras:nth-child(2) .back { border-color: #ff851b; transition-delay: 400ms; }
+.General .letras:nth-child(3) .back { border-color: #2ecc40; transition-delay: 600ms; }
+.General .letras:nth-child(4) .back { border-color: #0074d9; transition-delay: 800ms; }
+.General .letras:nth-child(5) .back { border-color: #b10dc9; transition-delay: 1000ms; }
+.General .letras:nth-child(6) .back { border-color: #F90; transition-delay: 1200ms; }
+
+.letras {
+    display: inline-block;
+    width: 4%;
+    padding: 1.9rem;
+    position: relative;
+    -webkit-perspective: 20rem;
+    perspective: 20rem;
+    transform-style:preserve-3d;
+}
+
+.letras::before {
+    content: "\00a0";
+}
+
+.back {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 1.75em;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 800ms;
+    -webkit-transition: transform 800ms;
+    -moz-transition: transform 800ms;
+    -ms-transition: transform 800ms;
+    -o-transition: transform 800ms;
+}
+
+.front {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 1.75em;
+    color: #fff;
+    font-size: 2.5em;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 800ms;
+    -webkit-transition: transform 800ms;
+    -moz-transition: transform 800ms;
+    -ms-transition: transform 800ms;
+    -o-transition: transform 800ms;
+}
+
+.General .back {
+    border: .5rem solid;
+    background: #fff;
+    color: #000;
+    font-size: 2.5em;
+    transform: rotateY(-180deg);
+    line-height: 1.5em
+}
+
+.General:hover .back {
+    transform: rotateY(0deg)    ;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+}
+
+.General:hover .front {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+}
+    

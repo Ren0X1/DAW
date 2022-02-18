@@ -1,0 +1,32 @@
+div#contenedor {
+    margin: 0 auto;
+    border: 5px solid red;
+    max-width: 80vw;
+    min-width: 400px;
+}
+
+div#contenedor h1 {
+    text-align: center;
+    font-size: 4vw;
+}
+
+p {
+    font-size: 2vmax;
+}
+
+img {
+    width: 50vw;
+    float: left;
+    max-width: 600px;
+    min-width: 275px;
+}
+
+@media only screen and (max-width: 500px) {
+    div#contenedor {
+        border: none;
+    }
+
+    img {
+        float: none;
+    }
+}

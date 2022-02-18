@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+html{
+    width: 100%;
+    height: 100%;
+    background: url(img/wallpaper.jpg) no-repeat;
+    background-size: cover;
+}
+
+body{
+    position: relative;
+    width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 2px 2px 10px 2px rgb(77, 76, 76);
+    border-radius: 7px;
+}
+
+h1{
+    margin-top: 40px;
+}
+
+h1,h2{
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+form{
+    text-align: center;
+}
+
+label{
+    display: block;
+    margin: 20px;
+    font-size: 21px;
+}
+
+input[type="submit"]{
+    font-size: 15px;
+    margin: 12px 0;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn_sub{
+    background: linear-gradient(to bottom, rgb(83, 219, 219), rgb(167, 236, 236));
+}
+
+.btn_sub:hover{
+    color: white;
+    background: linear-gradient(to bottom, rgb(8,57,1), rgb(24, 124, 4));
+}
+
+input[type="submit"], button#pista{
+    box-shadow: 2px 2px 2px 2px rgb(136, 136, 136);
+}
+
+input[type="submit"]:hover, button#pista:hover{
+    cursor: pointer;
+}
+
+button#pista:hover{
+    color: white;
+    background: linear-gradient(to bottom, rgb(116,16,78), rgb(184, 30, 122));
+}
+
+/* .....Ahorcado main page...... */
+img{
+    border: 2px inset lightgray;
+    position: relative;
+    left: 300px;
+    width: 300px;
+    margin-bottom: 50px;
+    border-radius: 30%;
+}
+
+div.estadisticas{
+    position: absolute;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px 2px rgb(77, 121, 121);
+    right: 30px;
+    background-color: rgb(192, 238, 223);
+    padding: 30px;
+}
+
+div.estadisticas h3{
+    color: rgb(12, 54, 54);
+    text-shadow: 1px 1px 1px black ;
+    font-size: 20px;
+}
+
+div.palabra{
+   display: flex;   
+   justify-content: center;
+   margin-bottom: 40px;
+}
+
+p.guion{
+    font-size: 60px;
+    margin: 0 15px;
+    display: inline-block;
+}
+
+button#pista{
+    background: linear-gradient(to bottom, rgb(250, 176, 168), rgb(245, 212, 208));
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+h3{
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+}
+
+.red{
+    color: darkred;
+}
+
+.green{
+    color: darkgreen;
+}
+
+/* TECLADO */
+div.teclado{
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+input[name="letraT"]{
+    font-size: 18px;
+    margin: 5px;
+    background: linear-gradient(to bottom, rgb(219, 219, 219), white);
+}
+
+input[name="letraT"]:hover{
+    background: linear-gradient(to bottom, rgb(38, 243, 199), white);
+}
+
+input[name="letraT"]:disabled{
+    box-shadow: none;
+    border: 1px solid lightsalmon;
+}
+
+input[name="letraT"]:disabled:hover{
+    cursor: not-allowed;
+    background: linear-gradient(to bottom, rgb(219, 219, 219), white);
+}

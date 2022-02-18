@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vínculos externos</title>
+<style type="text/css">
+	body {
+		font: 120%/1.6 "Gill Sans", Futura, "Lucida Grande", Geneva, sans-serif;
+		color: #666;
+		background: #fff;
+	}
+	
+	p#dinamico a:active, a:visited {
+		background: url("IMAGES/underline1.gif") repeat-x left bottom;
+	}
+	
+	p#dinamico a:hover {
+		background: url("IMAGES/underline1-hover.gif") repeat-x left bottom;
+	}
+	
+	a[href^="http"] {
+		background: url("IMAGES/externalLink.gif") no-repeat right top;
+		padding-right: 10px
+	}
+	
+	a[href^="mailto"] {
+		background: url("IMAGES/EMAIL.PNG") no-repeat right top;
+		padding-right: 20px
+	}
+	
+	a[href*=".pdf"] {
+		background: url("IMAGES/IM.PNG") no-repeat right top;
+		padding-right: 20px
+	}
+	
+	a[href*="www.mrivero"] {
+		background-image: none;
+		padding-right: 0px;
+	}
+	
+</style>
+</head>
+
+<body>
+
+<p id="dinamico">Cuando se pasa sobre un vínculo o haces clic, las líneas diagonales parecen desplazarse <a href="#">de izquierda a derecha, creando un interesante efecto.</a> Lástima que no todos los navegadores lo soporten.</p>
+
+<p>
+	<a href="http://www.google.com/">vínculo externo</a>
+</p>
+ 
+<p>Los Selectores de atributo , nos permiten dirigirnos a un elemento basándonos en la existencia o valor de un atributo. El carácter ^ indicará direcciones que empiecen por ... </p>
+
+<p>En una página podemos querer diferenciar entre vinculos a otros sitios webs (externos) o Vínculos a nuestro propio sitio web. Podríamos diferenciar con iconos distintos. Un vínculo 
+
+<a href="http://www.mrivero.es">interno pero con dirección absoluta </a>, sería este. Un 
+
+<a href="http://www.yahoo.com/">vínculo externo completamente</a>, nos enlazaría con otra p&aacute;gina distinta. Un <a href="css-button.htm">vínculo relativo a nuestro sitio</a> se mostraría así. 
+	</p>
+
+<p>Contacte con 
+	<a href="mailto:info@mrivero.es">nosotros</a><br>
+</p>
+
+
+<p>
+	<a href="curriculum.pdf"> Descárgar mi curriculum </a>
+</p>
+	
+</body>
+</html>

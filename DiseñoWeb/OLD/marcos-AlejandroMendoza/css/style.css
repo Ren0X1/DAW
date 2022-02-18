@@ -1,0 +1,59 @@
+#contenedor {
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+div#contenedor, div#contenido {
+    min-width: 773px;
+}
+
+header {
+    background-color: transparent;
+    border: 1px red;
+    border-style: dashed;
+}
+
+header h1{
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin: 0;
+    color: green;
+}
+
+div#navegacion {
+    position: fixed;
+    border: 1px blue;
+    border-style: dashed;
+    bottom: 10px;
+    top: 80px;
+    width: 16%;
+    float: left;
+    
+}
+
+div#navegacion ul {
+    list-style-type: none;
+    position: relative;
+    left: -14%;
+    top: -2%;
+}
+
+div#navegacion ul li {
+    padding-top: 13px;
+    font-size: 1.2em;
+}
+
+div#contenido {
+    position: fixed;
+    border: 1px green;
+    border-style: dashed;
+    bottom: 10px;
+    top: 80px;
+    left: 17%;
+    width: 81%;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+}

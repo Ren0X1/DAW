@@ -1,0 +1,39 @@
+body header {
+    background-color: darkred;
+}
+
+header h1{
+    padding: 20px;
+    margin: 0;
+}
+
+body footer {
+    background-color: darkred;
+    height: 77px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clear: left;
+}
+
+footer spam{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+div#uno,div#dos,div#tres {
+    margin: 5px;
+    width: 32.5%;
+    float: left;
+}
+
+div#uno,div#dos {
+    background-color: grey;
+}
+
+div#tres {
+    float: right;
+    background-color: lightgrey;
+}

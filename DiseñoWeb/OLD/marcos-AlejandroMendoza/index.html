@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="contenedor">
+            <header>
+                <h1>EJEMPLO DE PAGÍNA CON MARCOS CSS</h1>
+            </header>
+            <div id="navegacion">
+                <ul>
+                    <li><a href="#incio">Incio</a></li>
+                    <li><a href="#interna">Vinculación interna</a></li>
+                    <li><a href="#marcabecera">Marco cabecera</a></li>
+                    <li><a href="#conclusion">Conclución</a></li>
+                </ul>
+            </div>
+            <div id="contenido">
+                <h1 id="incio"> Introducción </h1>
+			<p>HTML ofrece muchas de las posibilidades de publicación convencionales para la creación de textos enriquecidos y documentos estructurados, pero lo que lo separa de la mayoría de los otros lenguajes para el formato de documentos son sus características para hipertexto y para documentos interactivos. Esta sección presenta el vínculo (o enlace, o hipervínculo), la estructura básica del hipertexto. Un vínculo es una conexión desde un recurso web a otro. Aunque es un concepto simple, el vínculo ha sido una de las principales fuerzas que ha hecho posible el éxito de la Web.</p>
+
+	<p>Un vínculo tiene dos extremos (llamados en inglés anchors, anclas), y una dirección. El vínculo comienza en el "ancla de origen" (origen del vínculo) y apunta al "ancla destino" (destino del vínculo), que puede ser cualquier recurso de la Web (p.ej., una imagen, un videoclip, un archivo de sonido, un programa, un documento HTML, un elemento dentro de un documento HTML, etc.).</p>
+
+ 
+	 	<h1 id="interna"> Vinculación interna </h1>
+   	 		<p>El destino de un vínculo puede ser un elemento contenido en un documento HTML. Se le debe asignar un nombre al destino, y cualquier URI que se refiera a este 
+         destino debe incluir el nombre como identificador de fragmento.</p>
+
+	  <p>Los destinos de vínculo en los documentos HTML pueden especificarse o bien mediante el elemento A (dándoles un nombre con el atributo name), o mediante 
+         cualquier otro elemento (dándole un nombre con el atributo id).</p>
+
+	  <p>Así, por ejemplo, un autor podría crear una tabla de contenidos cuyas entradas estuvieran vinculadas con los elementos de encabezado H2, H3, etc., del mismo 
+         documento. Si usáramos el elemento A para crear los destinos de los vínculos, escribiríamos:</p>
+
+	   <a name="inicio">Comentarios sobre el estilo (declarado interno en esta página)</a>
+        <p>Se ha dotado de bordes a los marcos y elementos internos en la cabecera para facilitar el 
+        diseño, bordes que luego si se desea pueden ponerse con valor <em>none</em> para ocultarlos.
+        </p>
+ 
+
+        <h1 id="marcabecera">Marco de cabecera</h1>
+       		<p>Posicionamos la cabecera fijada a la ventana del navegador,  dimensionando y posicionando
+        en las cuatro direcciones: ancho automático, altura de 3 veces la fuente, superior, derecha, 
+        inferior e izquierda a cero. Cuando se fijan posiciones conviene declarar explicítamente 
+        todas las direcciones y dimensiones. El ancho automático nos garantiza que ocupará todo el
+        ancho disponible en la ventana del navegador. Lo importante es fijar un alto absoluto y, si 
+        es posible, que sea proporcional al tamaño de la fuente empleada. Se puede observar que 
+        modificando el tamaño del texto del navegador también se adapta el tamaño de los marcos. Por
+        último dotamos de margenes y relleno proporcionales a la fuente.
+        </p>
+        
+        <p>Importante de resaltar es el valor de <em>overflow:auto</em>. Como ocultamos las barras de
+        desplazamiento en la ventana del navegador, ahora hemos de incorporarla a cada marco con este
+        valor. Dentro de la cabecera establecemos dos elementos:</p>
+              
+        <p>Corresponden a dos líneas de texto pero que podrían ser imágenes u otros elementos. </p>
+        
+        
+        <div>
+            <b>Marco lateral izquierdo</b>, configurado con:
+            <p>En esta caso fijamos el ancho a 8 veces la fuente y la posición arriba a 4 veces la 
+            fuente. Hay que tener en cuenta que se refiere a la altura de su fuente, por lo que estos 
+            valores relativos dependen de las alturas de fuente establecidas. Por lo tanto antes de 
+            establecer posiciones y dimensiones hay que elegir fuente y tamaño para cada marco, para 
+            luego probar los valores adecuados donde se establezca dimensión y posición.
+            </p>
+        </div>
+        <div>
+        	<h1 id="conclusion"> Conclusión </h1>
+            <b>Marco de contenido</b>, que se configura con:
+            <p>Aquí es importante declarar el ancho automático, para que ajuste el resto que tiene 
+            sobrante a partir del ancho absoluto del marco lateral izquierdo. La posición arriba 4 em lo
+            separa de la cabecera y con 9 em lo separa del lateral izquierdo. Conviene declarar un fondo para que la barra de desplazamiento de cada marco funcione adecuadamente, pues en otro caso cuando el cursor se
+            encuentre en espacios transparentes del marco apuntará a la ventana del navegador que tiene 
+            las barras desactivadas.
+            </p>
+            </div>
+        </div>
+    </body>
+</html>

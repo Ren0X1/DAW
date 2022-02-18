@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TITULO</title>
+		<style>
+			.espacio {
+				margin-left: 5px;
+			}
+		</style>
+    </head>
+    <body>
+		<h1>Calculo Tabla Amortización</h1>
+        <form action="Calculo">
+			<label for="capital">Capital:  </label><input class="espacio" id="capital" name="capital" type="number"><br><br>
+			<label for="interes">Interes:  </label><input class="espacio" id="interes" name="interes" type="number" step="0.01"><br><br>
+			<label for="anos">Años:  </label><input class="espacio" id="anos" name="anos" type="number" step="1"><br><br>
+			<label for="periodo">Periodicidad:  </label>
+			<select id="periodo" name="periodo">
+				<option value="elegir" selected disabled>Elegir</option>
+				<option value="1">Anual</option>
+				<option value="2">Semestral</option>
+				<option value="4">Trimestral</option>
+				<option value="12">Mensual</option>
+			</select><br><br>
+			<input type="submit" value="Calcular">
+        </form>
+    </body>
+</html>

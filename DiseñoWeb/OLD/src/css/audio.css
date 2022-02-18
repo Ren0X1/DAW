@@ -1,0 +1,34 @@
+.audio-controls {
+	color: #fff;
+}
+
+.audio-controls span {
+	cursor: pointer;
+	display: inline-block;
+	transition: opacity .3s;
+}
+
+.audio-controls span:hover {
+	opacity: .8;
+}
+.audio-controls .fa {
+	font-size: 1.5em;
+}
+
+.audio-controls .play {
+	width: 3em;
+	height: 3em;
+	line-height: 3em;
+	border-radius: 100%;
+	border: 2px solid #fff;
+	margin: 0 1em;
+}
+
+.audio-controls .play .fa-play {
+	margin-left: 8%;
+}
+
+.navbar {
+	height: 4em;
+	line-height: 4em;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>GestionBD</servlet-name>
+        <servlet-class>com.daw.institutorelacionalv2.LN.GestionBD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsultasBD</servlet-name>
+        <servlet-class>com.daw.institutorelacionalv2.LN.ConsultasBD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GestionBD</servlet-name>
+        <url-pattern>/GestionBD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultasBD</servlet-name>
+        <url-pattern>/ConsultasBD</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>Index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

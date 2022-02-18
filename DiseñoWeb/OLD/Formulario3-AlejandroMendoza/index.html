@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script>
+            var Lib = {}
+
+            Lib.$ = function(selector) {
+                return document.querySelector(selector)
+            }
+
+            Lib.$1 = function(selector) {
+                return document.getElementById(selector)
+            }
+
+            function check(v) {
+                if (this.checkValidity()) {
+                    this.classList.add("valido")
+                    this.classList.remove("invalido")
+                } else {
+                    this.classList.add("invalido")
+                    this.classList.remove("valido")
+                }
+            }
+
+            Lib.ActivarFormu = function(v) {
+                let k = v.getElementsByTagName('input')
+                for(let i=0;i!=k.lenght;i++) {
+                    if (k[i].type=='radio') {
+                        k[i].setAttribute('checked','checked')
+                    }
+                    k[i].removeAttribute('disabled')
+                    k[i].setAttribute('required', 'required')
+                    k[i].addEventListener("input", check);
+                }
+            }
+
+            Lib.DesactivarFormu = function(v) {
+                let k = v.getElementsByTagName('input')
+                for(let i=0;i!=k.lenght;i++) {
+                    if (k[i].type=='radio') {
+                        k[i].removeAttribute('checked')
+                    }
+                    k[i].setAttribute('disabled', 'disabled')
+                    k[i].removeAttribute('required')
+                }
+            }
+
+            window.onload = function() {
+                var tarjeta = Lib.$('#sTar')
+                var banco   = Lib.$('#sBan')
+
+                var formu1 = Lib.$1('formu1')
+                var formu2 = Lib.$1('formu2')
+
+                tarjeta.onclick = function() {
+                    formu2.style.display = 'none'
+                    let style = formu1.style
+                    style.display = 'block'
+                    Lib.ActivarFormu(Lib.$('#formu1'))
+                    Lib.DesctivarFormu(Lib.$('#formu2'))
+                }
+
+                banco.onclick = function() {
+                    formu1.style.display = 'none'
+                    let style = formu2.style
+                    style.display = 'block'
+                    Lib.ActivarFormu(Lib.$('#formu2'))
+                    Lib.DesctivarFormu(Lib.$('#formu1'))
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1 class="titulo">Metodo de pago</h1>
+        <form class="formulario">
+            <div class="selector">
+                <input type="radio" name="cuenta" value="credito" id="M" class="selector-input" checked>
+                <label for="M" id="sTar" class="selector-label">Trajeta de credito</label>
+                <input type="radio" name="cuenta" value="banco" id="H" class="selector-input">
+                <label for="H" id="sBan" class="selector-label">Transferencia bancaria</label>
+            </div>
+            <div style="display: block;" id="formu1">
+                <fieldset>
+                    <legend><input id="tarjeta" type="radio" name="tarjeta" disabled><label for="tarjeta">Tarjeta de credito</label></legend>
+                    <label for="nombre">Nombre y apellidos: </label><br>
+                    <input disabled id="nombre" type="text" class="inputnormal" placeholder="Nombre que figura en la tarjeta" required pattern="^[A-Z].{2,}" title="Empieza May. Minimo 3 caracteres"><br>
+                    <label for="tarjeta1">Numero de tarjeta: </label><br>
+                    <input disabled id="tarjeta1" type="text" class="inputnormal" placeholder="0000 1111 2222 3333" required pattern="/^(\d{4})\s(\d{4})\s(\d{4})\s(\d{4})$/" title="Numero de tarjeta requiere 4 grupos de numero de 4 digitos cada uno"><br>
+                    <label for="fecha">Fecha de caducidad: </label><br>
+                    <input disabled id="fecha" type="month" class="inputnormal" required><br>
+                    <label for="cvv">Codigo de seguridad: </label><br>
+                    <input disabled id="cvv" type="text" placeholder="CVV" class="inputnormal" required pattern="^[0-9]{3, 4}$" title="CVV no valido debe tener 3 caracteres"><br>
+                </fieldset>
+            </div>
+            <div style="display: none;" id="formu2">
+                <fieldset>
+                    <legend><input id="banco" type="radio" name="banco" disabled><label for="banco">Transferencia bancaria</label></legend>
+                    <label for="nombree">Nombre entidad bancaria: </label><br>
+                    <input disabled id="nombree" type="text" class="inputnormal" placeholder="Nombre de la entidad bancaria" required><br>
+                    <label for="titular">Titular de la cuenta: </label><br>
+                    <input disabled id="titular" type="text" class="inputnormal" placeholder="Nombre del titular" required pattern="^[A-Z].{2,}" title="Empieza May. Minimo 3 caracteres"><br>
+                    <label for="ncuenta">Numero de la cuenta: </label><br>
+                    <input disabled id="ncuenta" type="text" placeholder="IBAN" class="inputnormal" required pattern="/([a-zA-Z]{2})\s*\t*(\d{2})\s*\t*(\d{4})\s*\t*(\d{4})\s*\t*(\d{2})\s*\t*(\d{10})/g" title="ES 0011112222334444444444 | ES 00 1111 2222 33 4444444444 | ES00 1111 2222 33 4444444444"><br>
+                </fieldset>
+            </div>
+            <div id="botones">
+                <input type="submit" value="<-- Atras">
+                <input type="submit" value="Siguiente -->">
+            </div>
+        </form>
+    </body>
+</html>

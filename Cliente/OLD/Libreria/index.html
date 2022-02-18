@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <script src="js/objetos.js"></script>
+        <script>
+            window.onload = function() {
+                var bCrearLibro = document.getElementById('guardal')
+                var bCrearCliente = document.getElementById('guardac')
+                var bPedir = document.getElementById('pedir')
+                var bListar = document.getElementById('listado')
+                
+                var libros = {}
+                var clientes = {}
+                var pedidos = []
+
+
+                bCrearLibro.onclick = function() {
+                    let titulo = document.getElementById('titulo').value
+                    let editorial = document.getElementById('editorial').value
+                    let precio = document.getElementById('precio').value
+                    let unidades = document.getElementById('unidades').value
+                    let isbn = document.getElementById('isbn').value
+                    if (titulo!=null && titulo!="" && editorial!=null && editorial!="" && precio!=null && precio!="" && unidades!=null && unidades!="" && isbn!=null && isbn!="") {
+                        let libro = Libro(titulo,editorial,precio,unidades,isbn)
+                        libros[libro.isbn] = libro
+                        actualizarLibro()
+                    } else {
+                        alert("Error al crear el libro")
+                    }
+                }
+
+                bCrearCliente.onclick = function() {
+                    let nombre = document.getElementById('nombre').value
+                    let localidad = document.getElementById('localidad').value
+                    let correo = document.getElementById('correo').value
+                    let nif = document.getElementById('nif').value
+                    if (nombre!=null && nombre!="" && localidad!=null && localidad!="" && correo!=null && correo!="" && nif!=null && nif!="") {
+                        let cliente = Cliente(nombre,localidad,correo,nif)
+                        clientes[cliente.nif] = cliente
+                        actualizarCliente()
+                    } else {
+                        alert("Error al crear el cliente")
+                    }
+                }
+
+                bPedir.onclick = function() {
+                    let listaC = document.getElementById('lClientes').value
+                    let listaL = document.getElementById('lLibros').value
+                    let uni = document.getElementById('unidades2').value
+                    if (listaC!=null && listaC!="" && listaL!=null && listaL!="" && uni!=null && uni>0) {
+                        if (libros[listaL].unidades>uni && libros[listaL].unidades>0) {
+                            libros[listaL].unidades = libros[listaL].unidades - uni
+                            let string = clientes[listaC].nombre+" | "+clientes[listaC].nif+" Ha pedido "+uni+" unidades del libro: "+libros[listaL].titulo
+                            pedidos.push(string)
+                        } else {
+                            alert("El pedido no se puede realizar por falta de unidades")
+                        }
+                    } else {
+                        alert("Error al crear el pedido.")
+                    }
+                }
+
+                bListar.onclick = function() {
+                    let lista = document.getElementById('lt')
+                    lista.innerHTML=""
+                    pedidos.forEach(function(v) {
+                        lista.innerHTML+=v+"<br>"
+                    })
+                }
+
+                function actualizarCliente() {
+                    let listaC = document.getElementById('lClientes')
+                    removeOptions(listaC)
+                    Object.keys(clientes).forEach(function(key) {
+                        let nombre = clientes[key].nombre+" | "+clientes[key].nif
+                        let opt = document.createElement('option');
+                        opt.value = clientes[key].nif;
+                        opt.innerHTML = nombre;
+                        listaC.appendChild(opt);
+                    })
+                }
+
+                function actualizarLibro() {
+                    let listaL = document.getElementById('lLibros')
+                    removeOptions(listaL)
+                    Object.keys(libros).forEach(function(key) {
+                        let titulo = libros[key].titulo+" | "+libros[key].isbn
+                        let opt = document.createElement('option');
+                        opt.value = libros[key].isbn;
+                        opt.innerHTML = titulo;
+                        listaL.appendChild(opt);
+                    })
+                }
+
+                function removeOptions(selectElement) {
+                    var i, L = selectElement.options.length - 1;
+                    for(i = L; i >= 0; i--) {
+                        selectElement.remove(i);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="libros" style="width:300; height:250;">
+            <form id="flibros">
+               <fieldset><legend>Libros...</legend>
+              <label for="titulo">Titulo</label>           
+               <input type="text" id="titulo"/>
+               <label for="editorial">Editorial</label>
+               <input type="text" id="editorial"/><br /><br />
+                <label for="precio">Precio</label>
+               <input type="number" id="precio"/>
+               <label for="unidades">Unidades</label>
+               <input type="number" id="unidades" min="0" max="100" value="0"/>
+               <label for="isbn">ISBN</label>
+               <input id="isbn" name="isbn" type="text" pattern="[0-9]{2}(-|\s)[0-9]{5}(-|\s)[0-9]{2}(-|\s)[0-9]" placeholder="AA-BBBBB-CC-D">
+               <br />
+               <input type="button" id="guardal" value="guardar" align="right"/>
+               </fieldset>
+           </form>
+        
+        </div>
+        <div id="clientes" style="width:300; height:250;">
+            <form id="fclientes">
+               <fieldset><legend>Clientes...</legend>
+              <label for="nombre">Nombre</label>           
+               <input type="text" id="nombre"/>
+               <label for="localidad">Localidad</label>
+               <input type="text" id="localidad"/><br /><br />
+                <label for="correo">E-mail</label>
+               <input type="email" id="correo"/>
+               <input type="button" id="guardac" value="guardar" align="right" />
+               <label for="nif">NIF</label>
+               <input type="text" id="nif"/>
+               </fieldset>
+           </form>
+        
+        </div>
+        <div id="pedidos" style="position:absolute; width:300; height:250">
+            <form id="fpedidos">
+               <fieldset><legend>Pedidos...</legend>
+              <label for="lClientes">Cliente</label> 
+              <select id="lClientes" > </select>
+
+               <label for="lLibros">Libro</label>
+               <select id="lLibros" ></select>
+               <br /><label for="unidades">Unidades</label>
+               <input type="number"  size="6" id="unidades2" value="0"/><br />
+                <br/>
+               <input type="button" value="Pedir" id="pedir" align="right"/>
+               <input type="button" value="Listar Pedidos" id="listado" align="left"/>
+               </fieldset>
+           </form>
+           </div>
+           <div id="lt" align="center">Listado de pedidos de Clientes...</div>
+    </body>
+</html>

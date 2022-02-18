@@ -1,0 +1,428 @@
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  background: #181818;
+}
+
+/*-----------------------
+    Reproductor
+------------------------*/
+.reproductor {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  font-family: inherit;
+  font-size: 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-top: 1px solid #191414;
+  background: #191414;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  z-index: 99999;
+}
+
+.reproductorIniciado {
+  display: flex;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.reproductorObjeto {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.reproductorObjeto-PLAY .reproductorControles, .reproductorObjeto-OPCIONES .reproductorControles {
+  flex: 0 25%;
+}
+
+@-webkit-keyframes fs {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fs {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.reproductorObjeto-CANCION {
+  flex: 1 40%;
+  padding: 0 20px;
+}
+
+.cancion {
+  position: relative;
+  width: 100%;
+  align-self: flex-start;
+  padding: 5px 0 0;
+  color: #eee;
+}
+
+.cancionTitulo {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  padding-right: 80px;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cancionTiempo {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.barraduracion-Contenedor {
+  position: relative;
+  padding: 7px 0;
+  margin-top: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.barraduracion-Contenedor:hover .barraduracionBarra:after {
+  opacity: 1;
+}
+
+.barraduracion {
+  height: 3px;
+  border-radius: 3px;
+  background: #ddd;
+}
+
+.barraduracionBarra, .barraduracionPrecarga {
+  position: absolute;
+  width: 0;
+  height: 3px;
+  border-radius: 3px 0 0 3px;
+}
+
+.barraduracionBarra {
+  background: #1DB954;
+  z-index: 1;
+}
+.barraduracionBarra:after {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 10px;
+  height: 10px;
+  margin-top: -3px;
+  content: "";
+  border-radius: 6px;
+  background: #1DB954;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.barraduracionBarra--active:after {
+  transform: scale(1.4);
+}
+
+.barraduracionPrecarga {
+  background: #c4c4c4;
+  z-index: 0;
+}
+
+.reproductorControles, .reproductor button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  position: relative;
+  display: block;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.reproductorControles:active, .reproductor button:active {
+  background: rgba(0, 0, 0, 0.1);
+}
+.reproductorControles:hover,
+.reproductor button:hover {
+  opacity: 1;
+}
+
+.icon-play path {
+  transition: all 0.3s ease;
+}
+
+.escuchandoAhora .icon-play {
+  fill: #1DB954;
+}
+
+.volume-btn {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.volume {
+  position: absolute;
+  left: 50%;
+  bottom: 45px;
+  width: 40px;
+  margin-left: -20px;
+  height: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
+  background: #191414;
+  border: 1px solid #191414;
+  border-radius: 1px;
+  z-index: 88888;
+}
+.volume::before, .volume::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  border: 7px solid transparent;
+  border-top: 7px solid #191414;
+  left: 50%;
+  margin-left: -7px;
+}
+.volume::after {
+  bottom: -14px;
+  z-index: -1;
+  border-top: 7px solid #191414;
+}
+
+.volume-container:hover .volume {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.volume__cancion {
+  position: relative;
+  display: block;
+  width: 3px;
+  height: 100px;
+  margin: 10px auto;
+  background: #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.volume__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1DB954;
+  height: 50%;
+}
+
+.icon-volume-off {
+  display: none;
+}
+
+.muteado .icon-volume-on {
+  display: none;
+}
+.muteado .icon-volume-off {
+  display: inline;
+  opacity: 0.7;
+}
+
+.reproductorControles.activado svg {
+  fill: #1DB954;
+  filter: drop-shadow(0 0 3px rgba(74, 180, 70, 0.4));
+}
+
+/*-----------------------
+    Playlist
+------------------------*/
+.contenedorLista {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 14px;
+  background: #181818;
+  z-index: 77777;
+}
+
+.playlistUL {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding: 30px 10px 100px 10px;
+}
+
+.listaCanciones--current {
+  background: #1DB954;
+  color: #fff;
+}
+
+svg {
+  fill: #eee;
+}
+
+.h-hide {
+  display: none;
+}
+
+.h-show {
+  display: block;
+}
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.music-card {
+  margin: 100px auto;
+  background: #fff;
+  box-shadow: 9px 7px 37px -6px rgba(0,0,0,0.75);
+  overflow: hidden;
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 500px;
+  cursor: pointer;
+}
+
+.image:hover {
+  filter: grayscale(0%);
+}
+
+.playing {
+  box-shadow: 9px 7px 37px -6px #1DB954;
+  border: 2px solid #1DB954;
+  border-radius: 5px;
+}
+
+.image {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.3;
+  height: 300px;
+  width: 300px;
+  filter: grayscale(100%);
+  transition: all 0.5s ease;
+}
+
+.image:after {
+  height: 100px;
+  content: '';
+  top: 200px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: linear-gradient(rgba(9, 2, 4, 0), #444);
+}
+
+.wave {
+  position: absolute;
+  height: 750px;
+  width: 750px;
+  opacity: 0.6;
+  left: 0;
+  top: 0;
+  margin-left: -70%;
+  margin-top: -130%;
+  background: radial-gradient(#353535, #383737);
+}
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+  top: 10px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 4s infinite linear;
+}
+
+.wave {
+  border-radius: 40%;
+  animation: wave 30s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 35s;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 55s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 30S;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 60s;
+}
+
+.info {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.4em;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.artist {
+  color: #1DB954;
+  font-size: 1.2em;
+  letter-spacing: 0.08em;
+  font-family: 'Reem Kufi', sans-serif;
+}
+.fa {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+.fa-play {
+  display: none;
+}

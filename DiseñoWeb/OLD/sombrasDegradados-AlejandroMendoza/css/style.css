@@ -1,0 +1,117 @@
+/*div {
+    margin: auto;
+    width: 550px;
+    height: 250px;
+    margin-top: 200px;
+    position: relative;
+    background: lightblue;
+}
+
+div:before {
+    position: absolute;
+    z-index: -1;
+    top:-10%; 
+    left: -5%;
+    width: 110%;
+    height: 120%;
+    border-radius: 50px;
+    background: linear-gradient(to right, purple, violet);
+    filter: blur(10px);
+    content: '';
+}*/
+
+/*div {
+    margin: auto;
+    border: 1px solid black;
+    width: 550px;
+    height: 250px;
+    margin-top: 200px;
+    position: relative;
+    background: lightblue;
+    box-shadow: 0px -70px 50px -75px white inset,
+    0px -90px  50px -75px red inset,
+    0px -190px 50px -75px purple inset,
+    0px -260px 50px -75px violet inset,
+    0 0 50px 20px #0D0D0D;
+}*/
+
+/*div {
+    margin: auto;
+    width: 550px;
+    height: 250px;
+    margin-top: 200px;
+    position: relative;
+    color: white;
+    background: url(./arabesque.png);
+    box-shadow: 0 0 50px 2099px rgba(0, 0, 0, 0.8) inset;
+    filter: drop-shadow(5px 5px 0.95rem crimson);
+}*/
+
+/*button {
+    margin-top: 300px;
+    border-radius: 5px;
+    margin-left: 300px;
+    color: white;
+    font-weight: bold;
+    background-color: skyblue;
+    border: none;
+    padding: 10px 20px;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.5);
+}
+
+button:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.9) inset;
+}*/
+
+/*progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 300px;
+    border: 1px;
+    height: 30px;
+    border-radius: 9px;
+    background-color: aliceblue;
+    color: #c12112;
+}
+
+progress::-webkit-progress-bar {
+    border-radius: 9px;
+}
+
+progress::-webkit-progress-value {
+    background-image: linear-gradient(to right, lightyellow, orange, red, darkred);
+    border-radius: 9px;
+}*/
+meter {
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    box-sizing: content-box;
+    padding: 10px 10px 0 10px;
+    box-shadow: 5px 5px 15px rgba(24,3,0,0.2) inset;
+    position: relative;
+}
+
+
+meter:before {
+    display: block;
+    position: absolute;
+    content: '0%';
+    left: 0;
+    top: 1px;
+}
+
+meter::-webkit-meter-bar {
+    border-radius: 2px;
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: violet;
+}
+
+
+meter::-webkit-meter-suboptimum-value {
+    background-color: lightskyblue;
+}

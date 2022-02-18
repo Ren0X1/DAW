@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>INDEX</title>
+        <script>
+            window.onload = function() {
+                var botonGenerar = document.getElementById('botonGenerar')
+                var p = document.getElementById('texto')
+                var apuesta = []
+                
+                botonGenerar.onclick = function() {
+                    p.innerHTML=""
+                    apuesta = generarApuesta(6,1,50)
+                    apuesta.sort(function(a, b){return a-b})
+
+                    let estrellas = generarApuesta(2,1,12)
+                    estrellas.sort(function(a, b){return a-b})
+                    apuesta.push("*")
+                    estrellas.forEach(function(x) {
+                        apuesta.push(x)
+                    })
+
+                    apuesta.forEach(function(x) {
+                        p.innerHTML+=x+" "
+                    })
+                }
+
+                function generarApuesta(numeros,min,max) {
+                    var x = []
+                    var num
+                    for(let i=0;i!=numeros;i++) {
+                        do {
+                            num = aleatorio(min,max)
+                        } while(x.includes(num))
+                        x.push(num)
+                    }
+                    return x
+                }
+
+                function aleatorio(min,max) {
+                    return min+Math.floor(Math.random()*(max-min)+1)
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" id="botonGenerar">Euromillón!</button><br><br>
+        <p id="texto"></p>
+    </body>
+</html>

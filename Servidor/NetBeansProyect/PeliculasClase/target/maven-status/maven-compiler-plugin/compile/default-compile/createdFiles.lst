@@ -1,0 +1,13 @@
+com\daw\logica\Operaciones.class
+com\daw\mantenimiento\DTO\Generos_.class
+com\daw\mantenimiento\DAO\DirectorJpaController.class
+com\daw\mantenimiento\DTO\Director.class
+com\daw\mantenimiento\DAO\exceptions\PreexistingEntityException.class
+com\daw\mantenimiento\DTO\Peliculas_.class
+com\daw\mantenimiento\DAO\PeliculasJpaController.class
+com\daw\mantenimiento\DTO\Generos.class
+com\daw\mantenimiento\DTO\Peliculas.class
+com\daw\mantenimiento\DAO\exceptions\IllegalOrphanException.class
+com\daw\mantenimiento\DAO\exceptions\NonexistentEntityException.class
+com\daw\mantenimiento\DAO\GenerosJpaController.class
+com\daw\mantenimiento\DTO\Director_.class

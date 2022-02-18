@@ -1,0 +1,13 @@
+com\daw\peliculasjpaversion1\DAO\exceptions\PreexistingEntityException.class
+com\daw\peliculasjpaversion1\DAO\exceptions\IllegalOrphanException.class
+com\daw\peliculasjpaversion1\DTO\Genero.class
+com\daw\peliculasjpaversion1\DTO\Director_.class
+com\daw\peliculasjpaversion1\DTO\Genero_.class
+com\daw\peliculasjpaversion1\DTO\Peliculas_.class
+com\daw\peliculasjpaversion1\DTO\Director.class
+com\daw\peliculasjpaversion1\LogicaN\consultas.class
+com\daw\peliculasjpaversion1\DAO\DirectorJpaController.class
+com\daw\peliculasjpaversion1\DAO\exceptions\NonexistentEntityException.class
+com\daw\peliculasjpaversion1\DAO\GeneroJpaController.class
+com\daw\peliculasjpaversion1\DAO\PeliculasJpaController.class
+com\daw\peliculasjpaversion1\DTO\Peliculas.class

@@ -1,7 +1,7 @@
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DTO\Personas.java
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\exceptions\IllegalOrphanException.java
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\exceptions\PreexistingEntityException.java
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\PersonasJpaController.java
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\index\consultasBean.java
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\exceptions\NonexistentEntityException.java
-C:\Users\Usuario\Dropbox\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\alta\altaPersona.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DTO\Personas.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\exceptions\NonexistentEntityException.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\exceptions\PreexistingEntityException.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\index\consultasBean.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\exceptions\IllegalOrphanException.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\alta\altaPersona.java
+C:\Users\Usuario\Desktop\repo\Servidor\NetBeansProyect\MantenimientoPersonasJSF\src\main\java\com\daw\mantenimientopersonasjsf\DAO\PersonasJpaController.java

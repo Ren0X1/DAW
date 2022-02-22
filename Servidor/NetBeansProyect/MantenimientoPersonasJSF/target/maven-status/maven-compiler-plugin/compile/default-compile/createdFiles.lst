@@ -1,8 +1,0 @@
-com\daw\mantenimientopersonasjsf\DTO\Personas.class
-com\daw\mantenimientopersonasjsf\DAO\exceptions\PreexistingEntityException.class
-com\daw\mantenimientopersonasjsf\DAO\PersonasJpaController.class
-com\daw\mantenimientopersonasjsf\DAO\exceptions\IllegalOrphanException.class
-com\daw\mantenimientopersonasjsf\DAO\exceptions\NonexistentEntityException.class
-com\daw\mantenimientopersonasjsf\index\consultasBean.class
-com\daw\mantenimientopersonasjsf\alta\altaPersona.class
-com\daw\mantenimientopersonasjsf\DTO\Personas_.class

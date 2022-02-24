@@ -3,3 +3,15 @@
     <span>{{msg}}</span>
 </p>
 <button (click)="mensaje()">Decir {{msg2}}!</button>
+
+<primer-componente></primer-componente>
+<segundo-componente></segundo-componente>
+
+
+<button [ngClass]="{si: !cambio, no: cambio}" (click)="pruebas()">{{texto}}</button>
+
+<ol>
+    <li *ngFor="let v of preguntasObj">
+        {{v.pregunta}}
+    </li>
+</ol>

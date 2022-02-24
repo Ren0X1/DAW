@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Preguntas } from './interfaz';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,31 @@ export class AppComponent {
     msg = 'Adios';
     msg2 = 'Hola';
     mostrar = false;
+    cambio = false;
+    texto = 'SI';
+
+    preguntasObj : Preguntas[] = [
+        {
+            pregunta: 'España es la mejor?',
+            si: 1,
+            no: 0
+        },
+        {
+            pregunta: 'España es la mejor2?',
+            si: 2,
+            no: 3
+        }
+    ]
+
+    pruebas = () => {
+        this.cambio = !this.cambio
+        if (this.texto=='SI') {
+            this.texto = 'NO'
+        } else {
+            this.texto = 'SI'
+        }
+    }
+
     mensaje = () => {
         this.mostrar = !this.mostrar
         if (this.mostrar) {

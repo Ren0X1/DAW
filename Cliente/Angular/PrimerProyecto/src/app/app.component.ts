@@ -13,7 +13,6 @@ export class AppComponent {
     mostrar = false;
     cambio = false;
     texto = 'SI';
-
     preguntasObj : Preguntas[] = [
         {
             pregunta: 'España es la mejor?',

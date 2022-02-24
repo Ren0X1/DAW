@@ -10,8 +10,14 @@
 
 <button [ngClass]="{si: !cambio, no: cambio}" (click)="pruebas()">{{texto}}</button>
 
-<ol>
+<ul>
     <li *ngFor="let v of preguntasObj">
         {{v.pregunta}}
+        <ul>
+            <li>Si: {{v.si}}</li>
+            <li>No: {{v.no}}</li>
+        </ul>
     </li>
-</ol>
+</ul>
+<br><br>
+<tercer-componente></tercer-componente>

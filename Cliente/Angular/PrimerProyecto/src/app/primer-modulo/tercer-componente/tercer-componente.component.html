@@ -1,0 +1,13 @@
+<p>tercer-componente works!</p>
+<p>
+    Tamaño del lado {{lado}}
+  </p>
+  <p>
+    1 way binding <input type="number" [ngModel]="lado">
+  </p>
+  <p>
+    2 way binding: <input type="number" [(ngModel)]="lado">
+  </p>
+  <p>
+      Evento ngModelChange: <input type="number" [ngModel]="lado" (ngModelChange)="cambiado($event)">
+  </p>

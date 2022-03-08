@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>beanLogin</managed-bean-name>
+        <managed-bean-class>com.daw.juegapalabrasjsf_alejandromendoza.beans.login.beanLogin</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/login.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>true</from-outcome>
+            <to-view-id>/jugar.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/jugar.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>irFinal</from-outcome>
+            <to-view-id>/final.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modi</from-outcome>
+            <to-view-id>/subirFoto.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <converter>
+        <converter-id>convertirESP</converter-id>
+        <converter-class>com.daw.juegapalabrasjsf_alejandromendoza.converters.convertirESP</converter-class>
+    </converter>
+    <converter>
+        <converter-id>convertirING</converter-id>
+        <converter-class>com.daw.juegapalabrasjsf_alejandromendoza.converters.convertirING</converter-class>
+    </converter>
+</faces-config>

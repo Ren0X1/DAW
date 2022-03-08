@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-feb-2016, 18:16:15
+    Author     : lola
+*/
+
+
+.tabla{   
+	
+        border: black dashed medium;
+        font-size:x-large;
+        border-spacing: 20px; 
+        
+}
+
+.cabecera{
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:2px solid #BBBBBB;
+	padding:16px;
+}
+
+.fila1{
+    
+	text-align:center;
+	background:none repeat scroll 0 0 #FFFFFF;
+	border:2px solid #BBBBBB;
+}
+
+.fila2{
+	text-align:center;
+	background:none repeat scroll 0 0 #F0F0F0;
+	border:2px solid chartreuse;
+}
+
+.fila3 {
+    text-align:center;
+    background:none repeat scroll 0 0 #999999;
+	border:2px solid #BBBBBB;
+    
+}
+
+.fin {width: 500px; height:400px; margin: auto ;}

@@ -8,14 +8,11 @@ import { UsuariosService } from './usuarios.service';
 })
 export class AppComponent {
   title = 'JSON';
-  listaUsuarios: any[]=[];
+  listaUsuarios:any[]=[];
   constructor(private usuarios:UsuariosService) {}
   ngOnInit() {
     this.usuarios.getUsuario$().subscribe({
-      next: (personas: any[]) =>  {
-        this.listaUsuarios = personas,
-        console.log(this.listaUsuarios)
-      },
+      next: (personas: any[]) => this.listaUsuarios = personas,
       error: (error: any) => console.log(error)
     })
   }

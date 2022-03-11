@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'fuenteExamen';
+    src: url('../fonts/DancingScript-Regular.ttf');
+    src: url('../fonts/DancingScript-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --azul-principal:#0d9dfd;
+    --verde-principal:#1f7935;
+    --amarillo-principal:#d4ab21;
+    --fondo: #031526;
+    --secundario: rgb(58,55,90);
+}
+
+.fondoCard1 {
+    background-color: var(--amarillo-principal) !important;
+}
+.fondoCard2 {
+    background-color: var(--verde-principal) !important;
+}
+.fondoCard3 {
+    background-color: var(--azul-principal) !important;
+}
+
+.fondo {
+    background-color: var(--fondo);
+}
+
+.blanco {
+    font-family: fuenteExamen;
+    color: #FFF;
+    font-size: 1em;
+}
+
+.verde {
+    font-family: fuenteExamen;
+    font-size: 4em;
+    color: var(--verde-principal);
+}
+
+.tama {
+    width: 50%;
+}
+
+.fondoHeader {
+    background-image: url(../img/fondocabecera.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-barra {
+    background-color: var(--secundario);
+}
+
+.bg-barra2 {
+    height: 70px;
+    background-color: var(--secundario);
+}
+
+ul {
+    list-style: none;
+}
+
+.btn-fondoPer {
+    color: #fff;
+    background-color: var(--azul-principal);
+    border-color: #0c8de4;
+}
+
+.btn-fondoPer:hover {
+    color: #fff;
+    background-color: #0b6aaa;
+    border-color: #09578b;
+}

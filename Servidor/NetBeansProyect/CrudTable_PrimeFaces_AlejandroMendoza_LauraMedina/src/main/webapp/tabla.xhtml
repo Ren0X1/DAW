@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+        <ui:composition template="./templates/principal.xhtml">
+
+            <ui:define name="content">
+            <h:form id="form">
+                <p:growl id="messages" showDetail="true"/>
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton value="Nuevo" icon="pi pi-plus" actionListener="#{beanTabla.openNew}"
+                                         update=":form:manage-product-content" oncomplete="PF('manageProductDialog').show()"
+                                         styleClass="ui-button-success" style="margin-right: .5rem">
+                            <p:resetInput target=":form:manage-product-content"/>
+                        </p:commandButton>
+                        <p:commandButton id="delete-products-button" value="#{beanTabla.deleteButtonMessage}"
+                                         icon="pi pi-trash" actionListener="#{beanTabla.deleteSelectedProducts}"
+                                         styleClass="ui-button-danger" disabled="#{!beanTabla.hasSelectedProducts()}"
+                                         update="@this">
+                            <p:confirm header="Confirmación" message="Desea borrar los articulos seleccionados?"
+                                       icon="pi pi-exclamation-triangle"/>
+                        </p:commandButton>
+                        <h:commandButton value="Recargar" actionListener="#{beanTabla.cargarVista()}" styleClass="ui-button-warning" style="margin-right: .5rem"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+                
+                <p:dataTable id="dt-products" widgetVar="dtProducts" var="art" value="#{beanTabla.listaArticulos}"
+                     reflow="true" styleClass="products-table"
+                     selection="#{beanTabla.listaSelect}" rowKey="#{art.codArticulo}" paginator="true"
+                     rows="10" rowSelectMode="add" paginatorPosition="bottom">
+                <f:facet name="header">
+                <div class="products-table-header">
+                    <span style="font-weight: bold">Articulos</span>
+
+                    <span class="filter-container ui-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <p:inputText id="globalFilter" onkeyup="PF('dtProducts').filter()" placeholder="Search"/>
+                    </span>
+
+                </div>
+                </f:facet>
+
+                <p:ajax event="rowSelect" update=":form:delete-products-button"/>
+                <p:ajax event="rowUnselect" update=":form:delete-products-button"/>
+                <p:ajax event="rowSelectCheckbox" update=":form:delete-products-button"/>
+                <p:ajax event="rowUnselectCheckbox" update=":form:delete-products-button"/>
+                <p:ajax event="toggleSelect" update=":form:delete-products-button"/>
+
+                <p:column selectionMode="multiple" exportable="false"></p:column>
+
+                <p:column headerText="Codigo" sortBy="#{art.codArticulo}" filterBy="#{art.codArticulo}">
+                <h:outputText value="#{art.codArticulo}"/>
+                </p:column>
+                <p:column headerText="Nombre" sortBy="#{art.denominacion}" filterBy="#{art.denominacion}">
+                <h:outputText value="#{art.denominacion}"/>
+                </p:column>
+                <p:column headerText="Imagen" exportable="false">
+                    <p:graphicImage name="img/#{art.imagen}" library="demo"
+                                styleClass="product-image"/>
+                </p:column>
+                <p:column headerText="Precio" sortBy="#{art.precio}">
+                <h:outputText value="#{art.precio}" style="font-weight: 700">
+                    <f:convertNumber currencySymbol="€" type="currency"/>
+                </h:outputText>
+                </p:column>
+                <p:column headerText="Categoria" sortBy="#{art.categoria}" filterBy="#{art.categoria}">
+                <h:outputText value="#{art.categoria}"/>
+                </p:column>
+                <p:column headerText="Existencias" sortBy="#{art.existencias}">
+                <h:outputText value="#{art.existencias}"/>
+                </p:column>
+                <p:column headerText="Proveedor" sortBy="#{art.nombreProv(art.codproveedor)}" filterBy="#{art.nombreProv(art.codproveedor)}">
+                <h:outputText value="#{art.nombreProv(art.codproveedor)}"/>
+                </p:column>
+                <p:column exportable="false">
+                <p:commandButton icon="pi pi-pencil" update=":form:manage-product-content"
+                                 oncomplete="PF('manageProductDialog').show()"
+                                 styleClass="edit-button rounded-button ui-button-success" process="@this">
+                    <f:setPropertyActionListener value="#{art}" target="#{beanTabla.articuloSelect}"/>
+                    <p:resetInput target=":form:manage-product-content"/>
+                </p:commandButton>
+                <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"
+                                 oncomplete="PF('deleteProductDialog').show()">
+                    <f:setPropertyActionListener value="#{art}" target="#{beanTabla.articuloSelect}"/>
+                </p:commandButton>
+                </p:column>
+
+                </p:dataTable>
+                
+                <p:dialog header="Product Details" showEffect="fade" modal="true"
+                      widgetVar="manageProductDialog" responsive="true">
+                <p:outputPanel id="manage-product-content" class="ui-fluid">
+                    <p:outputPanel rendered="#{not empty beanTabla.articuloSelect}">
+                        <p:graphicImage name="img/#{beanTabla.articuloSelect.imagen}" library="demo"
+                                        styleClass="product-image"
+                                        rendered="#{not empty beanTabla.articuloSelect.imagen}"/>
+                        <div class="p-field">
+                            <p:outputLabel for="name">Nombre</p:outputLabel>
+                            <p:inputText id="name" value="#{beanTabla.articuloSelect.denominacion}" required="true"/>
+                        </div>
+                        <div class="p-field">
+                            <p:outputLabel for="description">Categoria</p:outputLabel>
+                            <p:inputText id="description" value="#{beanTabla.articuloSelect.categoria}"/>
+                        </div>
+                        <div class="p-field">
+                            <p:outputLabel for="imagen">Imagen</p:outputLabel>
+                            <p:inputText id="imagen" value="#{beanTabla.articuloSelect.imagen}"/>
+                        </div>
+                        <div class="p-field">
+                            <p:outputLabel for="category">Proveedores</p:outputLabel>
+                            <p:selectOneRadio id="category" value="#{beanTabla.articuloSelect.codproveedor}"
+                                              layout="responsive" columns="2">
+                                <f:selectItems value="#{beanTabla.listaProveedores}"/>
+                            </p:selectOneRadio>
+                        </div>
+                        <div class="p-formgrid p-grid">
+                            <div class="p-field p-col">
+                                <p:outputLabel for="price">Precio</p:outputLabel>
+                                <p:inputNumber id="price" value="#{beanTabla.articuloSelect.precio}"
+                                               symbol=" USD" symbolPosition="s"
+                                               decimalSeparator="." thousandSeparator=","/>
+                            </div>
+                            <div class="p-field p-col">
+                                <p:outputLabel for="quantity">Cantidad</p:outputLabel>
+                                <p:spinner id="quantity" min="0" value="#{beanTabla.articuloSelect.existencias}"/>
+                            </div>
+                        </div>
+                    </p:outputPanel>
+                </p:outputPanel>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Save" icon="pi pi-check" actionListener="#{beanTabla.saveProduct}"
+                                     update="manage-product-content" process="manage-product-content @this"/>
+                    <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageProductDialog').hide()"
+                                     class="ui-button-secondary"/>
+                </f:facet>
+                </p:dialog>
+
+                <p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300" message="Delete the product?" header="Confirm" severity="warn">
+                    <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{beanTabla.deleteProduct}" process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
+                    <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times" onclick="PF('deleteProductDialog').hide()"/>
+                </p:confirmDialog>
+
+                <p:confirmDialog global="true" showEffect="fade" width="300">
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary" icon="pi pi-times"/>
+                </p:confirmDialog>
+            </h:form>
+            </ui:define>
+
+        </ui:composition>
+    </body>
+</html>

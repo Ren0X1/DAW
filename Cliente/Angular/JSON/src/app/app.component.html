@@ -1,39 +1,21 @@
 <table class="content-table">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Dirreccion</th>
-            <th>Compañia</th>
-            <th>Telefono</th>
-            <th>Sitio Web</th>
+            <th *ngFor='let v of listaUsuarios[0] | keyvalue: ordenOriginal'>
+                {{v.key}}
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let v of listaUsuarios'>
-            <td>{{v.id}}</td>
-            <td>{{v.name}}</td>
-            <td>{{v.email}}</td>
-            <td>
-                <span class="tool" style="white-space: pre" 
-                title="{{'Calle: ' + v.address.street + '\n'+                   
-                'Numero: ' + v.address.suite + '\n' +                    
-                'Ciudad: ' + v.address.city + '\n' +                     
-                'CP: ' + v.address.zipcode + '\n' +                    
-                'LAT: ' + v.address.geo.lat + '\n' +                                                 
-                'LNG: ' + v.address.geo.lng + '\n'                                            
-                }}">Direccion</span>
+        <tr *ngFor='let usu of listaUsuarios'>
+            <td *ngFor='let item of usu | keyvalue: ordenOriginal'>
+                <div *ngIf='!isObject(item.value) then valor else object'></div>
+                <ng-template #valor>{{item.value}}</ng-template>
+                <ng-template #object>
+                    <span class="tool" style="white-space: pre" 
+                    title="{{convertir(item.value)}}">{{item.key}}</span>
+                </ng-template>
             </td>
-            <td>
-                <span class="tool2" style="white-space: pre" 
-                title="{{'Nombre: ' + v.company.name + '\n'+                   
-                'Eslogan: ' + v.company.catchPhrase + '\n' +                    
-                'Trabajos: ' + v.company.bs + '\n'                                          
-                }}">Empresa</span>
-            </td>
-            <td>{{v.phone}}</td>
-            <td>{{v.website}}</td>
         </tr>
     </tbody>
 </table>

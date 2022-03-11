@@ -4,7 +4,7 @@ import { ClientesService } from './clientes.service';
 import { AltaClienteComponent } from './alta-cliente/alta-cliente.component';
 import { FormsModule } from '@angular/forms';
 import { ListadoClientesComponent } from './listado-clientes/listado-clientes.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { ListadoClientesComponent } from './listado-clientes/listado-clientes.co
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     AltaClienteComponent,

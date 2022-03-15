@@ -29,7 +29,7 @@ export class AltaClienteComponent implements OnInit {
       cif:["11111111G",[
           Validators.required,
           Validators.pattern("[0-9](8)[A-Z]"),
-          this.validaNif()
+          this.validaNif
         ]
       ],
       direccion:"",
@@ -38,7 +38,24 @@ export class AltaClienteComponent implements OnInit {
   }
 
   alta() {
-    
+    if (this.miForm.valid) {
+      
+    }
+  }
+
+  registrar() {
+
+  }
+
+
+
+  public getError(controlName: string):string {
+    const control = this.miForm.get(controlName)
+    if (control?.touched && control?.errors!=null) {
+      return JSON.stringify(control.errors)
+    }
+
+    return "error al obtener errores";
   }
 
   private validaNif(control: AbstractControl) {

@@ -6,19 +6,36 @@
   </p>
   <p>
     <span>CIF:</span>
-    <input type="text" [(ngModel)]="cliente.cif">
+    <input name="cif" formControlName="cif" type="text">
   </p>
   <p>
     <span>Dirección:</span>
-    <input type="text" [(ngModel)]="cliente.direccion">
+    <input name="direccion" formControlName="direccion" type="text">
   </p>
   <p>
     <span>Grupo:</span>
-    <select [(ngModel)]="cliente.grupo">
+    <select name="grupo" formControlName="grupo">
       <option *ngFor="let grupo of grupos" value="{{grupo.id}}">{{grupo.nombre}}</option>
     </select>
   </p>
-  <p>
-    <button (click)="this.nuevoCliente()">Guardar</button>
-  </p>
+  
+  <button (click)="registrar()" [disabled]="miForm.invalid">
+    Registro!
+  </button>
+
+  <p>Form value {{miForm.value | json}}</p>
+  <p>From status {{miForm.status | json}}</p>
+  <p>Form invalid {{miForm.invalid | json}}</p>
+  <p>Form valid {{miForm.valid | json}}</p>
+
+  <span>
+    Errores nif:
+    {{miForm.get('cif')?.errors | json}}   
+  </span><br>
+
+  <span>
+    Errores nif 2:
+    {{getError('cif')}}
+  </span>
+
 </form>

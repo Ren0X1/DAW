@@ -1,0 +1,21 @@
+<table class="content-table">
+    <thead>
+        <tr>
+            <th *ngFor='let v of listaProvincias[0] | keyvalue: ordenOriginal'>
+                {{v.key}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let usu of listaProvincias'>
+            <td *ngFor='let item of usu | keyvalue: ordenOriginal'>
+                <div *ngIf='!isObject(item.value) then valor else object'></div>
+                <ng-template #valor>{{item.value}}</ng-template>
+                <ng-template #object>
+                    <span class="tool" style="white-space: pre" 
+                    title="{{convertir(item.value)}}">{{item.key}}</span>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

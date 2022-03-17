@@ -1,20 +1,19 @@
 <table class="content-table">
     <thead>
         <tr>
-            <th *ngFor='let v of listaProvincias[0] | keyvalue: ordenOriginal'>
+            <th *ngFor='let v of getArray()[0] | keyvalue: ordenOriginal'>
                 {{v.key}}
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor='let usu of listaProvincias'>
-            <td *ngFor='let item of usu | keyvalue: ordenOriginal'>
-                <div *ngIf='!isObject(item.value) then valor else object'></div>
-                <ng-template #valor>{{item.value}}</ng-template>
-                <ng-template #object>
-                    <span class="tool" style="white-space: pre" 
-                    title="{{convertir(item.value)}}">{{item.key}}</span>
-                </ng-template>
+        <tr *ngFor='let prov of getArray()'>
+            <td *ngFor='let v of prov | keyvalue: ordenOriginal'>
+                {{v.value}}
+            </td>
+            <td>
+                <a [routerLink]="['/prueblos', prov.idpoblacion]">Ver Pueblos</a>
             </td>
         </tr>
     </tbody>

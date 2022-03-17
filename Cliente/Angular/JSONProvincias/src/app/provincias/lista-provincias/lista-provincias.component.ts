@@ -10,14 +10,15 @@ import { ProvinciasService } from '../provincias.service';
 export class ListaProvinciasComponent implements OnInit {
 
   title = 'JSON';
-  listaProvincias:any[]=[];
+  listaProvincias:any={};
   ordenOriginal = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
     return 0;
   }
+  neededArray: any;
   constructor(private provincias:ProvinciasService) {}
   ngOnInit() {
     this.provincias.getProvincias$().subscribe({
-      next: (prov: any[]) => this.listaProvincias = prov,
+      next: (prov: any) => this.listaProvincias = prov,
       error: (error: any) => console.log(error)
     })
   }
@@ -27,6 +28,10 @@ export class ListaProvinciasComponent implements OnInit {
       return true
     }
     return false
+  }
+
+  getArray():any {
+    return Object.values(this.listaProvincias);
   }
 
   convertir(v:any):string {

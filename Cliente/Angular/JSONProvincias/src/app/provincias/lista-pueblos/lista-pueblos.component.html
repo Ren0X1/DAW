@@ -1,1 +1,9 @@
-<p>lista-pueblos works!</p>
+<table>
+    <tr *ngFor="let k of pueblos| keyvalue">
+       <td *ngFor="let v of k| keyvalue">
+          <label *ngFor="let o_ of v.value | keyvalue">
+                {{o_.value}}
+          </label>
+       </td>
+    </tr>
+</table>

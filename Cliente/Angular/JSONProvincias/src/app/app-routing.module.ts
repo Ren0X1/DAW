@@ -5,7 +5,7 @@ import { ListaPueblosComponent } from './provincias/lista-pueblos/lista-pueblos.
 
 const routes: Routes = [
   { path: '', component: ListaProvinciasComponent },
-  { path: 'pueblos', component: ListaPueblosComponent },
+  { path: 'Pueblos/:parametro', component: ListaPueblosComponent },
 ];
 
 @NgModule({

@@ -11,10 +11,9 @@
         <tr *ngFor='let prov of getArray()'>
             <td *ngFor='let v of prov | keyvalue: ordenOriginal'>
                 {{v.value}}
-            </td>
-            <td>
-                <a routerLink="/pueblos/{{prov.key}}">Pincha</a>
+                <a routerLink="/pueblos/{{v.key}}">Pincha</a>
             </td>
         </tr>
     </tbody>
 </table>
+<router-outlet></router-outlet>

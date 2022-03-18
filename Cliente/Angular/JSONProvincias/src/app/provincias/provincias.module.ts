@@ -4,6 +4,7 @@ import { ListaProvinciasComponent } from './lista-provincias/lista-provincias.co
 import { ProvinciasService } from './provincias.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ListaPueblosComponent } from './lista-pueblos/lista-pueblos.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { ListaPueblosComponent } from './lista-pueblos/lista-pueblos.component';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     ListaProvinciasComponent,

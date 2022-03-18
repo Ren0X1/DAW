@@ -1,7 +1,7 @@
 <table>
-    <tr *ngFor="let k of pueblos| keyvalue">
+    <tr *ngFor="let k of getPueblos()| keyvalue">
        <td *ngFor="let v of k| keyvalue">
-          <label *ngFor="let o_ of v.value | keyvalue">
+          <label *ngFor="let o_ of v | keyvalue">
                 {{o_.value}}
           </label>
        </td>

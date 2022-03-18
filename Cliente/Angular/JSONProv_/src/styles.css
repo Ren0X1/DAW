@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: sans-serif;
+    height: 100vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+  
+:root {
+    --main-color: #98003f;
+}
+
+html {
+    font-size: 15px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

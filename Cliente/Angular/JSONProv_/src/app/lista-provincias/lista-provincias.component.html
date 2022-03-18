@@ -1,0 +1,19 @@
+<table  class="content-table">
+    <!--thead>
+        <tr>
+            <th *ngFor='let v of getArray()[0] | keyvalue: ordenOriginal'>
+                {{v.key}}
+            </th>
+            <th></th>
+        </tr>
+    </thead-->
+    <tbody>
+        <tr *ngFor="let pr of listaProv | keyvalue">
+            <listaObj  [objProvin]="pr.value"></listaObj>
+            <td>
+                <button routerLink="/pueblos/{{pr.key}}" mat-stroked-button color="accent">Pueblos</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<router-outlet></router-outlet>

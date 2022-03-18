@@ -1,0 +1,11 @@
+<table  class="content-table">
+    <tr *ngFor="let pob of pueblos | keyvalue">
+      <span>
+         <span *ngFor="let pueblito of pob | keyvalue">
+            <td *ngFor="let datos of pueblito.value | keyvalue">
+               {{datos.value}}
+            </td>
+         </span>
+      </span>
+    </tr>
+</table>

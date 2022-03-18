@@ -10,6 +10,12 @@ export class ListaPueblosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.provincias.getProvincias$().subscribe({
+      next: (prov: any) => this.listaProvincias = prov,
+      error: (error: any) => console.log(error)
+    })
   }
+
+  getPueblos()
 
 }

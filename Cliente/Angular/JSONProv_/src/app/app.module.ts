@@ -9,7 +9,9 @@ import { ListaPueblosComponent } from './lista-pueblos/lista-pueblos.component';
 
 import { ListadoPueblosModule } from './listado-pueblos/listado-pueblos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     ListadoPueblosModule,
     HttpClientModule,
     MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],

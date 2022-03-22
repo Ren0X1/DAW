@@ -9,9 +9,12 @@
     </thead-->
     <tbody>
         <tr *ngFor="let pr of listaProv | keyvalue">
-            <listaObj  [objProvin]="pr.value"></listaObj>
+            <listaObj [objProvin]="pr.value"></listaObj>
             <td>
-                <button routerLink="/pueblos/{{pr.key}}" mat-stroked-button color="accent">Pueblos</button>
+                <button routerLink="/modificar/{{pr.value | json}}" mat-stroked-button color="accent" matTooltip="Editar Pueblos"><mat-icon class="mat-icon-rtl-mirror" svgIcon="info"></mat-icon>Modificar</button>
+            </td>
+            <td>
+                <button routerLink="/pueblos/{{pr.key}}" mat-stroked-button color="accent" matTooltip="Mostrar Pueblos"><mat-icon class="mat-icon-rtl-mirror" svgIcon="info"></mat-icon>Pueblos</button>
             </td>
         </tr>
     </tbody>

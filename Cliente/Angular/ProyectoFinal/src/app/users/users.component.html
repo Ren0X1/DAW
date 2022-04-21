@@ -1,0 +1,21 @@
+<table class="table table-striped align-middle mt-5">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor='let v of listaEmpleados[0] | keyvalue: ordenOriginal'>
+                {{v.key}}
+            </th>
+        </tr>
+    </thead>
+    <tbody class="table-hover">
+        <tr *ngFor='let usu of listaEmpleados'>
+            <td *ngFor='let item of usu | keyvalue: ordenOriginal'>
+                <div *ngIf='!vacio(item.value) then valor else valor2'></div>
+                <ng-template #valor>{{item.value}}</ng-template>
+                <ng-template #valor2> N/A </ng-template>
+            </td>
+            <td>
+                <button routerLink="/datosusers/{{usu.id}}" mat-raised-button color="accent" matTooltip="Mostrar Informacion"><mat-icon class="mat-icon-rtl-mirror">person</mat-icon>Datos</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
